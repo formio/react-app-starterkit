@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "airbnb",
+    "formio"
+  ],
+  "globals": {
+    "window": true,
+    "document": true,
+    "require": true,
+    "module": true,
+    "global": true,
+    "fetch": true,
+    "FormioComponents": true
+  }
+}

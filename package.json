@@ -1,0 +1,44 @@
+{
+  "name": "react-app-framework",
+  "version": "1.0.0",
+  "description": "A framework for building a React application with Form.io",
+  "main": "src/index.jsx",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack && http-server -p 8000 dist/",
+    "build": "webpack",
+    "dev": "webpack-dev-server --hot --inline --devtool source-map --config webpack.config.js"
+  },
+  "author": "Randall Knutson <randall@form.io>",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.9.1",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "css-loader": "^0.23.1",
+    "eslint": "^3.2.2",
+    "eslint-config-airbnb": "^10.0.0",
+    "eslint-config-formio": "^1.0.0",
+    "eslint-loader": "^1.4.0",
+    "eslint-plugin-import": "^1.10.2",
+    "eslint-plugin-jsx-a11y": "^2.0.1",
+    "eslint-plugin-react": "^6.0.0",
+    "file-loader": "^0.9.0",
+    "json-loader": "^0.5.4",
+    "react-hot-loader": "^1.3.0",
+    "redux-devtools": "^3.3.1",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "dependencies": {
+    "formio-utils": "^0.1.9",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-formio": "^0.5.1",
+    "react-redux": "^4.4.5",
+    "react-widgets": "^3.4.3",
+    "redux": "^3.5.2"
+  }
+}
