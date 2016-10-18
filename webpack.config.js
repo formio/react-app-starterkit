@@ -24,13 +24,13 @@ module.exports = {
       {
         test: /\.jsx?$/,
         loaders: ["eslint"],
-        exclude: /node_modules/
+        exclude: /node_modules|react\-formio\-helper/
       }
     ],
     loaders: [
       {
         test: /\.jsx?$/,
-        loaders: ['react-hot', 'babel?presets[]=react,presets[]=es2015'],
+        loaders: ['react-hot', 'babel?presets[]=react,presets[]=es2015,presets[]=stage-2'],
         exclude: /node_modules/
       },
       {
@@ -49,6 +49,9 @@ module.exports = {
         test: /\.json$/,
         loader: 'json'
       }
-    ]
+    ],
+    resolve: {
+      extensions: ['', '.js', '.jsx']
+    }
   }
 }
