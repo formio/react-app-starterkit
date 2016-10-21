@@ -4,17 +4,23 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { HashRouter } from 'react-router';
-import { FormioResource, FormioAuth, formioReducers, FormioRoutes } from 'react-formio';
+import { FormioResource, FormioAuth, FormioAlerts, FormioBuilder, formioReducers, FormioRoutes } from 'react-formio';
 import Config from './config';
 import Header from './components/Header.jsx';
 
 require('react-widgets/dist/css/react-widgets.css');
 require('react-formio/formio.css');
 
-new FormioAuth({
+const auth = new FormioAuth({
   appUrl: Config.appUrl,
   forceAuth: true
 });
+
+const alerts = new FormioAlerts({
+  appUrl: Config.appUrl
+});
+
+const buidler = new FormioBuilder('', Config.appUrl);
 
 // Register all resources in the config file.
 let resources = {};

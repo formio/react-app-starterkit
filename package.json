@@ -41,7 +41,7 @@
     "history": "^2.0.0",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
-    "react-formio": "^0.10.6",
+    "react-formio": "^0.10.10",
     "react-redux": "^4.4.5",
     "react-router": "^4.0.0-alpha.4",
     "react-widgets": "^3.4.3",

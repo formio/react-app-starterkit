@@ -6,9 +6,6 @@ export default {
   apiUrl: API_URL,
   appVersion: '1.0.0',
   resources: {
-    sample: {
-      form: APP_URL + '/sample'
-    },
     user: {
       form: APP_URL + '/user'
     }
