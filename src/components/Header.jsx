@@ -20,20 +20,20 @@ export default () => {
             <span className="icon-bar" />
             <span className="icon-bar" />
           </button>
-          <a className="navbar-brand" href="#/">StarterKit</a>
+          <a className="navbar-brand logo" href="#/">StarterKit</a>
         </div>
         <div className="collapse navbar-collapse" id="navbar">
           <ul className="nav navbar-nav navbar-left">
             <li>
-              <Link to="/forms" >Forms</Link>
+              <Link to="/forms" ><i className="glyphicon glyphicon-list-alt" aria-hidden="true" /> Forms</Link>
             </li>
             <li>
-              <Link to="/user" >Users</Link>
+              <Link to="/user" ><i className="glyphicon glyphicon-user" aria-hidden="true" /> Users</Link>
             </li>
           </ul>
           <ul className="nav navbar-nav navbar-right">
             <li>
-              <FormioLogout>Logout</FormioLogout>
+              <FormioLogout><i className="glyphicon glyphicon-off" aria-hidden="true" /> Logout</FormioLogout>
             </li>
           </ul>
         </div>

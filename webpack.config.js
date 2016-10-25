@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
 
 const PATHS = {
@@ -34,24 +35,36 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.css$/,
-        loader: "style!css"
+        test: /\.s?css$/,
+        loader: ExtractTextPlugin.extract('style', 'css!sass')
       },
       {
         test: /\.html$/,
         loader: "file?name=[name].[ext]"
       },
       {
-        test: /\.png$|\.gif$|\.svg|\.ttf|\.woff|\.eot/,
-        loader: "file"
+        test: /\.png$|\.gif$|\.svg|\.ttf|\.woff|\.eot|\.ico$|\.jpe?g$/,
+        loader: 'file?name=assets/[name].[ext]'
       },
       {
         test: /\.json$/,
         loader: 'json'
       }
-    ],
-    resolve: {
-      extensions: ['', '.js', '.jsx']
-    }
+    ]
+  },
+  plugins: [
+    new ExtractTextPlugin('styles.css'),
+    new webpack.ProvidePlugin({
+      '$': 'jquery',
+      'jQuery': 'jquery',
+      'window.jQuery': 'jquery',
+      'moment': 'moment'
+    })
+  ],
+  resolve: {
+    alias: {
+      jquery: 'jquery/src/jquery'
+    },
+    extensions: ['', '.js', '.jsx']
   }
 }

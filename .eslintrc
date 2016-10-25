@@ -3,6 +3,9 @@
     "airbnb",
     "formio"
   ],
+  "rules": {
+    "object-curly-spacing": [2, "always"]
+  },
   "globals": {
     "window": true,
     "document": true,

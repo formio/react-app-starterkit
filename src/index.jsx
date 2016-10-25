@@ -5,11 +5,13 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { HashRouter } from 'react-router';
 import { FormioResource, FormioAuth, FormioAlerts, FormioBuilder, formioReducers, FormioRoutes } from 'react-formio';
+
+import 'react-widgets/dist/css/react-widgets.css';
+import 'react-formio/formio.css';
+import './assets/index.scss';
+
 import Config from './config';
 import Header from './components/Header.jsx';
-
-require('react-widgets/dist/css/react-widgets.css');
-require('react-formio/formio.css');
 
 const auth = new FormioAuth({
   appUrl: Config.appUrl,
@@ -20,7 +22,7 @@ const alerts = new FormioAlerts({
   appUrl: Config.appUrl
 });
 
-const buidler = new FormioBuilder('', Config.appUrl);
+const builder = new FormioBuilder('', Config.appUrl);
 
 // Register all resources in the config file.
 let resources = {};
