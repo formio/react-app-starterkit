@@ -13,23 +13,6 @@ import './assets/index.scss';
 import Config from './config';
 import Header from './components/Header.jsx';
 
-const auth = new FormioAuth({
-  appUrl: Config.appUrl,
-  forceAuth: true
-});
-
-const alerts = new FormioAlerts({
-  appUrl: Config.appUrl
-});
-
-const builder = new FormioBuilder('', Config.appUrl);
-
-// Register all resources in the config file.
-let resources = {};
-for (const key in Config.resources) {
-  resources[key] = new FormioResource(key, Config.resources[key].form);
-}
-
 const store = createStore(
   combineReducers({
     formio: formioReducers()
