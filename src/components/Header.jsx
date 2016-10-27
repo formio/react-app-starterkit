@@ -25,7 +25,7 @@ export default () => {
         <div className="collapse navbar-collapse" id="navbar">
           <ul className="nav navbar-nav navbar-left">
             <li>
-              <Link to="/" ><i className="glyphicon glyphicon-list-alt" aria-hidden="true" /> home</Link>
+              <Link to="/" ><i className="glyphicon glyphicon-home" aria-hidden="true" /> Home</Link>
             </li>
           </ul>
           <ul className="nav navbar-nav navbar-right">

@@ -4,7 +4,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { HashRouter } from 'react-router';
-import { FormioResource, FormioAuth, FormioAlerts, FormioBuilder, formioReducers, FormioRoutes } from 'react-formio';
+import { Formio, formioReducers, FormioRoutes } from 'react-formio';
 
 import 'react-widgets/dist/css/react-widgets.css';
 import 'react-formio/formio.css';

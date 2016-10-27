@@ -1,4 +1,4 @@
-const APP_URL = 'https://jwjbqdfryonbecc.form.io';
+const APP_URL = 'https://myproject.form.io';
 const API_URL = 'https://api.form.io';
 
 export default {
