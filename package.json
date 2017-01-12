@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack && http-server -p 8000 dist/",
     "build": "webpack -p",
-    "dev": "webpack-dev-server --hot --inline --devtool source-map --config webpack.config.js"
+    "dev": "webpack-dev-server --inline --devtool source-map --config webpack.config.js"
   },
   "author": "Randall Knutson <randall@form.io>",
   "license": "ISC",
@@ -43,10 +43,10 @@
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
-    "formio-utils": "^0.1.9",
-    "react": "^15.1.0",
-    "react-dom": "^15.1.0",
-    "react-formio": "^0.11.3",
+    "formio-utils": "^0.2.3",
+    "react": "^15.4.0",
+    "react-dom": "^15.4.0",
+    "react-formio": "^0.14.11",
     "react-redux": "^4.4.5",
     "react-router": "^4.0.0-alpha.4",
     "react-widgets": "^3.4.4",
