@@ -66,5 +66,8 @@ module.exports = {
       jquery: 'jquery/src/jquery'
     },
     extensions: ['', '.js', '.jsx']
+  },
+  devServer: {
+    historyApiFallback: true
   }
 }

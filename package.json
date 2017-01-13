@@ -43,14 +43,18 @@
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
+    "babel-polyfill": "^6.20.0",
     "formio-utils": "^0.2.3",
+    "history": "^4.5.1",
     "react": "^15.4.0",
     "react-dom": "^15.4.0",
-    "react-formio": "^0.14.11",
+    "react-formio": "^1.0.0-alpha1",
     "react-redux": "^4.4.5",
-    "react-router": "^4.0.0-alpha.4",
+    "react-router": "^4.0.0-alpha.6",
+    "react-router-addons-controlled": "0.0.1",
     "react-widgets": "^3.4.4",
     "redux": "^3.5.2",
+    "redux-injector": "^0.1.0",
     "redux-thunk": "^2.1.0"
   }
 }
