@@ -1,6 +1,4 @@
-dist
-node_modules
-*~
-.DS_Store
-npm-debug.log
-.idea
+.tmp/
+coverage/
+dist/
+node_modules/
