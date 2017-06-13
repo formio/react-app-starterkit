@@ -21,12 +21,12 @@ export class Main extends Component {
   render() {
     return (
       <div style={styles.container}>
-        <Header/>
+        <Header />
         <main style={styles.main}>
-          <Title/>
-          <Techs/>
+          <Title />
+          <Techs />
         </main>
-        <Footer/>
+        <Footer />
       </div>
     );
   }

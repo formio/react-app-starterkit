@@ -1,18 +1,38 @@
-html, body, #root {
-  margin: 0;
-  height: 100%;
-  font-family: 'Open Sans', sans-serif;
+$icon-font-path: "../node_modules/bootstrap-sass/assets/fonts/bootstrap/";
+@import "../node_modules/bootswatch/yeti/_variables.scss";
+@import "../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+@import "../node_modules/bootswatch/yeti/_bootswatch.scss";
+
+.navbar {
+  margin-bottom: 0;
 }
 
-body, h1, h2, h3 {
-  font-weight: 300
+.text-blue {
+  color: #127ABF;
 }
 
-a {
-  color: white;
-  text-decoration: none;
+.text-green {
+  color: #449414;
+}
 
-  &:hover {
-    color: #5aadbb;
-  }
+.hero-image {
+  display: inline;
+  height: 2em;
+}
+
+.main {
+  margin-top: 40px;
+}
+
+.logo {
+  height: 2em;
+  margin-top: -0.5em;
+}
+
+.footer {
+  text-align: center;
+  padding: 3em;
+  color: #777;
+  border-top: .05rem solid #e5e5e5;
+  margin-top: 20px;
 }
