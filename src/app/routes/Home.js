@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {PropTypes} from 'prop-types';
 import {Formio} from 'react-formio';
-import Hero from '../components/Hero';
+import Hero from '../containers/Hero';
 
 class Home extends Component {
   render() {

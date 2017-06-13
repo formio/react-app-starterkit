@@ -3,9 +3,10 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
-import configureStore from './app/store/configureStore';
+import {Router, browserHistory} from 'react-router';
 
-import {Main} from './app/Main';
+import configureStore from './app/store/configureStore';
+import routes from './app/routes';
 
 import './index.scss';
 
@@ -13,7 +14,10 @@ const store = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>
-    <Main />
+    <Router
+      history={browserHistory}
+      routes={routes}
+    />
   </Provider>,
   document.getElementById('root')
 );
