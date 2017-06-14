@@ -5,6 +5,11 @@ import {Formio} from 'react-formio';
 import Hero from '../containers/Hero';
 
 class Home extends Component {
+  static propTypes = {
+    auth: PropTypes.object.isRequired,
+    navigate: PropTypes.func.isRequired
+  };
+
   render() {
     const {auth, navigate} = this.props;
     navigate();
@@ -23,11 +28,6 @@ class Home extends Component {
     );
   }
 }
-
-Home.propTypes = {
-  auth: PropTypes.object.isRequired,
-  navigate: PropTypes.func.isRequired
-};
 
 function mapStateToProps() {
   return {

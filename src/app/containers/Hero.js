@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class Hero extends Component {
+export default class Hero extends Component {
   render() {
     return (
       <div className="jumbotron text-center" style={{'marginTop': '-40px'}}>
@@ -30,4 +30,3 @@ class Hero extends Component {
   }
 }
 
-export default Hero;

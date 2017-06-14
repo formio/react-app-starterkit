@@ -1,8 +1,14 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {PropTypes} from 'prop-types';
+import {Link, IndexLink} from 'react-router';
 
 class Header extends Component {
+  static propTypes = {
+    auth: PropTypes.object.isRequired,
+    navigate: PropTypes.func.isRequired
+  };
+
   render() {
     const {auth, navigate} = this.props;
     return (
@@ -22,14 +28,14 @@ class Header extends Component {
               <span className="icon-bar" />
               <span className="icon-bar" />
             </button>
-            <a className="navbar-brand"><img className="logo" alt="Form.io" src="https://form.io/assets/images/formio-logo.png" /></a>
+            <IndexLink className="navbar-brand" to="/"><img className="logo" alt="Form.io" src="https://form.io/assets/images/formio-logo.png" /></IndexLink>
           </div>
           <div id="navbar" className="navbar-collapse collapse">
             <ul className="nav navbar-nav">
               <li>
-                <a role="navigation button" onClick={navigate('home')}>
+                <IndexLink role="navigation button" to="/">
                   <span className="glyphicon glyphicon-home" />
-                </a>
+                </IndexLink>
               </li>
               { auth.is.administrator ?
                 <li>
@@ -54,7 +60,7 @@ class Header extends Component {
                   </a>
                 </li> :
                 <li>
-                  <a role="navigation link" onClick={navigate('auth')}>Login | Register</a>
+                  <Link to="/auth/login">Login | Register</Link>
                 </li>
               }
             </ul>
@@ -64,11 +70,6 @@ class Header extends Component {
     );
   }
 }
-
-Header.propTypes = {
-  auth: PropTypes.object.isRequired,
-  navigate: PropTypes.func.isRequired
-};
 
 function mapStateToProps() {
   return {

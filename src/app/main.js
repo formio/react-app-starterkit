@@ -3,7 +3,11 @@ import {PropTypes} from 'prop-types';
 import Header from './containers/Header';
 import Footer from './containers/Footer';
 
-class Main extends Component {
+export default class Main extends Component {
+  static propTypes = {
+    children: PropTypes.object.isRequired
+  };
+
   render() {
     return (
       <div className="main-container">
@@ -16,9 +20,3 @@ class Main extends Component {
     );
   }
 }
-
-Main.propTypes = {
-  children: PropTypes.func.isRequired
-};
-
-export default Main;

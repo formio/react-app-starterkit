@@ -68,5 +68,11 @@ module.exports = {
     'webpack/hot/dev-server',
     'webpack-hot-middleware/client',
     `./${conf.path.src('index')}`
-  ]
+  ],
+  resolve: {
+    symlinks: false
+  },
+  devServer: {
+    historyApiFallback: true
+  }
 };

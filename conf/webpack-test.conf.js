@@ -37,5 +37,7 @@ module.exports = {
   externals: {
     'react/lib/ExecutionEnvironment': 'true',
     'react/lib/ReactContext': 'true'
-  }
+  },
+  resolve: { fallback: path.join(__dirname, "node_modules") },
+  resolveLoader: { fallback: path.join(__dirname, "node_modules") }
 };
