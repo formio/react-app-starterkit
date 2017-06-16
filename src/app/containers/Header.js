@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import {formioConnect as connect} from 'react-formio/lib/formioConnect';
 import {PropTypes} from 'prop-types';
-import {Link, IndexLink} from 'react-router';
+import {IndexLink} from 'react-router';
+import NavLink from '../components/NavLink';
 
 class Header extends Component {
   static propTypes = {
@@ -32,24 +33,18 @@ class Header extends Component {
           </div>
           <div id="navbar" className="navbar-collapse collapse">
             <ul className="nav navbar-nav">
-              <li>
-                <IndexLink role="navigation button" to="/">
-                  <span className="glyphicon glyphicon-home" />
-                </IndexLink>
-              </li>
+              <NavLink exact to="/" role="navigation button">
+                <span className="glyphicon glyphicon-home" />
+              </NavLink>
               { auth.is.administrator ?
-                <li>
-                  <a role="navigation link" nClick={navigate('user')}>
-                    <span className="glyphicon glyphicon-users" /> Users
-                  </a>
-                </li> : null
+                <NavLink to="/user" role="navigation link">
+                  <span className="glyphicon glyphicon-users" /> Users
+                </NavLink> : null
               }
               { auth.authenticated ?
-                <li>
-                  <a role="navigation link" onClick={navigate('event')}>
-                    <span className="glyphicon glyphicon-calendar" /> Events
-                  </a>
-                </li> : null
+                <NavLink to="/event" role="navigation link">
+                  <span className="glyphicon glyphicon-calendar" /> Events
+                </NavLink> : null
               }
             </ul>
             <ul className="nav navbar-nav navbar-right">
@@ -59,9 +54,9 @@ class Header extends Component {
                     <span className="glyphicon glyphicon-off" /> Logout
                   </a>
                 </li> :
-                <li>
-                  <Link to="/auth/login">Login | Register</Link>
-                </li>
+                <NavLink to="/auth" role="navigation link">
+                  Login | Register
+                </NavLink>
               }
             </ul>
           </div>
@@ -71,9 +66,9 @@ class Header extends Component {
   }
 }
 
-function mapStateToProps() {
+function mapStateToProps(state, ownProps) {
   return {
-    auth: {authenticate: false, is: {administrator: false}}
+    auth: ownProps.formio.auth.selectors.getUser(state)
   };
 }
 

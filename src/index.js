@@ -3,7 +3,7 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
-import {Router, hashHistory} from 'react-router';
+import {Router, browserHistory} from 'react-router';
 import formiojs from 'formiojs';
 import FormioProvider from 'react-formio/lib/FormioProvider';
 import 'formiojs/dist/formio.full.css';
@@ -20,17 +20,18 @@ formiojs.setProjectUrl(AppConfig.projectUrl);
 formiojs.setBaseUrl(AppConfig.apiUrl);
 
 const formio = {
-  auth: new Auth(AuthConfig)
+  auth: new Auth(AuthConfig),
+  resources: {}
 };
 
 const store = configureStore({}, formio);
-const routes = configureRoutes(formio);
+const routes = configureRoutes(store, formio);
 
 ReactDOM.render(
   <Provider store={store}>
     <FormioProvider formio={formio}>
       <Router
-        history={hashHistory}
+        history={browserHistory}
         routes={routes}
       />
     </FormioProvider>
