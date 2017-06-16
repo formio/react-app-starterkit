@@ -1,5 +1,5 @@
 import Main from '../Main';
-import Home from './Home';
+import Home from '../views/Home';
 
 export default function configureRoutes(store, formio) {
   const routes = {

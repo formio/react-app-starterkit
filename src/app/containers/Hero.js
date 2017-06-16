@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import ReduxView from 'redux-view';
+import FormioView from 'react-formio/lib/FormioView';
 
-export default class HeroView extends ReduxView {
-  container = class Hero extends Component {
+export default class HeroView extends FormioView {
+  component = class Hero extends Component {
     render() {
       return (
         <div className="jumbotron text-center" style={{'marginTop': '-40px'}}>
@@ -41,10 +41,10 @@ export default class HeroView extends ReduxView {
 
   initialize = () => {
     /* eslint-disable no-console */
-    console.log('init');
+    console.log('init', this.router, this.formio);
   }
 
-  terminiate = () => {
+  terminate = () => {
     console.log('terminate');
   }
 }
