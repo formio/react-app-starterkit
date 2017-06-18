@@ -8,11 +8,11 @@ export default class HeaderView extends FormioView {
   component = class Header extends Component {
     static propTypes = {
       auth: PropTypes.object.isRequired,
-      navigate: PropTypes.func.isRequired
+      logout: PropTypes.func.isRequired
     };
 
     render() {
-      const {auth, navigate} = this.props;
+      const {auth, logout} = this.props;
       return (
         <nav className="navbar navbar-default navbar-static-top">
           <div className="container">
@@ -51,7 +51,7 @@ export default class HeaderView extends FormioView {
               <ul className="nav navbar-nav navbar-right">
                 { auth.authenticated ?
                   <li>
-                    <a role="navigation link" onClick={navigate('home')}>
+                    <a role="navigation link" onClick={logout}>
                       <span className="glyphicon glyphicon-off" /> Logout
                     </a>
                   </li> :
@@ -73,10 +73,12 @@ export default class HeaderView extends FormioView {
     };
   }
 
-  mapDispatchToProps = () => {
+  mapDispatchToProps = (dispatch) => {
     return {
-      // actions: bindActionCreators(TodoActions, dispatch),
-      navigate: () => {}
+      logout: () => {
+        dispatch(this.formio.auth.actions.logout());
+        this.router.transitionTo('/' + this.formio.auth.config.anonState);
+      }
     };
   }
 }

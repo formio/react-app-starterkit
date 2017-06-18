@@ -1,4 +1,4 @@
-var PROJECT_URL = 'https://example.form.io';
+var PROJECT_URL = 'https://jxijnknquwhvpuv.form.io';
 var API_URL = 'https://api.form.io';
 
 var query = {};

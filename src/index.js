@@ -20,12 +20,16 @@ formiojs.setProjectUrl(AppConfig.projectUrl);
 formiojs.setBaseUrl(AppConfig.apiUrl);
 
 const formio = {
+  config: AppConfig,
   auth: new Auth(AuthConfig),
   resources: {}
 };
 
 const store = configureStore({}, formio);
 const routes = configureRoutes(store, formio);
+
+// Initialize the current user
+store.dispatch(formio.auth.actions.init());
 
 ReactDOM.render(
   <Provider store={store}>

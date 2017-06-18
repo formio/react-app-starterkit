@@ -18,7 +18,10 @@ export default class HomeView extends FormioView {
           <div className="container">
             { auth.authenticated ?
               <div className="well text-center">
-                { auth.user.data ? <h3>You are logged in as <strong>{ auth.user.data.email }</strong>!</h3> : null }
+                { (auth.user && auth.user.data) ?
+                  <h3>You are logged in as <strong>{ auth.user.data.email }</strong>!</h3> :
+                  null
+                }
               </div> :
               <Formio src="https://examples.form.io/example" />
             }

@@ -38,13 +38,4 @@ export default class HeroView extends FormioView {
       );
     }
   };
-
-  initialize = () => {
-    /* eslint-disable no-console */
-    console.log('init', this.router, this.formio);
-  }
-
-  terminate = () => {
-    console.log('terminate');
-  }
 }
