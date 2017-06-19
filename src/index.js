@@ -10,6 +10,7 @@ import 'formiojs/dist/formio.full.css';
 
 import configureStore from './app/store/configureStore';
 import configureRoutes from './app/routes/configureRoutes';
+import resources from './app/resources';
 
 import {AppConfig, AuthConfig} from './config';
 import Auth from './app/auth';
@@ -22,11 +23,11 @@ formiojs.setBaseUrl(AppConfig.apiUrl);
 const formio = {
   config: AppConfig,
   auth: new Auth(AuthConfig),
-  resources: {}
+  resources: resources
 };
 
 const store = configureStore({}, formio);
-const routes = configureRoutes(store, formio);
+const routes = configureRoutes(formio);
 
 // Initialize the current user
 store.dispatch(formio.auth.actions.init());

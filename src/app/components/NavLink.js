@@ -18,11 +18,14 @@ export default class NavLink extends Component {
 
   componentDidMount = () => {
     this.unlisten = this.context.router.listen(() => {
-      this.forceUpdate();
+      if (!this.unmounting) {
+        this.forceUpdate();
+      }
     });
   };
 
   componentWillUnmount = () => {
+    this.unmounting = true;
     this.unlisten();
   };
 

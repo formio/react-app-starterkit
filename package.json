@@ -10,7 +10,7 @@
     "prop-types": "^15.5.10",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "react-formio": "^2.0.0-alpha6",
+    "react-formio": "^2.0.0-alpha7",
     "react-redux": "^5.0.2",
     "react-router": "^3.0.2",
     "recompose": "^0.23.5",

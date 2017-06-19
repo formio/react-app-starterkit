@@ -22,8 +22,8 @@ export default class HomeView extends FormioView {
                   <h3>You are logged in as <strong>{ auth.user.data.email }</strong>!</h3> :
                   null
                 }
-              </div> :
-              <Formio src="https://examples.form.io/example" />
+              </div> : null
+              //<Formio src="https://examples.form.io/example" />
             }
           </div>
         </div>

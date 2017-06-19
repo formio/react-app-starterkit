@@ -1,7 +1,7 @@
 import Main from '../Main';
 import Home from '../views/Home';
 
-export default function configureRoutes(store, formio) {
+export default function configureRoutes(formio) {
   const routes = {
     path: '/',
     component: Main,
@@ -18,17 +18,17 @@ export default function configureRoutes(store, formio) {
   // Routes accessible to only auth users (protected pages that require login).
   let authRoutes = [];
 
-  //for (const key of formio.resources) {
-  //  authRoutes = [
-  //    ...authRoutes,
-  //    ...formio.resources[key].getRoutes(store)
-  //  ];
-  //}
+  for (let key of Object.keys(formio.resources)) {
+    authRoutes = [
+      ...authRoutes,
+      ...formio.resources[key].getRoutes()
+    ];
+  }
 
   // The auth plugin will automatically protect the various routes to ensure authentication state.
   routes.childRoutes = [
     ...routes.childRoutes,
-    ...formio.auth.getRoutes(store, allRoutes, anonRoutes, authRoutes)
+    ...formio.auth.getRoutes(allRoutes, anonRoutes, authRoutes)
   ];
 
   return routes;

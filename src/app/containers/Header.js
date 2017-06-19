@@ -77,7 +77,7 @@ export default class HeaderView extends FormioView {
     return {
       logout: () => {
         dispatch(this.formio.auth.actions.logout());
-        this.router.transitionTo('/' + this.formio.auth.config.anonState);
+        this.router.push('/' + this.formio.auth.config.anonState);
       }
     };
   }
