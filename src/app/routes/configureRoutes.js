@@ -1,4 +1,4 @@
-import Main from '../Main';
+import Main from '../main';
 import Home from '../views/Home';
 
 export default function configureRoutes(store, formio) {
