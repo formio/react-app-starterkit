@@ -13,7 +13,9 @@ export default class Main extends Component {
       <div className="main-container">
         <Header />
         <main className="main">
-          {this.props.children}
+          <div className="container">
+            {this.props.children}
+          </div>
         </main>
         <Footer />
       </div>

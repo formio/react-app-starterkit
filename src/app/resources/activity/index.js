@@ -4,8 +4,9 @@ export default class extends FormioResource {
   constructor(config) {
     super({
       ...config,
-      name: 'event',
-      form: 'event'
+      name: 'activity',
+      form: 'activity',
+      parents: ['event']
     });
   }
 }

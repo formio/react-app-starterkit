@@ -9,6 +9,7 @@
     "formiojs": "^2.9.8",
     "prop-types": "^15.5.10",
     "react": "^15.4.2",
+    "react-bootstrap": "^0.31.0",
     "react-dom": "^15.4.2",
     "react-formio": "^2.0.0-alpha8",
     "react-redux": "^5.0.2",
