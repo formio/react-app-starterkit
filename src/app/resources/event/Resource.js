@@ -7,12 +7,11 @@ export default config => class Resource extends FormioView {
   component = class extends Component {
     static propTypes = {
       params: PropTypes.object.isRequired,
-      children: PropTypes.func.isRequired,
-      basePath: PropTypes.string.isRequired
+      children: PropTypes.func.isRequired
     }
 
     render = () => {
-      const {basePath, params, children} = this.props;
+      const {params, children} = this.props;
       return (
         <div>
           <ul className="nav nav-tabs">
