@@ -7,7 +7,7 @@ export default config => class Resource extends FormioView {
   component = class extends Component {
     static propTypes = {
       params: PropTypes.object.isRequired,
-      children: PropTypes.func.isRequired
+      children: PropTypes.object.isRequired
     }
 
     render = () => {

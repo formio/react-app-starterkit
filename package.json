@@ -6,7 +6,7 @@
     "classnames": "^2.2.5",
     "es6-shim": "^0.35.3",
     "file-loader": "^0.11.2",
-    "formiojs": "^2.9.8",
+    "formiojs": "^2.10.1",
     "prop-types": "^15.5.10",
     "react": "^15.4.2",
     "react-bootstrap": "^0.31.0",
