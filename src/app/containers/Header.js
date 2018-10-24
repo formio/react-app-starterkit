@@ -30,35 +30,42 @@ export default class HeaderView extends FormioView {
                 <span className="icon-bar" />
                 <span className="icon-bar" />
               </button>
-              <IndexLink className="navbar-brand" to="/"><img className="logo" alt="Form.io" src="https://form.io/assets/images/formio-logo.png" /></IndexLink>
+              <IndexLink className="navbar-brand" to="/">
+                <img className="logo" alt="Form.io" src="https://portal.form.io/images/formio-logo.png" height="25px" />
+              </IndexLink>
             </div>
             <div id="navbar" className="navbar-collapse collapse">
               <ul className="nav navbar-nav">
                 <NavLink exact to="/" role="navigation button">
                   <span className="glyphicon glyphicon-home" />
                 </NavLink>
-                { auth.is.administrator ?
+                { auth.is.administrator ? (
                   <NavLink to="/user" role="navigation link">
-                    <span className="glyphicon glyphicon-users" /> Users
-                  </NavLink> : null
-                }
-                { auth.authenticated ?
+                    <span className="glyphicon glyphicon-users" />
+                    Users
+                  </NavLink>
+                ) : null }
+                { auth.authenticated ? (
                   <NavLink to="/event" role="navigation link">
-                    <span className="glyphicon glyphicon-calendar" /> Events
-                  </NavLink> : null
-                }
+                    <span className="glyphicon glyphicon-calendar" />
+                    Events
+                  </NavLink>
+                ) : null }
               </ul>
               <ul className="nav navbar-nav navbar-right">
-                { auth.authenticated ?
+                { auth.authenticated ? (
                   <li>
+                    {/* eslint-disable-next-line */}
                     <a role="navigation link" onClick={logout}>
-                      <span className="glyphicon glyphicon-off" /> Logout
+                      <span className="glyphicon glyphicon-off" />
+                      Logout
                     </a>
-                  </li> :
+                  </li>
+                ) : (
                   <NavLink to="/auth" role="navigation link">
                     Login | Register
                   </NavLink>
-                }
+                )}
               </ul>
             </div>
           </div>
