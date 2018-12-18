@@ -8,20 +8,23 @@ export default class HeroView extends FormioView {
         <div className="jumbotron text-center" style={{'marginTop': '-40px'}}>
           <h2 className="title">
             Welcome to your &lt;
-            <span className="text-blue">form</span>.
-            <span className="text-green">io</span>&gt; application!
+            <span className="text-blue">form</span>
+            .
+            <span className="text-green">io</span>
+            &gt; application!
           </h2>
           <h3>
             using
-            <img alt="React" src="https://cdn.worldvectorlogo.com/logos/react.svg" className="hero-image" />
-            React</h3>
+            <img alt="React" src="https://cdn.worldvectorlogo.com/logos/react.svg" className="hero-image" width="100" />
+            React
+          </h3>
           <div className="row">
             <div className="col-sm-6 col-sm-offset-3 text-center">
               <p className="lead">
                 You can easily embed your Forms and Resources into this application using.
               </p>
               <div>
-                <pre><code>{'<formio src="https://examples.form.io/example" />'}</code></pre>
+                <pre><code>{'<Form src="https://examples.form.io/example" />'}</code></pre>
               </div>
               <p className="lead">Need Help?</p>
               <ul className="list-inline">

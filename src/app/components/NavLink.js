@@ -17,7 +17,8 @@ export default class NavLink extends Component {
   };
 
   componentDidMount = () => {
-    this.unlisten = this.context.router.listen(() => {
+    const {router} = this.context;
+    this.unlisten = router.listen(() => {
       if (!this.unmounting) {
         this.forceUpdate();
       }
@@ -33,7 +34,8 @@ export default class NavLink extends Component {
     const {to} = this.props;
     // This removes exact from passed down props which is invalid on anchor elements.
     const {exact, ...props} = this.props;
-    const className = this.context.router.isActive(to, exact) ? 'active' : '';
+    const {router} = this.context;
+    const className = router.isActive(to, exact) ? 'active' : '';
 
     return (
       <li className={className}>

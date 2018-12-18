@@ -1,7 +1,9 @@
 $icon-font-path: "../node_modules/bootstrap-sass/assets/fonts/bootstrap/";
+
 @import "../node_modules/bootswatch/yeti/_variables.scss";
 @import "../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 @import "../node_modules/bootswatch/yeti/_bootswatch.scss";
+@import "../node_modules/formiojs/dist/formio.full.css";
 
 .navbar {
   margin-bottom: 0;
@@ -15,18 +17,8 @@ $icon-font-path: "../node_modules/bootstrap-sass/assets/fonts/bootstrap/";
   color: #449414;
 }
 
-.hero-image {
-  display: inline;
-  height: 2em;
-}
-
 .main {
   margin-top: 40px;
-}
-
-.logo {
-  height: 2em;
-  margin-top: -0.5em;
 }
 
 .footer {

@@ -1,20 +1,16 @@
-import 'babel-polyfill';
+import '@babel/polyfill';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import FormioProvider from 'react-formio/lib/FormioProvider';
+import {Formio as formiojs} from 'formiojs';
 import {Provider} from 'react-redux';
 import {Router, browserHistory} from 'react-router';
-import formiojs from 'formiojs';
-import FormioProvider from 'react-formio/lib/FormioProvider';
-import 'formiojs/dist/formio.full.css';
-
 import configureStore from './app/store/configureStore';
 import configureRoutes from './app/routes/configureRoutes';
 import resources from './app/resources';
-
 import {AppConfig, AuthConfig} from './config';
 import Auth from './app/auth';
-
 import './index.scss';
 
 formiojs.setProjectUrl(AppConfig.projectUrl);
@@ -28,7 +24,6 @@ const formio = {
 
 const store = configureStore({}, formio);
 const routes = configureRoutes(formio);
-
 // Initialize the current user
 store.dispatch(formio.auth.actions.init());
 

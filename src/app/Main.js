@@ -9,12 +9,13 @@ export default class Main extends Component {
   };
 
   render() {
+    const {children} = this.props;
     return (
       <div className="main-container">
         <Header />
         <main className="main">
           <div className="container">
-            {this.props.children}
+            {children}
           </div>
         </main>
         <Footer />
