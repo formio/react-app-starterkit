@@ -11,9 +11,7 @@ import configureRoutes from './app/routes/configureRoutes';
 import resources from './app/resources';
 import {AppConfig, AuthConfig} from './config';
 import Auth from './app/auth';
-
 import './index.scss';
-import 'formiojs/dist/formio.full.min.css'; // eslint-disable-line
 
 formiojs.setProjectUrl(AppConfig.projectUrl);
 formiojs.setBaseUrl(AppConfig.apiUrl);

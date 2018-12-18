@@ -3,41 +3,32 @@ $icon-font-path: "../node_modules/bootstrap-sass/assets/fonts/bootstrap/";
 @import "../node_modules/bootswatch/yeti/_variables.scss";
 @import "../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 @import "../node_modules/bootswatch/yeti/_bootswatch.scss";
+@import "../node_modules/formiojs/dist/formio.full.css";
 
-// .navbar {
-//   margin-bottom: 0;
-// }
+.navbar {
+  margin-bottom: 0;
+}
 
-// .text-blue {
-//   color: #127ABF;
-// }
+.text-blue {
+  color: #127ABF;
+}
 
-// .text-green {
-//   color: #449414;
-// }
+.text-green {
+  color: #449414;
+}
 
-// .hero-image {
-//   display: inline;
-//   height: 2em;
-// }
+.main {
+  margin-top: 40px;
+}
 
-// .main {
-//   margin-top: 40px;
-// }
+.footer {
+  text-align: center;
+  padding: 3em;
+  color: #777;
+  border-top: .05rem solid #e5e5e5;
+  margin-top: 20px;
+}
 
-// .logo {
-//   height: 2em;
-//   margin-top: -0.5em;
-// }
-
-// .footer {
-//   text-align: center;
-//   padding: 3em;
-//   color: #777;
-//   border-top: .05rem solid #e5e5e5;
-//   margin-top: 20px;
-// }
-
-// .pagination {
-//   margin: 5px 0;
-// }
+.pagination {
+  margin: 5px 0;
+}
