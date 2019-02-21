@@ -1,3 +1,5 @@
+**This project is current in the middle of a rebuild. Please wait to use it.**
+
 Form.io React Starter Application
 ---------------------------------
 This is a starter application that uses React, Bootstrap, Webpack, Gulp, and Form.io to create a powerful Serverless application platform.

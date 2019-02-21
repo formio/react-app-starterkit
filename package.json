@@ -1,109 +1,38 @@
 {
   "name": "react-app-starterkit",
   "private": true,
-  "dependencies": {
-    "@babel/polyfill": "^7.0.0",
-    "@babel/runtime": "^7.1.2",
-    "bootstrap-sass": "^3.3.7",
-    "bootswatch": "^3.3.7",
-    "classnames": "^2.2.5",
-    "file-loader": "^2.0.0",
-    "formiojs": "^3.6.7",
-    "prop-types": "^15.5.10",
-    "react": "^16.5.2",
-    "react-bootstrap": "^0.31.0",
-    "react-dom": "^16.5.2",
-    "react-formio": "^3.0.3",
-    "react-redux": "^5.0.2",
-    "react-router": "^3.0.2",
-    "recompose": "^0.23.5",
-    "redux": "^3.6.0",
-    "redux-thunk": "^2.2.0",
-    "redux-view": "^0.2.1"
+  "scripts": {
+    "deploy": "now && now alias",
+    "start": "react-scripts start",
+    "now-start": "serve -s ./build",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "precommit": "pretty-quick --staged"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0",
-    "@babel/plugin-proposal-class-properties": "^7.0.0",
-    "@babel/plugin-proposal-decorators": "^7.0.0",
-    "@babel/plugin-proposal-export-namespace-from": "^7.0.0",
-    "@babel/plugin-proposal-function-sent": "^7.0.0",
-    "@babel/plugin-proposal-json-strings": "^7.0.0",
-    "@babel/plugin-proposal-numeric-separator": "^7.0.0",
-    "@babel/plugin-proposal-throw-expressions": "^7.0.0",
-    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
-    "@babel/plugin-syntax-import-meta": "^7.0.0",
-    "@babel/plugin-transform-runtime": "^7.1.0",
-    "@babel/preset-env": "^7.0.0",
-    "@babel/preset-react": "^7.0.0",
-    "autoprefixer": "^6.7.3",
-    "babel-eslint": "^7.1.1",
-    "babel-loader": "^8.0.0",
-    "clean-webpack-plugin": "^0.1.19",
-    "cross-env": "^5.2.0",
-    "css-loader": "^0.26.1",
-    "eslint": "^5.6.1",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-config-formio": "^1.1.4",
-    "eslint-loader": "^2.1.1",
-    "eslint-plugin-babel": "^4.0.1",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jsx-a11y": "^6.1.2",
-    "eslint-plugin-react": "^7.11.1",
-    "html-webpack-plugin": "^3.2.0",
-    "http-server": "^0.11.1",
-    "jasmine": "^2.5.3",
-    "karma": "^1.4.1",
-    "karma-coverage": "^1.1.1",
-    "karma-jasmine": "^1.1.0",
-    "karma-junit-reporter": "^1.2.0",
-    "karma-phantomjs-launcher": "^1.0.2",
-    "karma-phantomjs-shim": "^1.4.0",
-    "karma-webpack": "^2.0.2",
-    "mini-css-extract-plugin": "^0.4.3",
-    "node-sass": "^4.5.0",
-    "optimize-css-assets-webpack-plugin": "^5.0.1",
-    "phantomjs-prebuilt": "^2.1.14",
-    "postcss-loader": "^3.0.0",
-    "react-addons-test-utils": "^15.4.2",
-    "react-hot-loader": "^1.3.1",
-    "sass-loader": "^6.0.1",
-    "style-loader": "^0.13.1",
-    "uglifyjs-webpack-plugin": "^2.0.1",
-    "webpack": "^4.20.2",
-    "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.9",
-    "webpack-merge": "^4.1.4"
+    "react-scripts": "^2.1.5"
   },
-  "scripts": {
-    "start": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.dev.config.js",
-    "start:verbose": "cross-env NODE_ENV=development LOG=all webpack-dev-server --config config/webpack.dev.config.js",
-    "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.config.js",
-    "serve:dist": "npm run build && http-server dist",
-    "test": "karma start --single-run"
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "bootswatch": "^4.3.1",
+    "connected-react-router": "4.5.0",
+    "font-awesome": "^4.7.0",
+    "node-sass": "^4.11.0",
+    "react": "16.8.2",
+    "react-dom": "16.8.2",
+    "react-formio": "^3.0.6",
+    "react-redux": "5.1.1",
+    "react-router": "4.3.1",
+    "react-router-dom": "4.3.1",
+    "redux": "4.0.1",
+    "redux-thunk": "2.3.0",
+    "serve": "10.1.2"
   },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "browser": true,
-      "jasmine": true,
-      "es6": true
-    },
-    "extends": [
-      "airbnb",
-      "formio"
-    ],
-    "globals": {
-      "window": true,
-      "document": true,
-      "require": true,
-      "module": true,
-      "global": true,
-      "fetch": true,
-      "FormioComponents": true
-    },
-    "parser": "babel-eslint",
-    "rules": {
-      "import/no-extraneous-dependencies": "off"
-    }
-  }
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
