@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 export default class extends Component {
   render() {
     const {match: {params: {formId}}} = this.props
-    console.log(this.props);
     return (
       <div>
         <h1>List Submission</h1>
