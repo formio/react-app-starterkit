@@ -1,11 +1,12 @@
-import Formiojs from "formiojs";
+import Formiojs from "formiojs/Formio";
 import * as types from "./constants";
+import { getRoot } from "../selectors";
+import { AppConfig } from "../../config";
 
-function requestForms(name, tag) {
+function requestForms(name) {
   return {
     type: types.FORMS_REQUEST,
-    name,
-    tag
+    name
   };
 }
 
@@ -25,34 +26,27 @@ function failForms(name, err) {
   };
 }
 
-export function formsActions(form) {
-  return {
-    index: (tag, page = 1) => {
-      return (dispatch, getState) => {
-        dispatch(requestForms(form.config.name, tag, page));
-        const forms = form.selectors.getForms(getState());
+export const index = (name, page = 1) => {
+  return (dispatch, getState) => {
+    dispatch(requestForms(name, page));
+    const forms = getRoot('forms', getState());
 
-        let params = {};
-        if (tag) {
-          params.tags = tag;
-        }
-        if (parseInt(forms.limit) !== 10) {
-          params.limit = forms.limit;
-        }
-        if (page !== 1) {
-          params.skip = ((parseInt(page) - 1) * parseInt(forms.limit));
-          params.limit = parseInt(forms.limit);
-        }
-        const formio = new Formiojs(form.config.projectUrl + '/form');
-
-        return formio.loadForms({params})
-          .then((result) => {
-            dispatch(receiveForms(form.config.name, result));
-          })
-          .catch((result) => {
-            dispatch(failForms(form.config.name, result));
-          });
-      };
+    let params = {};
+    if (parseInt(forms.limit) !== 10) {
+      params.limit = forms.limit;
     }
+    if (page !== 1) {
+      params.skip = ((parseInt(page) - 1) * parseInt(forms.limit));
+      params.limit = parseInt(forms.limit);
+    }
+    const formio = new Formiojs(AppConfig.projectUrl + '/form');
+
+    return formio.loadForms({params})
+      .then((result) => {
+        dispatch(receiveForms(name, result));
+      })
+      .catch((result) => {
+        dispatch(failForms(name, result));
+      });
   };
 }
