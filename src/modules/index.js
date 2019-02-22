@@ -1,6 +1,10 @@
 import { combineReducers } from 'redux'
-import counter from './counter'
+import { auth } from './auth';
+import { form } from './form';
+import { forms } from './forms';
 
 export default combineReducers({
-  counter
+  auth,
+  form: form({name: 'form'}),
+  forms: forms({name: 'forms', tag: 'common'})
 })

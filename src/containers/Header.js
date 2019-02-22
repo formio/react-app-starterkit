@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {PropTypes} from 'prop-types';
 import {Link} from 'react-router-dom';
 import FormioView from 'react-formio/lib/FormioView';
-import NavLink from '../components/NavLink';
+import NavLink from './NavLink';
 
 export default class HeaderView extends FormioView {
   component = class Header extends Component {

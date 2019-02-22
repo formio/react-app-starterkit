@@ -3,9 +3,10 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
 import store, { history } from './store'
+import { init } from './modules/auth';
 import App from './App'
 
-import {Formio as formiojs} from 'formiojs';
+import {Formio as formiojs, Components} from 'formiojs';
 import {AppConfig} from './config';
 
 import './styles.scss'
@@ -14,7 +15,7 @@ formiojs.setProjectUrl(AppConfig.projectUrl);
 formiojs.setBaseUrl(AppConfig.apiUrl);
 
 // Initialize the current user
-// store.dispatch(formio.authactions.init());
+store.dispatch(init());
 
 render(
   <Provider store={store}>
