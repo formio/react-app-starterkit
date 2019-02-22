@@ -1,7 +1,13 @@
-import React from 'react'
+import {Component} from "react";
+import React from "react";
 
-export default () => (
-  <div>
-    View Form
-  </div>
-)
+export default class extends Component {
+  render() {
+    console.log(this.props);
+    return (
+      <div>
+        View
+      </div>
+    )
+  }
+}
