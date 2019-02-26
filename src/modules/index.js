@@ -6,5 +6,6 @@ import { forms } from './forms';
 export default combineReducers({
   auth,
   form: form({name: 'form'}),
-  forms: forms({name: 'forms', tag: 'common'})
+  forms: forms({name: 'forms', tag: 'common'}),
+  other: forms({name: 'other'})
 })

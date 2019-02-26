@@ -5,7 +5,7 @@ export default class extends Component {
   render() {
     return (
       <div>
-        View
+        <Formio src={"http://mlsxabrzyczlcrb.form.io/registration"} />
       </div>
     )
   }

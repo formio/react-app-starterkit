@@ -6,7 +6,7 @@ import { getForms } from '../../modules/forms/selectors';
 
 const List = class extends Component {
   componentWillMount() {
-    this.props.getForms(1);
+    this.props.getForms({}, 1);
   }
 
   render() {
@@ -35,7 +35,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getForms: (page) => dispatch(index('forms', page)),
+    getForms: (query, page) => dispatch(index('forms', query, page)),
   }
 }
 

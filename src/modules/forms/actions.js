@@ -26,12 +26,12 @@ function failForms(name, err) {
   };
 }
 
-export const index = (name, page = 1) => {
+export const index = (name, query = {}, page = 1) => {
   return (dispatch, getState) => {
     dispatch(requestForms(name, page));
     const forms = getRoot('forms', getState());
 
-    let params = {};
+    let params = query;
     if (parseInt(forms.limit) !== 10) {
       params.limit = forms.limit;
     }

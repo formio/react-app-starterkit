@@ -6,6 +6,10 @@ import Delete from './Delete'
 import Submission from './Submission/index'
 
 export default class extends Component{
+  componentDidMount() {
+    this.props.getForm(this.props.params.formId);
+  }
+
   render() {
     const {match: {params: {formId}}} = this.props;
     return (

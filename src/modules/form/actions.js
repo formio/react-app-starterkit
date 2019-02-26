@@ -1,5 +1,6 @@
 import Formiojs from 'formiojs';
 import * as types from './constants';
+import { AppConfig } from "../../config";
 
 function requestForm(name, id) {
   return {
@@ -41,33 +42,26 @@ function saveForm(name, form) {
   }
 }
 
-export function formActions(form) {
-  return {
-    get: (id = '') => {
-      return (dispatch, getState) => {
-        // Check to see if the form is already loaded.
-        const root = form.selectors.getForm(getState());
-        if (root.form.components && root.form.id === id) {
-          return;
-        }
-
-        dispatch(requestForm(form.config.name, id));
-
-        const formPath = form.config.form || 'form/' + id;
-
-        const formioForm = new Formiojs(form.config.projectUrl + '/' + formPath);
-
-        return formioForm.loadForm()
-          .then((result) => {
-            dispatch(receiveForm(form.config.name, result));
-          })
-          .catch((result) => {
-            dispatch(failForm(form.config.name, result));
-          });
-      };
-    },
-    save: (form) => {
-
+export const get = (name, id = '') => {
+  return (dispatch, getState) => {
+    // Check to see if the form is already loaded.
+    const root = form.selectors.getForm(getState());
+    if (root.form.components && root.form.id === id) {
+      return;
     }
+
+    dispatch(requestForm(name, id));
+
+    const formPath = id ? `${AppConfig.projectUrl}/form/${id}` : `${AppConfig.projectUrl}/${name}`;
+
+    const formioForm = new Formiojs(AppConfig.projectUrl + '/' + formPath);
+
+    return formioForm.loadForm()
+      .then((result) => {
+        dispatch(receiveForm(name, result));
+      })
+      .catch((result) => {
+        dispatch(failForm(name, result));
+      });
   };
-}
+};
