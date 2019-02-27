@@ -4,10 +4,11 @@ import View from './View'
 import Edit from './Edit'
 import Delete from './Delete'
 import Submission from './Submission/index'
+import { connect } from 'react-redux'
 
-export default class extends Component{
+const Item = class extends Component{
   componentDidMount() {
-    this.props.getForm(this.props.params.formId);
+    this.props.getForm(this.props.match.params.formId);
   }
 
   render() {
@@ -51,3 +52,18 @@ export default class extends Component{
     )
   }
 }
+
+const mapStateToProps = () => {
+  return {};
+};
+
+const mapDispatchToProps = () => {
+  return {
+    getForm: () => {}
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Item);
