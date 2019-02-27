@@ -6,7 +6,7 @@ export function forms(config) {
     isFetching: false,
     lastUpdated: 0,
     forms: [],
-    limit: 100,
+    limit: 10,
     pagination: {
       page: 1
     },

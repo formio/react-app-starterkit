@@ -1,6 +1,7 @@
 import Formiojs from 'formiojs';
 import * as types from './constants';
 import { AppConfig } from "../../config";
+import { getForm } from './selectors';
 
 function requestForm(name, id) {
   return {
@@ -45,8 +46,8 @@ function saveForm(name, form) {
 export const get = (name, id = '') => {
   return (dispatch, getState) => {
     // Check to see if the form is already loaded.
-    const root = form.selectors.getForm(getState());
-    if (root.form.components && root.form.id === id) {
+    const form = getForm(name, getState());
+    if (form.components && Array.isArray(form.components) && form.components.length) {
       return;
     }
 

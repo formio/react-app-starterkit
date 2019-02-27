@@ -6,7 +6,7 @@ import { getForms } from '../../modules/forms/selectors';
 
 const List = class extends Component {
   componentWillMount() {
-    this.props.getForms({}, 1);
+    this.props.getForms(1);
   }
 
   render() {
