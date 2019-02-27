@@ -1,1 +1,1 @@
-export const getRoot = (name, state) => state[name];
+export const selectRoot = (name, state) => state[name];

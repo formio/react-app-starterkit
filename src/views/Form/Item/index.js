@@ -5,10 +5,25 @@ import Edit from './Edit'
 import Delete from './Delete'
 import Submission from './Submission/index'
 import { connect } from 'react-redux'
+import { getForm } from '../../../modules/form/actions'
 
 const Item = class extends Component{
-  componentDidMount() {
-    this.props.getForm(this.props.match.params.formId);
+  constructor() {
+    super();
+
+    this.state = {
+      formId: ''
+    }
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState){
+    if(nextProps.match.params.formId !== prevState.formId){
+      nextProps.getForm(nextProps.match.params.formId);
+    }
+
+    return {
+      formId: nextProps.match.params.formId
+    };
   }
 
   render() {
@@ -57,9 +72,9 @@ const mapStateToProps = () => {
   return {};
 };
 
-const mapDispatchToProps = () => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    getForm: () => {}
+    getForm: (id) => dispatch(getForm('form', id))
   };
 };
 

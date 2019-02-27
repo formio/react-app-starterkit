@@ -1,3 +1,3 @@
-import { getRoot } from "../selectors";
+import { selectRoot } from "../selectors";
 
-export const getForm = (name, state) => getRoot(name, state).form;
+export const selectForm = (name, state) => selectRoot(name, state).form;

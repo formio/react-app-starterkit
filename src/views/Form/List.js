@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { index } from '../../modules/forms/actions';
-import { getForms } from '../../modules/forms/selectors';
+import { indexForms } from '../../modules/forms/actions';
+import { selectForms } from '../../modules/forms/selectors';
 
 const List = class extends Component {
   componentWillMount() {
@@ -29,13 +29,13 @@ const List = class extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    forms: getForms('forms', state)
+    forms: selectForms('forms', state)
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getForms: (query, page) => dispatch(index('forms', query, page)),
+    getForms: (query, page) => dispatch(indexForms('forms', query, page)),
   }
 }
 

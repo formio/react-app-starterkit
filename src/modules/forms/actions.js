@@ -1,6 +1,6 @@
 import Formiojs from "formiojs/Formio";
 import * as types from "./constants";
-import { getRoot } from "../selectors";
+import { selectRoot } from "../selectors";
 import { AppConfig } from "../../config";
 
 function requestForms(name) {
@@ -26,10 +26,10 @@ function failForms(name, err) {
   };
 }
 
-export const index = (name, page = 1, params = {}) => {
+export const indexForms = (name, page = 1, params = {}) => {
   return (dispatch, getState) => {
     dispatch(requestForms(name, page));
-    const forms = getRoot('forms', getState());
+    const forms = selectRoot('forms', getState());
 
     if (parseInt(forms.limit) !== 10) {
       params.limit = forms.limit;

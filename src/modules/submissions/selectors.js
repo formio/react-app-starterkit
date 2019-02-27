@@ -1,4 +1,4 @@
-import { getRoot } from "../selectors";
+import { selectRoot } from "../selectors";
 
-export const getSubmission = (name, state) => getRoot(name, state).submission;
-export const getSubmissions = (name, state) => getRoot(name, state).submissions;
+export const selectSubmission = (name, state) => selectRoot(name, state).submission;
+export const selectSubmissions = (name, state) => selectRoot(name, state).submissions;
