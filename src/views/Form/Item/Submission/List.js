@@ -1,9 +1,9 @@
-import React, {Component} from "react";
+import React, {Component} from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import SubmissionGrid from '../../../../containers/SubmissionGrid';
-import { selectRoot } from "../../../../modules/selectors";
-import { index } from "../../../../modules/submissions";
+import { getSubmissions, selectRoot } from 'react-formio';
+import { AppConfig } from '../../../../config';
 
 const List = class extends Component {
   constructor(props) {
@@ -41,14 +41,14 @@ const List = class extends Component {
 
     if (isLoading) {
       return (
-        <div className="form-index">
+        <div className='form-index'>
           Loading...
         </div>
       );
     }
     else {
       return (
-        <div className="form-index">
+        <div className='form-index'>
           <SubmissionGrid
             submissions={submissions}
             form={form}
@@ -59,8 +59,8 @@ const List = class extends Component {
             onPage={onPage}
             onRowClick={onRowClick}
           />
-          <Link className="btn btn-primary" to={`/form/${formId}`}>
-            <i className="glyphicon glyphicon-plus" aria-hidden="true"></i>
+          <Link className='btn btn-primary' to={`/form/${formId}`}>
+            <i className='glyphicon glyphicon-plus' aria-hidden='true'></i>
             New {form.title}
           </Link>
         </div>
@@ -87,7 +87,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    getSubmissions: (page, query) => dispatch(index('submissions', page, query, ownProps.match.params.formId)),
+    getSubmissions: (page, query) => dispatch(getSubmissions('submissions', page, query, { formId: ownProps.match.params.formId, project: AppConfig.projectUrl })),
     onSort: (col) => {
       // this.toggleSort(col);
       // dispatch(this.formio.resources[config.name].actions.submission.index(this.page, this.query));

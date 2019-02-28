@@ -5,7 +5,8 @@ import Edit from './Edit'
 import Delete from './Delete'
 import Submission from './Submission/index'
 import { connect } from 'react-redux'
-import { getForm } from '../../../modules/form/actions'
+import { getForm } from 'react-formio'
+import {AppConfig} from "../../../config";
 
 const Item = class extends Component{
   constructor() {
@@ -74,7 +75,7 @@ const mapStateToProps = () => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getForm: (id) => dispatch(getForm('form', id))
+    getForm: (id) => dispatch(getForm('form', id, { project: AppConfig.projectUrl }))
   };
 };
 

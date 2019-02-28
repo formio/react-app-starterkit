@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { Form } from 'react-formio';
 import { AppConfig, AuthConfig } from "../../config";
-import { setUser } from "../../modules/auth";
+import { setUser } from "react-formio";
 import {push} from "connected-react-router";
 
 const Register = class extends Component {
@@ -23,7 +23,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onSubmitDone: (submission) => {
       dispatch(push(AuthConfig.authState));
-      dispatch(setUser(submission));
+      dispatch(setUser(submission, { project: AppConfig.projectUrl }));
     }
   };
 }

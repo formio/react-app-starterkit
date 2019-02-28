@@ -1,8 +1,9 @@
 import { connect } from 'react-redux';
 import Confirm from '../../../containers/Confirm';
-import { deleteForm } from "../../../modules/form";
+import { deleteForm } from 'react-formio';
 // import { resetForms } from '../../../modules/forms';
-import {push, goBack} from "connected-react-router";
+import {push, goBack} from 'connected-react-router';
+import {AppConfig} from '../../../config';
 
 const mapStateToProps = (state) => {
   return {
@@ -13,7 +14,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onYes: () => {
-      dispatch(deleteForm('form', ownProps.match.params.formId));
+      dispatch(deleteForm('form', ownProps.match.params.formId, { project: AppConfig.projectUrl }));
       // dispatch(resetForms('form'));
       dispatch(push('/form'));
     },

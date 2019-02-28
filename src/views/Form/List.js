@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { indexForms } from '../../modules/forms/actions';
-import { selectForms } from '../../modules/forms/selectors';
+import { indexForms, selectForms } from 'react-formio';
+import {AppConfig} from "../../config";
 
 const List = class extends Component {
   componentWillMount() {
@@ -35,7 +35,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getForms: (query, page) => dispatch(indexForms('forms', query, page)),
+    getForms: (query, page) => dispatch(indexForms('forms', query, page, { project: AppConfig.projectUrl })),
   }
 }
 

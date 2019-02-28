@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import {PropTypes} from 'prop-types';
 import {Form} from 'react-formio';
 import Hero from '../containers/Hero';
-import { selectRoot } from "../modules/selectors";
+import { selectRoot } from "react-formio";
 
 const Home = class extends Component {
   static propTypes = {
@@ -28,7 +28,7 @@ const Home = class extends Component {
                 ) : null
               }
             </div>) :
-            <Form src="https://examples.form.io/example" />
+            null
           }
         </div>
       </div>

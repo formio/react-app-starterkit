@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import formioConnect from '../../../formioConnect';
+import { connect } from 'react-redux';
 
 class ProtectAuth extends Component {
   render() {
@@ -27,7 +27,7 @@ function mapDispatchToProps(dispatch, ownProps) {
   };
 }
 
-export default formioConnect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(ProtectAuth);

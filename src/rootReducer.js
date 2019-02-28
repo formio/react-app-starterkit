@@ -1,12 +1,8 @@
 import { combineReducers } from 'redux'
-import { auth } from './auth';
-import { form } from './form';
-import { forms } from './forms';
-import { submission } from './submission';
-import { submissions } from './submissions';
+import { auth, form, forms, submission, submissions } from 'react-formio';
 
 export default combineReducers({
-  auth,
+  auth: auth(),
   form: form({name: 'form'}),
   forms: forms({name: 'forms', tag: 'common'}),
   submission: submission({name: 'submission'}),
