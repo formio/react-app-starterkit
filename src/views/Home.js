@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import {PropTypes} from 'prop-types';
-import {Form} from 'react-formio';
 import Hero from '../containers/Hero';
 import { selectRoot } from "react-formio";
 

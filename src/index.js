@@ -7,12 +7,14 @@ import { init } from 'react-formio';
 import App from './App'
 
 import {Formio as formiojs, Components} from 'formiojs';
+import components from './components';
 import {AppConfig} from './config';
 
 import './styles.scss'
 
 formiojs.setProjectUrl(AppConfig.projectUrl);
 formiojs.setBaseUrl(AppConfig.apiUrl);
+Components.setComponents(components);
 
 // Initialize the current user
 store.dispatch(init({project: AppConfig.projectUrl}));

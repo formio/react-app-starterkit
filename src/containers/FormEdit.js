@@ -1,6 +1,6 @@
-import {Component} from "react";
-import {FormBuilder} from "react-formio";
-import React from "react";
+import React, {Component} from 'react';
+import {FormBuilder} from 'react-formio';
+import {FormBuilder as Builder} from 'formiojs';
 import _ from 'lodash';
 
 export default class extends Component {
@@ -121,7 +121,12 @@ export default class extends Component {
             </div>
           </div>
         </div>
-        <FormBuilder key={form._id} form={form} onChange={(form) => this.setForm(form)}/>
+        <FormBuilder
+          key={form._id}
+          form={form}
+          onChange={(form) => this.setForm(form)}
+          builder={Builder}
+        />
       </div>
     )
   }

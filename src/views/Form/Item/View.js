@@ -2,6 +2,7 @@ import React from 'react';
 import { Component } from 'react';
 import { connect } from 'react-redux'
 import { selectRoot, Form } from 'react-formio';
+import { Form as formio } from 'formiojs';
 
 const View = class extends Component {
   render() {
@@ -14,7 +15,13 @@ const View = class extends Component {
     return (
       <div>
         <h3>New { form.title }</h3>
-        <Form form={form} submission={submission} hideComponents={hideComponents} onSubmit={onSubmit} />
+        <Form
+          form={form}
+          submission={submission}
+          hideComponents={hideComponents}
+          onSubmit={onSubmit}
+          formioform={formio}
+        />
       </div>
     );
   }

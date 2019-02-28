@@ -37,7 +37,7 @@ const List = class extends Component {
 
   render() {
     const {match: {params: {formId}}} = this.props
-    const {basePath, form, submissions, limit, page, sortOrder, isLoading, onSort, onPage, onRowClick} = this.props
+    const {form, submissions, limit, page, sortOrder, isLoading, onSort, onPage, onRowClick} = this.props
 
     if (isLoading) {
       return (
@@ -75,7 +75,6 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     // basePath: resource.getBasePath(ownProps.params),
-    basePath: 'test',
     form: form.form,
     submissions: submissions.submissions,
     page: submissions.page,
