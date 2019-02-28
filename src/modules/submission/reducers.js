@@ -1,14 +1,16 @@
 import * as types from './constants';
 
 export function submissionReducer(config) {
-  return (state = {
+  const initialState = {
     formId: '',
     id: '',
     isFetching: false,
     lastUpdated: 0,
     submission: {},
     error: ''
-  }, action) => {
+  };
+
+  return (state = initialState, action) => {
     // Only proceed for this form.
     if (action.name !== config.name) {
       return state;
@@ -46,14 +48,7 @@ export function submissionReducer(config) {
           error: action.error
         };
       case types.SUBMISSION_RESET:
-        return {
-          ...state,
-          id: '',
-          isFetching: false,
-          lastUpdated: 0,
-          submission: {},
-          error: ''
-        };
+        return initialState;
       default:
         return state;
     }

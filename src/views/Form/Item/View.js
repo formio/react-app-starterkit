@@ -1,5 +1,5 @@
-import { Component } from "react";
 import React from "react";
+import { Component } from "react";
 import { connect } from 'react-redux'
 import { selectRoot } from "../../../modules/selectors";
 import { Form } from 'react-formio';

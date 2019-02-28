@@ -85,10 +85,10 @@ export const deleteSubmission = (name, id, formId) => {
 
     return formio.deleteSubmission()
       .then(() => {
-        dispatch(resetSubmission(form.config.name));
+        dispatch(resetSubmission(name));
       })
       .catch((result) => {
-        dispatch(failSubmission(form.config.name, result));
+        dispatch(failSubmission(name, result));
       });
   };
 };

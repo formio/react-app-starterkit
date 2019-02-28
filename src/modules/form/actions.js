@@ -27,15 +27,14 @@ function failForm(name, err) {
   };
 }
 
-function createForm(name, form) {
+function resetForm(name) {
   return {
-    type: types.FORM_CREATE,
-    form,
+    type: types.FORM_RESET,
     name
-  }
+  };
 }
 
-function saveForm(name, form) {
+function sendForm(name, form) {
   return {
     type: types.FORM_SAVE,
     form,
@@ -55,9 +54,9 @@ export const getForm = (name, id = '') => {
 
     const formPath = id ? `${AppConfig.projectUrl}/form/${id}` : `${AppConfig.projectUrl}/${name}`;
 
-    const formioForm = new Formiojs(AppConfig.projectUrl + '/' + formPath);
+    const formio = new Formiojs(AppConfig.projectUrl + '/' + formPath);
 
-    return formioForm.loadForm()
+    return formio.loadForm()
       .then((result) => {
         dispatch(receiveForm(name, result));
       })
@@ -66,3 +65,37 @@ export const getForm = (name, id = '') => {
       });
   };
 };
+
+export const saveForm = (name, form) => {
+  return (dispatch) => {
+    dispatch(sendForm(name, form));
+
+    const id = form._id;
+
+    const formio = new Formiojs(AppConfig.projectUrl + '/form' + (id ? '/' + id : ''));
+
+    formio.saveForm(form)
+      .then((result) => {
+        dispatch(receiveForm(name, result));
+      })
+      .catch((result) => {
+        dispatch(failForm(name, result));
+      });
+  };
+};
+
+export const deleteForm = (name, id) => {
+  return (dispatch, getState) => {
+
+    const formio = new Formiojs(AppConfig.projectUrl + '/form/' + id);
+
+    return formio.deleteForm()
+      .then(() => {
+        dispatch(resetForm(name));
+      })
+      .catch((result) => {
+        dispatch(failForm(name, result));
+      });
+  };
+};
+

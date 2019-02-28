@@ -37,16 +37,13 @@ export function form(config) {
           isInvalid: true,
           error: action.error
         };
-      case types.FORM_CREATE:
-        return {
-          ...state,
-          isActive: true
-        };
       case types.FORM_SAVE:
         return {
           ...state,
           isActive: true
         };
+      case types.FORM_RESET:
+        return initialState;
       default:
         return state;
     }
