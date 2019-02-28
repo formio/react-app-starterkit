@@ -20,6 +20,7 @@ const View = class extends Component {
           submission={submission}
           hideComponents={hideComponents}
           onSubmit={onSubmit}
+          options={{template: 'bootstrap3', iconset: 'fa'}}
           formioform={formio}
         />
       </div>
@@ -35,8 +36,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onSubmit: () => {
-      console.log('submit')
+    onSubmit: (submission) => {
+      console.log('submit', submission)
     }
   }
 }

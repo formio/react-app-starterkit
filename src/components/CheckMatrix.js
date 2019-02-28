@@ -1,7 +1,11 @@
-import Base from 'formiojs/components/base/Base';
+import Base from 'formiojs/components/_classes/component/Component';
 import editForm from 'formiojs/components/table/Table.form'
 
 export default class CheckMatrix extends Base {
+  constructor(component, options, data) {
+    super(component, options, data);
+  }
+
   static schema() {
     return Base.schema({
       type: 'checkmatrix',
@@ -21,50 +25,93 @@ export default class CheckMatrix extends Base {
 
   static editForm = editForm
 
-  build() {
-    this.element = this.ce('div', {
-      class: 'table-responsive'
-    });
-    this.createLabel(this.element);
+  /**
+   * Render returns an html string of the fully rendered component.
+   *
+   * @param children - If this class is extendended, the sub string is passed as children.
+   * @returns {string}
+   */
+  render(children) {
+    // To make this dynamic, we could call this.renderTemplate('templatename', {}).
 
-    var tableClass = 'table ';
-    ['striped', 'bordered', 'hover', 'condensed'].forEach(function(prop) {
+    let tableClass = 'table ';
+    ['striped', 'bordered', 'hover', 'condensed'].forEach((prop) => {
       if (this.component[prop]) {
         tableClass += `table-${prop} `;
       }
-    }.bind(this));
-
-    var table = this.ce('table', {
-      class: tableClass
     });
 
-    // Build the body.
-    var tbody = this.ce('tbody');
-    this.inputs = [];
+    let content = '';
+
+    for (let i = 0; i < this.component.numRows; i++) {
+      let row = '<tr>';
+      for (let j = 0; j < this.component.numCols; j++) {
+        let cell = '<td>';
+
+        cell += this.renderTemplate('input', {
+          input: {
+            type: 'input',
+            ref: `${this.component.key}-${i}`,
+            attr: {
+              id: `${this.component.key}-${i}-${j}`,
+              class: 'form-control',
+              type: 'checkbox',
+            }
+          }
+        });
+
+        cell += '</td>';
+        row += cell;
+      }
+      row += '</tr>';
+      content += row;
+    }
+
+    // Calling super.render will wrap it html as a component.
+    return super.render(`
+<table class=${tableClass}>
+  <tbody>
+     ${content}
+  </tbody>
+</table>
+    `);
+  }
+
+  /**
+   * After the html string has been mounted into the dom, the dom element is returned here. Use refs to find specific
+   * elements to attach functionality to.
+   *
+   * @param element
+   * @returns {Promise}
+   */
+  attach(element) {
+    const refs = {};
+
+    for (let i = 0; i < this.component.numRows; i++) {
+      refs[`${this.component.key}-${i}`] = 'multiple';
+    }
+
+    this.loadRefs(element, refs);
+
     this.checks = [];
     for (let i = 0; i < this.component.numRows; i++) {
-      var tr = this.ce('tr');
-      this.checks.push([]);
-      for (let j = 0; j < this.component.numCols; j++) {
-        var td = this.ce('td');
-        this.checks[i][j] = this.ce('input', {
-          type: 'checkbox'
-        });
-        this.addInput(this.checks[i][j], td);
-        tr.appendChild(td);
-      }
-      tbody.appendChild(tr);
+      this.checks[i] = Array.prototype.slice.call(this.refs[`${this.component.key}-${i}`], 0);
+
+      // Attach click events to each input in the row
+      this.checks[i].forEach(input => {
+        this.addEventListener(input, 'click', () => this.updateValue())
+      });
     }
-    table.appendChild(tbody);
-    this.element.appendChild(table);
+
+    // Allow basic component functionality to attach like field logic and tooltips.
+    return super.attach(element);
   }
 
-  elementInfo() {
-    const info = super.elementInfo();
-    info.changeEvent = 'click';
-    return info;
-  }
-
+  /**
+   * Get the value of the component from the dom elements.
+   *
+   * @returns {Array}
+   */
   getValue() {
     var value = [];
     for (var rowIndex in this.checks) {
@@ -78,6 +125,12 @@ export default class CheckMatrix extends Base {
     return value;
   }
 
+  /**
+   * Set the value of the component into the dom elements.
+   *
+   * @param value
+   * @returns {boolean}
+   */
   setValue(value) {
     if (!value) {
       return;

@@ -124,6 +124,7 @@ export default class extends Component {
         <FormBuilder
           key={form._id}
           form={form}
+          options={{template: 'bootstrap3', iconset: 'fa'}}
           onChange={(form) => this.setForm(form)}
           builder={Builder}
         />
