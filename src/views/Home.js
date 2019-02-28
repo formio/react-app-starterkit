@@ -21,7 +21,7 @@ const Home = class extends Component {
               { (auth.user && auth.user.data) ?
                 (
                   <h3>
-                    You are logged in as
+                    You are logged in as&nbsp;
                     <strong>{ auth.user.data.email }</strong>
                     !
                   </h3>

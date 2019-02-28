@@ -1,6 +1,7 @@
-import Formiojs from 'formiojs';
+import Formiojs from 'formiojs/Formio';
 import * as types from './constants';
 import { AppConfig } from "../../config";
+import { selectSubmissions } from "./selectors";
 
 function resetSubmissions(name) {
   return {
@@ -37,7 +38,7 @@ function failSubmissions(name, err) {
 export const index = (name, page = 0, params = {}, formId = '') => {
   return (dispatch, getState) => {
     dispatch(requestSubmissions(name, page, formId));
-    const submissions = form.selectors.getSubmissions(getState());
+    const submissions = selectSubmissions(name, getState());
 
     if (parseInt(submissions.limit) !== 10) {
       params.limit = submissions.limit;

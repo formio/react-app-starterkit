@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import FormioUtils from 'formiojs/utils';
-import Components from 'formiojs/lib/components';
+import { Components } from 'formiojs';
 import _get from 'lodash/get';
-import Grid from '../../../components/Grid';
+import Grid from 'react-formio/lib/components/Grid';
 
 export default class extends Component {
   static propTypes = {
