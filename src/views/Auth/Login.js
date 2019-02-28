@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Form } from 'react-formio';
+import { push } from 'connected-react-router'
 import {AppConfig, AuthConfig} from "../../config";
+import { setUser } from "../../modules/auth";
 
 const Login = class  extends Component {
   render() {
@@ -20,8 +22,8 @@ const mapStateToProps = () => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onSubmitDone: (submission) => {
-      this.router.push('/' + this.formio.auth.config.authState);
-      dispatch(this.formio.auth.actions.setUser(submission));
+      dispatch(push(AuthConfig.authState));
+      dispatch(setUser(submission));
     }
   };
 }

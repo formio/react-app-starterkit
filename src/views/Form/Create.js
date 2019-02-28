@@ -1,4 +1,3 @@
-import React from 'react'
 import { connect } from 'react-redux';
 import { saveForm } from '../../modules/form/actions';
 import FormEdit from '../../containers/FormEdit';

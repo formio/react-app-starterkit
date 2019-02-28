@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router';
 import NavLink from '../../containers/NavLink';
 import Login from './Login';
 import Register from './Register';

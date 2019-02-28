@@ -1,4 +1,3 @@
-import React from 'react'
 import { connect } from 'react-redux';
 import { selectRoot } from '../../../modules/selectors';
 import { saveForm } from '../../../modules/form/actions';

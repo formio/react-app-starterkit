@@ -1,8 +1,12 @@
 import React, {Component} from 'react';
 import {PropTypes} from 'prop-types';
 import {Link} from 'react-router-dom';
+import {push} from "connected-react-router";
 import FormioView from 'react-formio/lib/FormioView';
 import NavLink from './NavLink';
+import { selectRoot } from "../modules/selectors";
+import { logout } from "../modules/auth";
+import {AuthConfig} from "../config";
 
 export default class HeaderView extends FormioView {
   component = class Header extends Component {
@@ -13,6 +17,7 @@ export default class HeaderView extends FormioView {
 
     render() {
       const {auth, logout} = this.props;
+
       return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
           <div className="container">
@@ -23,7 +28,7 @@ export default class HeaderView extends FormioView {
               <NavLink exact to="/" role="navigation button" className="nav-link">
                 <span className="fa fa-home" />
               </NavLink>
-              { auth.is.administrator ? (
+              { (auth.is.hasOwnProperty('administrator') && auth.is.administrator) ? (
                 <NavLink to="/form" role="navigation link" className="nav-link">
                   <i className="fa fa-wpforms"></i>
                   Forms
@@ -38,12 +43,11 @@ export default class HeaderView extends FormioView {
             </ul>
             <ul className="nav navbar-nav ml-auto">
               { auth.authenticated ? (
-                <li>
-                  {/* eslint-disable-next-line */}
-                  <a role="navigation link" onClick={logout}>
+                <li className="nav-item">
+                  <span className="nav-link" role="navigation link" onClick={logout}>
                     <span className="fa fa-sign-out" />
                     Logout
-                  </a>
+                  </span>
                 </li>
               ) : (
                 <NavLink to="/auth" role="navigation link" className="nav-link">
@@ -59,20 +63,15 @@ export default class HeaderView extends FormioView {
 
   mapStateToProps = (state) => {
     return {
-      auth: {
-        authenticated: true,
-        is: {
-          administrator: true
-        }
-      }
+      auth: selectRoot('auth', state)
     };
   }
 
   mapDispatchToProps = (dispatch) => {
     return {
       logout: () => {
-        dispatch(this.formio.auth.actions.logout());
-        this.router.push('/' + this.formio.auth.config.anonState);
+        dispatch(logout());
+        dispatch(push(AuthConfig.anonState));
       }
     };
   }
