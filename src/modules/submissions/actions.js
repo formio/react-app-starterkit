@@ -2,6 +2,13 @@ import Formiojs from 'formiojs';
 import * as types from './constants';
 import { AppConfig } from "../../config";
 
+function resetSubmissions(name) {
+  return {
+    type: types.SUBMISSIONS_RESET,
+    name
+  };
+}
+
 function requestSubmissions(name, page, formId) {
   return {
     type: types.SUBMISSIONS_REQUEST,

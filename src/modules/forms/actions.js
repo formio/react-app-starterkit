@@ -3,6 +3,13 @@ import * as types from "./constants";
 import { selectRoot } from "../selectors";
 import { AppConfig } from "../../config";
 
+function resetForms(name) {
+  return {
+    type: types.FORMS_RESET,
+    name
+  };
+}
+
 function requestForms(name) {
   return {
     type: types.FORMS_REQUEST,

@@ -19,6 +19,8 @@ export function forms(config) {
       return state;
     }
     switch (action.type) {
+      case types.FORMS_RESET:
+        return initialState;
       case types.FORMS_REQUEST:
         return {
           ...state,
