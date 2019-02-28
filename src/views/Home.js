@@ -39,9 +39,9 @@ export default class HomeView extends FormioView {
   mapStateToProps = (state) => {
     return {
       auth: {
-        authenticated: true,
+        authenticated: false,
         is: {
-          administrator: true
+          administrator: false
         }
       }
     };

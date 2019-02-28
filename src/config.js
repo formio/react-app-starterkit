@@ -15,6 +15,8 @@ export const AppConfig = {
 };
 
 export const AuthConfig = {
+  anonState: 'auth/login',
+  authState: '',
   login: {
     form: 'user/login'
   },
