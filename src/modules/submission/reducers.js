@@ -1,6 +1,6 @@
 import * as types from './constants';
 
-export function submissionReducer(config) {
+export function submission(config) {
   const initialState = {
     formId: '',
     id: '',

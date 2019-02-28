@@ -9,7 +9,7 @@ function requestSubmission(name) {
   };
 }
 
-function saveSubmission(name, data) {
+function sendSubmission(name, data) {
   return {
     name,
     type: types.SUBMISSION_SAVE
@@ -62,7 +62,7 @@ export const getSubmission = (name, id, formId) => {
 
 export const saveSubmission = (name, data, formId) => {
   return (dispatch) => {
-    dispatch(saveSubmission(name, data));
+    dispatch(sendSubmission(name, data));
 
     const id = data._id;
 
