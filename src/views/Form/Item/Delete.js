@@ -1,13 +1,12 @@
 import { connect } from 'react-redux';
 import Confirm from '../../../containers/Confirm';
-import { deleteForm } from 'react-formio';
-// import { resetForms } from '../../../modules/forms';
+import { deleteForm, resetForms } from 'react-formio';
 import {push, goBack} from 'connected-react-router';
 import {AppConfig} from '../../../config';
 
 const mapStateToProps = (state) => {
   return {
-    message: 'Are you sure you wish to delete this form?'
+    message: `Are you sure you wish to delete the form "${state.form.form.title}"?`
   }
 };
 
@@ -15,7 +14,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onYes: () => {
       dispatch(deleteForm('form', ownProps.match.params.formId, { project: AppConfig.projectUrl }));
-      // dispatch(resetForms('form'));
+      dispatch(resetForms('forms'));
       dispatch(push('/form'));
     },
     onNo: () => {

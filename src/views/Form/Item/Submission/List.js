@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
-import SubmissionGrid from '../../../../containers/SubmissionGrid';
-import { getSubmissions, selectRoot } from 'react-formio';
+import { push } from 'connected-react-router';
+import { getSubmissions, selectRoot, SubmissionGrid } from 'react-formio';
+import Loading from '../../../../containers/Loading';
 import { AppConfig } from '../../../../config';
 
 const List = class extends Component {
@@ -37,13 +38,11 @@ const List = class extends Component {
 
   render() {
     const {match: {params: {formId}}} = this.props
-    const {form, submissions, limit, page, sortOrder, isLoading, onSort, onPage, onRowClick} = this.props
+    const {form, submissions, limit, page, sortOrder, isLoading, onSort, onPage, onAction} = this.props
 
     if (isLoading) {
       return (
-        <div className='form-index'>
-          Loading...
-        </div>
+        <Loading />
       );
     }
     else {
@@ -57,7 +56,7 @@ const List = class extends Component {
             sortOrder={sortOrder}
             onSort={onSort}
             onPage={onPage}
-            onRowClick={onRowClick}
+            onAction={onAction}
           />
           <Link className='btn btn-primary' to={`/form/${formId}`}>
             <i className='glyphicon glyphicon-plus' aria-hidden='true'></i>
@@ -74,19 +73,32 @@ const mapStateToProps = (state, ownProps) => {
   const submissions = selectRoot('submissions', state);
 
   return {
-    // basePath: resource.getBasePath(ownProps.params),
     form: form.form,
     submissions: submissions.submissions,
     page: submissions.page,
     limit: submissions.limit,
     // sortOrder: this.query.sort,
-    isLoading: form.isFetching || submissions.isFetching
+    isLoading: form.isActive || submissions.isActive
   };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     getSubmissions: (page, query) => dispatch(getSubmissions('submissions', page, query, { formId: ownProps.match.params.formId, project: AppConfig.projectUrl })),
+    onAction: (submission, action) => {
+     switch(action) {
+        case 'view':
+        default:
+          dispatch(push(`/form/${ownProps.match.params.formId}/submission/${submission._id}`));
+          break;
+        case 'edit':
+          dispatch(push(`/form/${ownProps.match.params.formId}/submission/${submission._id}/edit`));
+          break;
+        case 'delete':
+          dispatch(push(`/form/${ownProps.match.params.formId}/submission/${submission._id}/delete`));
+          break;
+      }
+    },
     onSort: (col) => {
       // this.toggleSort(col);
       // dispatch(this.formio.resources[config.name].actions.submission.index(this.page, this.query));

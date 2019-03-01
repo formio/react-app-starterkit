@@ -32,14 +32,14 @@ const Auth = class extends Component {
       </div> :
       <div className="row">
         <div className="col-md-6 col-md-offset-3">
-          <div className="panel panel-default">
-            <div className="panel-heading" style={{paddingBottom: 0, borderBottom: 'none'}}>
+          <div className="panel panel-default card">
+            <div className="panel-heading card-header" style={{paddingBottom: 0, borderBottom: 'none'}}>
               <ul className="nav nav-tabs" style={{borderBottom: 'none'}}>
                 <NavLink to={'/auth/login'}>Login</NavLink>
                 <NavLink to={'/auth/register'}>Register</NavLink>
               </ul>
             </div>
-            <div className="panel-body">
+            <div className="panel-body card-body">
               <div className="row">
                 <div className="col-lg-12">
                   <Route path="/auth/login" component={Login} />

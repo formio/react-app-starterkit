@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { push } from 'connected-react-router'
 import { Link } from 'react-router-dom'
-import { indexForms, selectForms } from 'react-formio';
+import { indexForms, selectRoot, FormGrid } from 'react-formio';
 import {AppConfig} from "../../config";
 
 const List = class extends Component {
@@ -10,17 +11,11 @@ const List = class extends Component {
   }
 
   render() {
-    const { forms } = this.props;
+    const { forms, onAction } = this.props;
     return (
       <div>
-        <h1>List Forms</h1>
-        <ul>
-          {
-            forms.map((form, index) => <li key={index}>
-              <Link to={`/form/${form._id}`}>{ form.title }</Link>
-            </li>)
-          }
-        </ul>
+        <h1>Forms</h1>
+        <FormGrid forms={forms} onAction={onAction}/>
         <Link className="btn btn-primary" to="/form/create"><i className="fa fa-plus"></i> Create Form</Link>
       </div>
     )
@@ -29,13 +24,30 @@ const List = class extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    forms: selectForms('forms', state)
+    forms: selectRoot('forms', state)
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getForms: (query, page) => dispatch(indexForms('forms', query, page, { project: AppConfig.projectUrl })),
+    getForms: (page, query) => dispatch(indexForms('forms', page, query, { project: AppConfig.projectUrl })),
+    onAction: (form, action) => {
+      switch(action) {
+        case 'view':
+        default:
+          dispatch(push(`/form/${form._id}`));
+          break;
+        case 'submission':
+          dispatch(push(`/form/${form._id}/submission`));
+          break;
+        case 'edit':
+          dispatch(push(`/form/${form._id}/edit`));
+          break;
+        case 'delete':
+          dispatch(push(`/form/${form._id}/delete`));
+          break;
+      }
+    }
   }
 }
 
