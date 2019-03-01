@@ -1,15 +1,17 @@
 import React from 'react';
 import { Component } from 'react';
 import { connect } from 'react-redux'
-import { selectRoot, Form } from 'react-formio';
-import { Form as formio } from 'formiojs';
+import { selectRoot, resetSubmissions, saveSubmission, Form } from 'react-formio';
+import {push} from 'connected-react-router';
+import { AppConfig } from '../../../config';
+import Loading from '../../../containers/Loading';
 
 const View = class extends Component {
   render() {
     const {submission, hideComponents, onSubmit, form: {form, isActive}} = this.props;
 
     if (isActive) {
-      return <div>Loading...</div>;
+      return <Loading />;
     }
 
     return (
@@ -20,7 +22,6 @@ const View = class extends Component {
           submission={submission}
           hideComponents={hideComponents}
           onSubmit={onSubmit}
-          formioform={formio}
         />
       </div>
     );
@@ -33,10 +34,13 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onSubmit: () => {
-      console.log('submit')
+    onSubmit: (submission) => {
+      dispatch(saveSubmission('submission', submission, {project: AppConfig.projectUrl, formId: ownProps.match.params.formId}, (err, submission) => {
+        dispatch(resetSubmissions('submission'));
+        dispatch(push(`/form/${ownProps.match.params.formId}/submission/${submission._id}`))
+      }));
     }
   }
 }

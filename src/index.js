@@ -3,21 +3,20 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
 import store, { history } from './store'
-import { init } from 'react-formio';
+import { initAuth, Formio, Components } from 'react-formio';
 import App from './App'
 
-import {Formio as formiojs, Components} from 'formiojs';
 import components from './components';
 import {AppConfig} from './config';
 
 import './styles.scss'
 
-formiojs.setProjectUrl(AppConfig.projectUrl);
-formiojs.setBaseUrl(AppConfig.apiUrl);
+Formio.setProjectUrl(AppConfig.projectUrl);
+Formio.setBaseUrl(AppConfig.apiUrl);
 Components.setComponents(components);
 
 // Initialize the current user
-store.dispatch(init({project: AppConfig.projectUrl}));
+store.dispatch(initAuth({project: AppConfig.projectUrl}));
 
 render(
   <Provider store={store}>

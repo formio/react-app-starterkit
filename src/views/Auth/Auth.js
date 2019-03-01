@@ -10,21 +10,21 @@ const Auth = class extends Component {
     return (location.pathname === '/auth') ?
       <div className="row">
         <div className="col-lg-6 col-md-6">
-          <div className="panel panel-default login-container">
-            <div className="panel-heading">
+          <div className="panel panel-default login-container card">
+            <div className="panel-heading card-header">
               Login
             </div>
-            <div className="panel-body">
+            <div className="panel-body card-body">
               <Login />
             </div>
           </div>
         </div>
         <div className="col-lg-6 col-md-6">
-          <div className="panel panel-default register-container">
-            <div className="panel-heading">
+          <div className="panel panel-default register-container card">
+            <div className="panel-heading card-header">
               Register
             </div>
-            <div className="panel-body">
+            <div className="panel-body card-body">
               <Register />
             </div>
           </div>
@@ -32,14 +32,14 @@ const Auth = class extends Component {
       </div> :
       <div className="row">
         <div className="col-md-6 col-md-offset-3">
-          <div className="panel panel-default">
-            <div className="panel-heading" style={{paddingBottom: 0, borderBottom: 'none'}}>
+          <div className="panel panel-default card">
+            <div className="panel-heading card-header" style={{paddingBottom: 0, borderBottom: 'none'}}>
               <ul className="nav nav-tabs" style={{borderBottom: 'none'}}>
                 <NavLink to={'/auth/login'}>Login</NavLink>
                 <NavLink to={'/auth/register'}>Register</NavLink>
               </ul>
             </div>
-            <div className="panel-body">
+            <div className="panel-body card-body">
               <div className="row">
                 <div className="col-lg-12">
                   <Route path="/auth/login" component={Login} />

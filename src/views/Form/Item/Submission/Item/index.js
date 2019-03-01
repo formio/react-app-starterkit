@@ -1,10 +1,30 @@
 import { Link, Route, Switch } from 'react-router-dom'
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import View from './View'
 import Edit from './Edit'
 import Delete from './Delete'
+import {getSubmission} from "react-formio";
+import {AppConfig} from "../../../../../config";
 
-export default class extends Component {
+const Item = class extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      submissionId: ''
+    }
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.match.params.submissionId !== prevState.submissionId) {
+      nextProps.getSubmission(nextProps.match.params.submissionId);
+    }
+
+    return {
+      submissionId: nextProps.match.params.submissionId
+    };
+  }
   render() {
     const {match: {params: {formId, submissionId}}} = this.props;
     return (
@@ -38,6 +58,20 @@ export default class extends Component {
         </Switch>
       </div>
     )
-
   }
 }
+
+const mapStateToProps = () => {
+  return {};
+};
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    getSubmission: (id) => dispatch(getSubmission('submission', id, {project: AppConfig.projectUrl, formId: ownProps.match.params.formId}))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Item)

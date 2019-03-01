@@ -1,11 +1,10 @@
 import { connect } from 'react-redux';
-import { selectRoot, saveForm } from 'react-formio';
-import FormEdit from '../../../containers/FormEdit';
+import { saveForm, selectForm, FormEdit } from 'react-formio';
 import {AppConfig} from '../../../config';
 
 const mapStateToProps = (state) => {
   return {
-    form: selectRoot('form', state),
+    form: selectForm('form', state),
     saveText: 'Save Form',
     title: 'Edit Form',
   }

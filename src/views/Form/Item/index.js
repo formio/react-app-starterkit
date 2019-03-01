@@ -17,8 +17,8 @@ const Item = class extends Component{
     }
   }
 
-  static getDerivedStateFromProps(nextProps, prevState){
-    if(nextProps.match.params.formId !== prevState.formId){
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.match.params.formId !== prevState.formId) {
       nextProps.getForm(nextProps.match.params.formId);
     }
 
