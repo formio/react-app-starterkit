@@ -4,6 +4,7 @@ import editForm from 'formiojs/components/table/Table.form'
 export default class CheckMatrix extends Base {
   constructor(component, options, data) {
     super(component, options, data);
+    this.foo = 'bar';
   }
 
   static schema() {

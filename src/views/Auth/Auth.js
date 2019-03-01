@@ -10,21 +10,21 @@ const Auth = class extends Component {
     return (location.pathname === '/auth') ?
       <div className="row">
         <div className="col-lg-6 col-md-6">
-          <div className="panel panel-default login-container">
-            <div className="panel-heading">
+          <div className="panel panel-primary login-container card">
+            <div className="panel-heading card-header">
               Login
             </div>
-            <div className="panel-body">
+            <div className="panel-body card-body">
               <Login />
             </div>
           </div>
         </div>
         <div className="col-lg-6 col-md-6">
-          <div className="panel panel-default register-container">
-            <div className="panel-heading">
+          <div className="panel panel-primary register-container card">
+            <div className="panel-heading card-header">
               Register
             </div>
-            <div className="panel-body">
+            <div className="panel-body card-body">
               <Register />
             </div>
           </div>
