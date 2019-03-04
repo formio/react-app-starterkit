@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 import {push} from "connected-react-router";
 import NavLink from './NavLink';
 import { selectRoot, logout } from "react-formio";
-import {AppConfig, AuthConfig} from "../config";
+import {AuthConfig} from "../config";
 
 const Header = class extends Component {
   static propTypes = {
@@ -68,7 +68,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     logout: () => {
-      dispatch(logout({ project: AppConfig.projectUrl }));
+      dispatch(logout());
       dispatch(push(AuthConfig.anonState));
     }
   };

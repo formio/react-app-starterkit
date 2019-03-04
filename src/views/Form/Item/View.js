@@ -3,12 +3,11 @@ import { Component } from 'react';
 import { connect } from 'react-redux'
 import { selectRoot, resetSubmissions, saveSubmission, Form } from 'react-formio';
 import {push} from 'connected-react-router';
-import { AppConfig } from '../../../config';
 import Loading from '../../../containers/Loading';
 
 const View = class extends Component {
   render() {
-    const {submission, hideComponents, onSubmit, form: {form, isActive}} = this.props;
+    const {submission, hideComponents, onSubmit, form: {form, isActive, url}} = this.props;
 
     if (isActive) {
       return <Loading />;
@@ -20,6 +19,7 @@ const View = class extends Component {
         <Form
           form={form}
           submission={submission}
+          url={url}
           hideComponents={hideComponents}
           onSubmit={onSubmit}
         />
@@ -37,7 +37,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onSubmit: (submission) => {
-      dispatch(saveSubmission('submission', submission, {project: AppConfig.projectUrl, formId: ownProps.match.params.formId}, (err, submission) => {
+      dispatch(saveSubmission('submission', submission, ownProps.match.params.formId, (err, submission) => {
         dispatch(resetSubmissions('submission'));
         dispatch(push(`/form/${ownProps.match.params.formId}/submission/${submission._id}`))
       }));

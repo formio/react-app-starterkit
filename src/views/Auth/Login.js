@@ -23,7 +23,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onSubmitDone: (submission) => {
       dispatch(push(AuthConfig.authState));
-      dispatch(setUser(submission, { project: AppConfig.projectUrl }));
+      dispatch(setUser(submission));
     }
   };
 }

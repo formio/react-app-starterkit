@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
 import { getSubmissions, selectRoot, SubmissionGrid } from 'react-formio';
 import Loading from '../../../../containers/Loading';
-import { AppConfig } from '../../../../config';
 
 const List = class extends Component {
   constructor(props) {
@@ -84,11 +83,11 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    getSubmissions: (page, query) => dispatch(getSubmissions('submissions', page, query, { formId: ownProps.match.params.formId, project: AppConfig.projectUrl })),
+    getSubmissions: (page, query) => dispatch(getSubmissions('submissions', page, query, ownProps.match.params.formId)),
     onAction: (submission, action) => {
      switch(action) {
         case 'view':
-        default:
+        case 'row':
           dispatch(push(`/form/${ownProps.match.params.formId}/submission/${submission._id}`));
           break;
         case 'edit':
@@ -107,9 +106,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       // this.page = page - 1;
       // dispatch(this.formio.resources[config.name].actions.submission.index(this.page, this.query));
     },
-    onRowClick: (submission) => {
-      // this.router.push(resource.getBasePath(ownProps.params) + config.name + '/' + submission._id);
-    }
   };
 };
 

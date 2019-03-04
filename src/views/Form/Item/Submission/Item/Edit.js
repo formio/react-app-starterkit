@@ -4,11 +4,10 @@ import { connect } from 'react-redux'
 import { selectRoot, resetSubmissions, saveSubmission, Form } from 'react-formio';
 import {push} from 'connected-react-router';
 import Loading from '../../../../../containers/Loading'
-import { AppConfig } from '../../../../../config';
 
 const Edit = class extends Component {
   render() {
-    const {hideComponents, onSubmit, options, form: {form, isActive: isFormActive}, submission: {submission, isActive: isSubActive}} = this.props;
+    const {hideComponents, onSubmit, options, form: {form, isActive: isFormActive}, submission: {submission, isActive: isSubActive, url}} = this.props;
 
     if (isFormActive || isSubActive) {
       return <Loading />;
@@ -20,6 +19,7 @@ const Edit = class extends Component {
         <Form
           form={form}
           submission={submission}
+          url={url}
           hideComponents={hideComponents}
           onSubmit={onSubmit}
           options={options}
@@ -40,7 +40,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onSubmit: (submission) => {
-      dispatch(saveSubmission('submission', submission, {project: AppConfig.projectUrl, formId: ownProps.match.params.formId}, (err, submission) => {
+      dispatch(saveSubmission('submission', submission, ownProps.match.params.formId, (err, submission) => {
         dispatch(resetSubmissions('submission'));
         dispatch(push(`/form/${ownProps.match.params.formId}/submission/${submission._id}`))
       }));

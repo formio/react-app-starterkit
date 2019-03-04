@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import { saveForm, selectForm, FormEdit } from 'react-formio';
-import {AppConfig} from '../../../config';
 
 const mapStateToProps = (state) => {
   return {
@@ -12,7 +11,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    saveForm: (form) => dispatch(saveForm('form', form, { project: AppConfig.projectUrl }))
+    saveForm: (form) => dispatch(saveForm('form', form))
   }
 }
 

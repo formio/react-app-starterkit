@@ -5,7 +5,6 @@ import View from './View'
 import Edit from './Edit'
 import Delete from './Delete'
 import {getSubmission} from "react-formio";
-import {AppConfig} from "../../../../../config";
 
 const Item = class extends Component {
   constructor() {
@@ -67,7 +66,7 @@ const mapStateToProps = () => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    getSubmission: (id) => dispatch(getSubmission('submission', id, {project: AppConfig.projectUrl, formId: ownProps.match.params.formId}))
+    getSubmission: (id) => dispatch(getSubmission('submission', id, ownProps.match.params.formId))
   };
 };
 

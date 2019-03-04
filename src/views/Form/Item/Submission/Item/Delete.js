@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 import Confirm from '../../../../../containers/Confirm';
 import { deleteSubmission, resetSubmissions } from 'react-formio';
 import {push, goBack} from 'connected-react-router';
-import {AppConfig} from '../../../../../config';
 
 const mapStateToProps = (state) => {
   return {
@@ -13,7 +12,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onYes: () => {
-      dispatch(deleteSubmission('submission', ownProps.match.params.submissionId, { project: AppConfig.projectUrl, formId: ownProps.match.params.formId }, () => {
+      dispatch(deleteSubmission('submission', ownProps.match.params.submissionId, ownProps.match.params.formId, () => {
         dispatch(resetSubmissions('submissions'));
         dispatch(push(`/form/${ownProps.match.params.formId}/submission`));
       }));

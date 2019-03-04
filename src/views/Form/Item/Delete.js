@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 import Confirm from '../../../containers/Confirm';
 import { deleteForm, resetForms } from 'react-formio';
 import {push, goBack} from 'connected-react-router';
-import {AppConfig} from '../../../config';
 
 const mapStateToProps = (state) => {
   return {
@@ -13,7 +12,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onYes: () => {
-      dispatch(deleteForm('form', ownProps.match.params.formId, { project: AppConfig.projectUrl }));
+      dispatch(deleteForm('form', ownProps.match.params.formId));
       dispatch(resetForms('forms'));
       dispatch(push('/form'));
     },

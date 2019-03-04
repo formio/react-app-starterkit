@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { push } from 'connected-react-router'
 import { Link } from 'react-router-dom'
 import { indexForms, selectRoot, FormGrid } from 'react-formio';
-import {AppConfig} from "../../config";
 
 const List = class extends Component {
   componentWillMount() {
@@ -30,11 +29,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getForms: (page, query) => dispatch(indexForms('forms', page, query, { project: AppConfig.projectUrl })),
+    getForms: (page, query) => dispatch(indexForms('forms', page, query)),
     onAction: (form, action) => {
+      console.log('action', action);
       switch(action) {
         case 'view':
-        default:
           dispatch(push(`/form/${form._id}`));
           break;
         case 'submission':
