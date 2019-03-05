@@ -9,12 +9,16 @@ const List = class extends Component {
     this.props.getForms(1);
   }
 
+  onPage = (page) => {
+    this.props.getForms(page);
+  };
+
   render() {
     const { forms, onAction } = this.props;
     return (
       <div>
         <h1>Forms</h1>
-        <FormGrid forms={forms} onAction={onAction}/>
+        <FormGrid forms={forms} onAction={onAction} onPage={this.onPage}/>
         <Link className="btn btn-primary" to="/form/create"><i className="fa fa-plus"></i> Create Form</Link>
       </div>
     )
