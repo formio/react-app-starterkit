@@ -31,7 +31,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getForms: (page, query) => dispatch(indexForms('forms', page, query)),
     onAction: (form, action) => {
-      console.log('action', action);
       switch(action) {
         case 'view':
           dispatch(push(`/form/${form._id}`));
