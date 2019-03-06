@@ -1,13 +1,20 @@
 import React from 'react';
 import { Component } from 'react';
 import { connect } from 'react-redux'
-import { selectRoot, resetSubmissions, saveSubmission, Form } from 'react-formio';
+import { selectRoot, resetSubmissions, saveSubmission, Form, selectError, Errors } from 'react-formio';
 import {push} from 'connected-react-router';
 import Loading from '../../../containers/Loading';
 
 const View = class extends Component {
   render() {
-    const {submission, hideComponents, onSubmit, form: {form, isActive, url}} = this.props;
+    const {
+      submission,
+      hideComponents,
+      onSubmit,
+      errors,
+      options,
+      form: {form, isActive, url}
+    } = this.props;
 
     if (isActive) {
       return <Loading />;
@@ -16,10 +23,12 @@ const View = class extends Component {
     return (
       <div>
         <h3>New { form.title }</h3>
+        <Errors errors={errors} />
         <Form
           form={form}
           submission={submission}
           url={url}
+          options={options}
           hideComponents={hideComponents}
           onSubmit={onSubmit}
         />
@@ -30,7 +39,14 @@ const View = class extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    form: selectRoot('form', state)
+    form: selectRoot('form', state),
+    errors: [
+      selectError('form', state),
+      selectError('submission', state),
+    ],
+    options: {
+      noAlerts: true
+    },
   }
 }
 
@@ -38,8 +54,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onSubmit: (submission) => {
       dispatch(saveSubmission('submission', submission, ownProps.match.params.formId, (err, submission) => {
-        dispatch(resetSubmissions('submission'));
-        dispatch(push(`/form/${ownProps.match.params.formId}/submission/${submission._id}`))
+        if (!err) {
+          dispatch(resetSubmissions('submission'));
+          dispatch(push(`/form/${ownProps.match.params.formId}/submission/${submission._id}`))
+        }
       }));
     }
   }

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
-import { getSubmissions, selectRoot, SubmissionGrid } from 'react-formio';
+import { getSubmissions, selectRoot, selectError, SubmissionGrid, Errors } from 'react-formio';
 import Loading from '../../../../containers/Loading';
 
 const List = class extends Component {
@@ -10,25 +10,9 @@ const List = class extends Component {
     this.props.getSubmissions(1);
   }
 
-  toggleSort = (field) => {
-    if (!this.query.sort) {
-      return this.query.sort = field;
-    }
-    const currentSort = this.query.sort[0] === '-' ? this.query.sort.slice(1, this.query.sort.length) : this.query.sort;
-    if (currentSort !== field) {
-      this.query.sort = field;
-    }
-    else if (this.query.sort[0] !== '-') {
-      this.query.sort = '-' + field;
-    }
-    else {
-      delete this.query.sort;
-    }
-  };
-
   render() {
     const {match: {params: {formId}}} = this.props
-    const {form, submissions, isLoading, onAction, getSubmissions} = this.props
+    const {form, submissions, isLoading, onAction, getSubmissions, errors} = this.props
 
     if (isLoading) {
       return (
@@ -38,6 +22,7 @@ const List = class extends Component {
 
     return (
       <div className='form-index'>
+        <Errors errors={errors} />
         <SubmissionGrid
           submissions={submissions}
           form={form}
@@ -60,7 +45,11 @@ const mapStateToProps = (state, ownProps) => {
   return {
     form: form.form,
     submissions: submissions,
-    isLoading: form.isActive || submissions.isActive
+    isLoading: form.isActive || submissions.isActive,
+    errors: [
+      selectError('submissions', state),
+      selectError('form', state)
+    ]
   };
 };
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { push } from 'connected-react-router'
 import { Link } from 'react-router-dom'
-import { indexForms, selectRoot, FormGrid } from 'react-formio';
+import { indexForms, selectRoot, selectError, Errors, FormGrid } from 'react-formio';
 import Loading from "../../containers/Loading";
 
 const List = class extends Component {
@@ -11,7 +11,7 @@ const List = class extends Component {
   }
 
   render() {
-    const { forms, onAction, getForms } = this.props;
+    const { forms, onAction, getForms, errors } = this.props;
 
     if (forms.isActive) {
       return (
@@ -22,6 +22,7 @@ const List = class extends Component {
     return (
       <div>
         <h1>Forms</h1>
+        <Errors errors={errors} />
         <FormGrid
           forms={forms}
           onAction={onAction}
@@ -35,7 +36,8 @@ const List = class extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    forms: selectRoot('forms', state)
+    forms: selectRoot('forms', state),
+    errors: selectError('forms', state),
   }
 }
 

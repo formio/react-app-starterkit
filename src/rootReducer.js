@@ -6,5 +6,5 @@ export default combineReducers({
   form: form({name: 'form'}),
   forms: forms({name: 'forms', query: {type: 'form'}}),
   submission: submission({name: 'submission'}),
-  submissions: submissions({name: 'submissions'})
+  submissions: submissions({name: 'submissions'}),
 })
