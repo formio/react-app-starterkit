@@ -18,7 +18,6 @@ const mapStateToProps = (state) => {
   return {
     form: {display: 'form'},
     saveText: 'Create Form',
-    title: 'New Form',
     errors: selectError('form', state),
   }
 }
