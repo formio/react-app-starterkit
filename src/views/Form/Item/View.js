@@ -45,7 +45,7 @@ const mapStateToProps = (state) => {
       selectError('submission', state),
     ],
     options: {
-      noAlerts: true
+      noAlerts: true,
     },
   }
 }

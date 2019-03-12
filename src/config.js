@@ -1,4 +1,4 @@
-var PROJECT_URL = 'https://reactstarter.form.io';
+var PROJECT_URL = 'https://mlsxabrzyczlcrb.form.io';
 var API_URL = 'https://api.form.io';
 
 var query = {};
@@ -13,6 +13,21 @@ export const AppConfig = {
   projectUrl: PROJECT_URL,
   apiUrl: API_URL
 };
+
+export const Languages = [
+  {
+    key: 'en',
+    title: 'English'
+  },
+  {
+    key: 'fr',
+    title: 'French'
+  },
+  {
+    key: 'es',
+    title: 'Spanish'
+  },
+];
 
 export const AuthConfig = {
   anonState: '/auth',

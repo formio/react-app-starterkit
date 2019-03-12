@@ -2,10 +2,16 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import {PropTypes} from 'prop-types';
 import {Link} from 'react-router-dom';
-import {push} from "connected-react-router";
+import {push} from 'connected-react-router';
 import NavLink from './NavLink';
-import { selectRoot, logout } from "react-formio";
-import {AuthConfig} from "../config";
+import { selectRoot, logout } from 'react-formio';
+import {AuthConfig} from '../config';
+import Languages from './Languages';
+import { Languages as languages} from '../config';
+
+const setLanguage = (one) => {
+  console.log(one);
+}
 
 const Header = class extends Component {
   static propTypes = {
@@ -14,7 +20,7 @@ const Header = class extends Component {
   };
 
   render() {
-    const {auth, logout} = this.props;
+    const {auth, logout, setLanguage} = this.props;
 
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -40,6 +46,7 @@ const Header = class extends Component {
             ) : null }
           </ul>
           <ul className="nav navbar-nav ml-auto">
+            <Languages languages={languages} containerClass="nav-item" linkClass="nav-link" onLanguage={setLanguage} />
             { auth.authenticated ? (
               <li className="nav-item">
                 <span className="nav-link" role="navigation link" onClick={logout}>
@@ -70,6 +77,10 @@ const mapDispatchToProps = (dispatch) => {
     logout: () => {
       dispatch(logout());
       dispatch(push(AuthConfig.anonState));
+    },
+    setLanguage: (language) => {
+      setLanguage(language);
+      // dispatch(setLanguage(language));
     }
   };
 }
