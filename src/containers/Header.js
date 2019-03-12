@@ -28,14 +28,14 @@ const Header = class extends Component {
             </NavLink>
             { (auth.is.hasOwnProperty('administrator') && auth.is.administrator) ? (
               <NavLink to="/form" role="navigation link" className="nav-link">
-                <i className="fa fa-wpforms"></i>
+                <i className="fa fa-wpforms"></i>&nbsp;
                 Forms
               </NavLink>
             ) : null }
             { auth.authenticated ? (
-              <NavLink to="/user" role="navigation link" className="nav-link">
-                <i className="fa fa-users"></i>
-                Users
+              <NavLink to="/event" role="navigation link" className="nav-link">
+                <i className="fa fa-calendar"></i>&nbsp;
+                Events
               </NavLink>
             ) : null }
           </ul>
@@ -43,7 +43,7 @@ const Header = class extends Component {
             { auth.authenticated ? (
               <li className="nav-item">
                 <span className="nav-link" role="navigation link" onClick={logout}>
-                  <span className="fa fa-sign-out" />
+                  <span className="fa fa-sign-out" />&nbsp;
                   Logout
                 </span>
               </li>

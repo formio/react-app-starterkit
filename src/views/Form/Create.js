@@ -29,7 +29,7 @@ const mapDispatchToProps = (dispatch) => {
         ...form,
         tags: ['common'],
       };
-      dispatch(saveForm('form', form, (err, form) => {
+      dispatch(saveForm('form', newForm, (err, form) => {
         if (!err) {
           dispatch(push(`/form/${form._id}`))
         }
