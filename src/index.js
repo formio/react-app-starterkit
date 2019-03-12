@@ -16,7 +16,7 @@ Formio.setBaseUrl(AppConfig.apiUrl);
 Components.setComponents(components);
 
 // Initialize the current user
-store.dispatch(initAuth({project: AppConfig.projectUrl}));
+store.dispatch(initAuth());
 
 render(
   <Provider store={store}>

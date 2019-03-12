@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Confirm from '../../../../../containers/Confirm';
+import Confirm from '../../../containers/Confirm';
+import _get from 'lodash/get';
 import {deleteSubmission, resetSubmissions, selectError, Errors} from 'react-formio';
 import {push, goBack} from 'connected-react-router';
 
@@ -14,7 +15,7 @@ const Delete = props => (
 
 const mapStateToProps = (state) => {
   return {
-    message: `Are you sure you wish to delete the submission "${state.submission.submission._id}"?`,
+    message: `Are you sure you wish to delete the event "${_get(state, 'event.submission.submission.data.title', '')}"?`,
     errors: [
       selectError('submission', state),
       selectError('form', state)
@@ -25,10 +26,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onYes: () => {
-      dispatch(deleteSubmission('submission', ownProps.match.params.submissionId, ownProps.match.params.formId, (err) => {
+      dispatch(deleteSubmission('event', ownProps.match.params.eventId, null, (err) => {
         if (!err) {
-          dispatch(resetSubmissions('submissions'));
-          dispatch(push(`/form/${ownProps.match.params.formId}/submission`));
+          dispatch(resetSubmissions('event'));
+          dispatch(push(`/event`));
         }
       }));
     },

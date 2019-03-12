@@ -1,6 +1,7 @@
 {
   "name": "react-app-starterkit",
   "private": true,
+  "homepage": ".",
   "scripts": {
     "deploy": "now && now alias",
     "start": "react-scripts start",

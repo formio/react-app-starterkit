@@ -1,16 +1,17 @@
-**This project is current in the middle of a rebuild. Please wait to use it.**
-
 Form.io React Starter Application
 ---------------------------------
-This is a starter application that uses React, Bootstrap, Webpack, Gulp, and Form.io to create a powerful Serverless application platform.
+This is a starter application that uses React, Bootstrap, Webpack, and Form.io to create a powerful Serverless application.
 
 Installation
 ---------
-Download this application within your local machine, and then type the following.
-
+ - Download this application within your local machine and then type the following.
 ```
 npm install
 ```
+
+ - If you have not already, create a project on [https://portal.form.io](https://portal.form.io). You can import the ```src/project.json``` file to add all the forms and resources needed for this project.
+
+ - Modify the ```src/config.js``` file to point the PROJECT_URL variable to the project you created in form.io.
 
 Running
 -----------
@@ -31,7 +32,7 @@ Once you have your application developed, it is now time to build the applicatio
 npm run build
 ```
 
-This will generate the **dist** folder which you can then use to install within any webserver, Github Page, an Amazon S3 bucket, etc.
+This will generate the **build** folder which you can then use to install within any webserver, Github Page, an Amazon S3 bucket, etc.
 
 Commands
 ------------

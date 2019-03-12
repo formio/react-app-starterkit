@@ -2,16 +2,16 @@ import React, {Component} from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
-import { getSubmissions, selectRoot, selectError, SubmissionGrid, Errors } from 'react-formio';
-import Loading from '../../../../containers/Loading';
+import { getForm, getSubmissions, selectRoot, selectError, SubmissionGrid, Errors } from 'react-formio';
+import Loading from '../../containers/Loading';
 
 const List = class extends Component {
   componentWillMount() {
+    this.props.getForm();
     this.props.getSubmissions(1);
   }
 
   render() {
-    const {match: {params: {formId}}} = this.props
     const {form, submissions, isLoading, onAction, getSubmissions, errors} = this.props
 
     if (isLoading) {
@@ -20,8 +20,17 @@ const List = class extends Component {
       );
     }
 
+    if (errors.length && errors[0] === 'Invalid alias') {
+      return (
+        <div className="alert alert-warning">
+          You have not yet created an Event Resource in your project. Either create an Event Resource with the path of "event" or import the src/project.json into your project.
+        </div>
+      )
+    }
+
     return (
       <div className='form-index'>
+        <h1>Events</h1>
         <Errors errors={errors} />
         <SubmissionGrid
           submissions={submissions}
@@ -29,7 +38,7 @@ const List = class extends Component {
           onAction={onAction}
           getSubmissions={getSubmissions}
         />
-        <Link className='btn btn-primary' to={`/form/${formId}`}>
+        <Link className='btn btn-primary' to={`/event/create`}>
           <i className='glyphicon glyphicon-plus fa fa-plus' aria-hidden='true'></i>
           New {form.title}
         </Link>
@@ -39,28 +48,29 @@ const List = class extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const form = selectRoot('form', state);
-  const submissions = selectRoot('submissions', state);
+  const form = selectRoot('form', selectRoot('event', state));
+  const submissions = selectRoot('submissions', selectRoot('event', state));
 
   return {
     form: form.form,
     submissions: submissions,
     isLoading: form.isActive || submissions.isActive,
     errors: [
-      selectError('submissions', state),
-      selectError('form', state)
+      selectError('submissions', selectRoot('event', state)),
+      selectError('form', selectRoot('event', state))
     ]
   };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    getSubmissions: (page, query) => dispatch(getSubmissions('submissions', page, query, ownProps.match.params.formId)),
+    getForm: () => dispatch(getForm('event')),
+    getSubmissions: (page, query) => dispatch(getSubmissions('event', page, query)),
     onAction: (submission, action) => {
      switch(action) {
         case 'view':
         case 'row':
-          dispatch(push(`/form/${ownProps.match.params.formId}/submission/${submission._id}`));
+          dispatch(push(`/event/${submission._id}`));
           break;
         case 'edit':
           dispatch(push(`/form/${ownProps.match.params.formId}/submission/${submission._id}/edit`));
