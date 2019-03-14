@@ -28,10 +28,9 @@ const View = class extends Component {
           form={form}
           submission={submission}
           url={url}
-          options={options}
+          options={{...{template: 'bootstrap3', iconset: 'fa'},  ...options}}
           hideComponents={hideComponents}
           onSubmit={onSubmit}
-          options={{template: 'bootstrap3', iconset: 'fa'}}
         />
       </div>
     );

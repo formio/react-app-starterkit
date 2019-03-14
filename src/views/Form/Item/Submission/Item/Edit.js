@@ -30,7 +30,7 @@ const Edit = class extends Component {
           url={url}
           hideComponents={hideComponents}
           onSubmit={onSubmit}
-          options={options}
+          options={{...{template: 'bootstrap3', iconset: 'fa'},  ...options}}
         />
       </div>
     );
