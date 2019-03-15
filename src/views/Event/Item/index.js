@@ -1,10 +1,11 @@
-import { Link, Route, Switch } from 'react-router-dom'
+import { Link, Switch } from 'react-router-dom'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import View from './View'
 import Edit from './Edit'
 import Delete from './Delete'
 import {getForm, getSubmission} from "react-formio";
+import { PrivateRoute } from '../../../containers/routes';
 
 const Item = class extends Component {
   constructor() {
@@ -53,9 +54,9 @@ const Item = class extends Component {
           </li>
         </ul>
         <Switch>
-          <Route exact path="/event/:eventId" component={View} />
-          <Route path="/event/:eventId/edit" component={Edit} />
-          <Route path="/event/:eventId/delete" component={Delete} />
+          <PrivateRoute exact path="/event/:eventId" component={View} />
+          <PrivateRoute path="/event/:eventId/edit" component={Edit} />
+          <PrivateRoute path="/event/:eventId/delete" component={Delete} />
         </Switch>
       </div>
     )
