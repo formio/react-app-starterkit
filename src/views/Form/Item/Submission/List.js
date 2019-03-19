@@ -1,18 +1,36 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
+import _ from 'lodash';
 import { push } from 'connected-react-router';
 import { getSubmissions, selectRoot, selectError, SubmissionGrid, Errors } from 'react-formio';
 import Loading from '../../../../containers/Loading';
+import { calculateFormPerms } from '../../../../helpers/permissions';
 
 const List = class extends Component {
-  componentWillMount() {
+  state = {
+    form: {},
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const { form, user } = nextProps
+    if (!_.isEqual(form, prevState.form) || !_.isEmpty(user)) {
+      return {
+        form: { ...form, perms: calculateFormPerms(form.submissionAccess, form.owner, user) },
+      }
+    }
+
+    return null;
+  }
+
+  componentDidMount() {
     this.props.getSubmissions(1);
   }
 
   render() {
-    const {match: {params: {formId}}} = this.props
-    const {form, submissions, isLoading, onAction, getSubmissions, errors} = this.props
+    const { match: { params: { formId } } } = this.props
+    const { form, submissions, isLoading, onAction, getSubmissions, errors } = this.props
+    const formWithPerms = this.state.form;
 
     if (isLoading) {
       return (
@@ -25,7 +43,7 @@ const List = class extends Component {
         <Errors errors={errors} />
         <SubmissionGrid
           submissions={submissions}
-          form={form}
+          form={formWithPerms}
           onAction={onAction}
           getSubmissions={getSubmissions}
         />
@@ -44,6 +62,7 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     form: form.form,
+    user: state.auth.user,
     submissions: submissions,
     isLoading: form.isActive || submissions.isActive,
     errors: [
@@ -57,7 +76,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     getSubmissions: (page, query) => dispatch(getSubmissions('submissions', page, query, ownProps.match.params.formId)),
     onAction: (submission, action) => {
-     switch(action) {
+      switch (action) {
         case 'view':
         case 'row':
           dispatch(push(`/form/${ownProps.match.params.formId}/submission/${submission._id}`));

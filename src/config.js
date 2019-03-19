@@ -1,4 +1,4 @@
-var PROJECT_URL = 'https://reactstarter.form.io';
+var PROJECT_URL = 'https://xxjqjpdhgcctddd.form.io';
 var API_URL = 'https://api.form.io';
 
 var query = {};
