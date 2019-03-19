@@ -1,4 +1,4 @@
-import { Link, Route, Switch } from 'react-router-dom'
+import { Link, Switch } from 'react-router-dom'
 import React, { Component } from 'react'
 import View from './View'
 import Edit from './Edit'
@@ -6,6 +6,7 @@ import Delete from './Delete'
 import Submission from './Submission/index'
 import { connect } from 'react-redux'
 import { getForm } from 'react-formio'
+import { AdminRoute } from '../../../containers/routes';
 
 const Item = class extends Component{
   constructor() {
@@ -58,10 +59,10 @@ const Item = class extends Component{
           </li>
         </ul>
         <Switch>
-          <Route exact path="/form/:formId" component={View} />
-          <Route path="/form/:formId/edit" component={Edit} />
-          <Route path="/form/:formId/delete" component={Delete} />
-          <Route path="/form/:formId/submission" component={Submission} />
+          <AdminRoute exact path="/form/:formId" component={View} />
+          <AdminRoute path="/form/:formId/edit" component={Edit} />
+          <AdminRoute path="/form/:formId/delete" component={Delete} />
+          <AdminRoute path="/form/:formId/submission" component={Submission} />
         </Switch>
       </div>
     )
