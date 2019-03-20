@@ -2,16 +2,34 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { push } from 'connected-react-router'
 import { Link } from 'react-router-dom'
+import _ from 'lodash';
 import { indexForms, selectRoot, selectError, Errors, FormGrid } from 'react-formio';
 import Loading from "../../containers/Loading";
+import { getPermissionsFormGrid } from '../../helpers/permissions';
 
 const List = class extends Component {
-  componentWillMount() {
+  state = {
+    forms: {}
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (!_.isEqual(nextProps.forms, prevState.forms)
+      || !_.isEmpty(nextProps.user)) {
+      return {
+        forms: getPermissionsFormGrid(nextProps.forms, nextProps.user)
+      }
+    }
+
+    return null;
+  }
+
+  componentDidMount() {
     this.props.getForms(1);
   }
 
   render() {
     const { forms, onAction, getForms, errors } = this.props;
+    const formsWithPerms = this.state.forms;
 
     if (forms.isActive) {
       return (
@@ -24,7 +42,7 @@ const List = class extends Component {
         <h1>Forms</h1>
         <Errors errors={errors} />
         <FormGrid
-          forms={forms}
+          forms={formsWithPerms}
           onAction={onAction}
           getForms={getForms}
         />
@@ -38,6 +56,7 @@ const mapStateToProps = (state) => {
   return {
     forms: selectRoot('forms', state),
     errors: selectError('forms', state),
+    user: state.auth.user,
   }
 }
 
@@ -47,7 +66,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(indexForms('forms', page, query))
     },
     onAction: (form, action) => {
-      switch(action) {
+      switch (action) {
         case 'view':
           dispatch(push(`/form/${form._id}`));
           break;
