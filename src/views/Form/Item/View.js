@@ -28,7 +28,7 @@ const View = class extends Component {
           form={form}
           submission={submission}
           url={url}
-          options={{...{template: 'bootstrap3', iconset: 'fa'},  ...options}}
+          options={{...{template: 'uswds', iconset: 'fa', errorStyle:  'advanced'},  ...options}}
           hideComponents={hideComponents}
           onSubmit={onSubmit}
         />
@@ -45,7 +45,7 @@ const mapStateToProps = (state) => {
       selectError('submission', state),
     ],
     options: {
-      noAlerts: true
+      noAlerts: false,
     },
   }
 }

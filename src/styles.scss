@@ -35,6 +35,8 @@ $dark:          $gray-800;
 @import "~bootstrap/scss/bootstrap.scss";
 @import "~bootswatch/dist/cosmo/_bootswatch.scss";
 $fa-font-path: '../node_modules/font-awesome/fonts';
+@import '~uswds/dist/css/uswds.css';
+@import '~@formio/uswds/lib/sass/styles.scss';
 @import '~font-awesome/scss/font-awesome';
 @import '~formiojs/dist/formio.full.css';
 

@@ -3,16 +3,21 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
 import store, { history } from './store'
-import { initAuth, Formio, Components } from 'react-formio';
+import { initAuth, Formio as ReactFormio, Components } from 'react-formio';
+import { AppConfig } from './config';
+import { Formio } from 'formiojs';
+import components from './components';
 import App from './App'
 
-import components from './components';
-import {AppConfig} from './config';
-
+import uswds from '@formio/uswds';
+import vpat from '@formio/vpat';
 import './styles.scss'
 
-Formio.setProjectUrl(AppConfig.projectUrl);
-Formio.setBaseUrl(AppConfig.apiUrl);
+Formio.use(uswds);
+Formio.use(vpat);
+
+ReactFormio.setProjectUrl(AppConfig.projectUrl);
+ReactFormio.setBaseUrl(AppConfig.apiUrl);
 Components.setComponents(components);
 
 // Initialize the current user

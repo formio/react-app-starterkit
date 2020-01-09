@@ -7,7 +7,7 @@ const Edit = props => (
     <h2>Edit {props.form.title} Form</h2>
     <hr />
     <Errors errors={props.errors} />
-    <FormEdit {...props} />
+    <FormEdit {...props} options={{ template: 'uswds' }} />
   </div>
 )
 
