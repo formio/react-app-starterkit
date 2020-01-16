@@ -1,0 +1,10 @@
+diff --git a/src/config.js b/src/config.js
+index 0883c6a..8b08d18 100644
+--- a/src/config.js
++++ b/src/config.js
+@@ -1,4 +1,4 @@
+-var PROJECT_URL = 'https://reactstarter.form.io';
++var PROJECT_URL = 'https://nlajtnytdurazla.form.io';
+ var API_URL = 'https://api.form.io';
+ 
+ var query = {};
