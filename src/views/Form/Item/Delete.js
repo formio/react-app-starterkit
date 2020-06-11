@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Confirm from '../../../containers/Confirm';
-import { deleteForm, resetForms, selectError, Errors } from 'react-formio';
+import { deleteForm, resetForms, selectError, Errors } from '@formio/react';
 import {push, goBack} from 'connected-react-router';
 
 const Delete = props => (

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { saveForm, selectForm, FormEdit, Errors, selectError } from 'react-formio';
+import { saveForm, selectForm, FormEdit, Errors, selectError } from '@formio/react';
 
 const Edit = props => (
   <div>

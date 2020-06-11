@@ -5,7 +5,7 @@ import Edit from './Edit'
 import Delete from './Delete'
 import Submission from './Submission/index'
 import { connect } from 'react-redux'
-import { getForm } from 'react-formio'
+import { getForm } from '@formio/react'
 
 const Item = class extends Component{
   constructor() {

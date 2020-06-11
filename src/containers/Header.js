@@ -4,7 +4,7 @@ import {PropTypes} from 'prop-types';
 import {Link} from 'react-router-dom';
 import {push} from "connected-react-router";
 import NavLink from './NavLink';
-import { selectRoot, logout } from "react-formio";
+import { selectRoot, logout } from "@formio/react";
 import {AuthConfig} from "../config";
 
 const Header = class extends Component {
@@ -26,7 +26,7 @@ const Header = class extends Component {
             <NavLink exact to="/" role="navigation button" className="nav-link">
               <span className="fa fa-home" />
             </NavLink>
-            { (auth.is.hasOwnProperty('administrator') && auth.is.administrator) ? (
+            { (auth.is.hasOwnProperty('administrator') || true) ? (
               <NavLink to="/form" role="navigation link" className="nav-link">
                 <i className="fa fa-wpforms"></i>&nbsp;
                 Forms

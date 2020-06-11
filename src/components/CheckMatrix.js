@@ -1,14 +1,14 @@
-import Base from 'formiojs/components/_classes/component/Component';
-import editForm from 'formiojs/components/table/Table.form'
+import Component from '@formio/core/lib/components/_classes/component/Component';
+import editForm from '@formio/core/lib/components/table/Table.form';
 
-export default class CheckMatrix extends Base {
+export default class CheckMatrix extends Component {
   constructor(component, options, data) {
     super(component, options, data);
     this.foo = 'bar';
   }
 
   static schema() {
-    return Base.schema({
+    return Component.schema({
       type: 'checkmatrix',
       numRows: 3,
       numCols: 3

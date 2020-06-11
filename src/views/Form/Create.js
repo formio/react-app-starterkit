@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { saveForm, selectError, FormEdit, Errors } from 'react-formio';
+import { saveForm, selectError, FormEdit, Errors } from '@formio/react';
 import {push} from 'connected-react-router';
 
 const Create = props => {

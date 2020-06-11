@@ -3,7 +3,8 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
 import store, { history } from './store'
-import { initAuth, Formio, Components } from 'react-formio';
+import { initAuth } from '@formio/react';
+import { Formio, Components } from '@formio/core';
 import App from './App'
 
 import components from './components';

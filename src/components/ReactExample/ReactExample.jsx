@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { ReactComponent } from 'react-formio';
+import { ReactComponent } from '@formio/react';
 import settingsForm from './ReactExample.settingsForm';
 
 /**

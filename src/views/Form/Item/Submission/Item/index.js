@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import View from './View'
 import Edit from './Edit'
 import Delete from './Delete'
-import {getSubmission} from "react-formio";
+import {getSubmission} from "@formio/react";
 
 const Item = class extends Component {
   constructor() {

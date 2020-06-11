@@ -36,7 +36,7 @@ $dark:          $gray-800;
 @import "~bootswatch/dist/cosmo/_bootswatch.scss";
 $fa-font-path: '../fonts';
 @import '~font-awesome/scss/font-awesome';
-@import '~formiojs/dist/formio.full.css';
+//@import '~@formio/core/dist/formio.full.css';
 
 .logo {
   height: 1.9em;

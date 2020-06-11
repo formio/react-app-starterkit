@@ -1,4 +1,4 @@
-import baseEditForm from 'formiojs/components/_classes/component/Component.form';
+import baseEditForm from '@formio/core/lib/components/_classes/component/Component.form';
 
 export default (...extend) => {
   return baseEditForm([

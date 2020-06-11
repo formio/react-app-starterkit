@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { push } from 'connected-react-router'
 import { Link } from 'react-router-dom'
-import { indexForms, selectRoot, selectError, Errors, FormGrid } from 'react-formio';
+import { indexForms, selectRoot, selectError, Errors, FormGrid } from '@formio/react';
 import Loading from "../../containers/Loading";
 
 const List = class extends Component {
