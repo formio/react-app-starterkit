@@ -15,7 +15,8 @@
     "react-scripts": "^3.4.0"
   },
   "dependencies": {
-    "@formio/react": "^5.0.0",
+    "@formio/core": "^5.0.0-m.4",
+    "@formio/react": "^5.0.0-m.3",
     "bootstrap": "^4.3.1",
     "bootswatch": "^4.3.1",
     "connected-react-router": "4.5.0",
