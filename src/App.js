@@ -7,6 +7,7 @@ import Form from './views/Form'
 import Event from './views/Event'
 import Auth from './views/Auth/Auth'
 import { AppConfig } from './config';
+import Resource from './views/Resource'
 
 const App = () => (
   <div>
@@ -19,6 +20,7 @@ const App = () => (
       }
       <Route exact path="/" component={Home} />
       <Route path="/form" component={Form} />
+      <Route path="resource" component={Resource}/>
       <Route path="/event" component={Event} />
       <Route path="/auth" component={Auth} />
     </div>
