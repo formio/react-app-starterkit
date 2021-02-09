@@ -39,7 +39,7 @@ const SubmissionsReducer = (state, action) => {
         isActive: false,
         pagination: {
           ...state.pagination,
-          numPages: Math.ceil(total / state.limit),
+          numPages: Math.ceil(total / action.limit),
           total,
         },
         submissions: action.submissions,
@@ -77,25 +77,26 @@ export function useSubmissions() {
   }
 }
 
-export const resetSubmissions = (name) => ({
+export const resetSubmissions = () => ({
   type: 'SUBMISSIONS_RESET',
-  });
+});
 
 const requestSubmissions = (page, params, formId) => ({
   type: 'SUBMISSIONS_REQUEST',
-    page,
+  page,
   params,
   formId,
 });
 
-const receiveSubmissions = (submissions) => ({
+const receiveSubmissions = (submissions, limit) => ({
   type: 'SUBMISSIONS_SUCCESS',
-    submissions,
+  submissions,
+  limit
 });
 
 const failSubmissions = (error) => ({
   type: 'SUBMISSIONS_FAILURE',
-    error,
+  error,
 });
 
 const getRequestParams = (limit, query, sort, params, select, page) => {
@@ -133,14 +134,14 @@ const getRequestParams = (limit, query, sort, params, select, page) => {
   return requestParams;
 }
 
-export const getSubmissions = (dispatch, page = 0, { limit, query, select, sort },  params = {}, formId, done = () => {}) => {
+export const indexSubmissions = (dispatch, page = 0, { limit, query, select, sort },  params = {}, formId, done = () => {}) => {
   dispatch(requestSubmissions(page, params, formId));
   const formio = new Formio(`${Formio.getProjectUrl()}/form/${formId}/submission`);
   const requestParams = getRequestParams(limit, query, sort, params, select, page);
 
   return formio.loadSubmissions({params: requestParams})
     .then((result) => {
-      dispatch(receiveSubmissions(result));
+      dispatch(receiveSubmissions(result, limit));
       done(null, result);
     })
     .catch((error) => {

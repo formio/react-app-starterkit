@@ -64,7 +64,7 @@ export function FormsProvider(props) {
 export function useForms() {
   const context = React.useContext(FormsContext);
   if (!context) {
-    throw new Error('useAuth must be used within a FormsProvider');
+    throw new Error('useForms must be used within a FormsProvider');
   }
 
   const [state, dispatch] = context;

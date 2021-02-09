@@ -66,7 +66,7 @@ export function FormProvider(props) {
 export function useForm() {
   const context = React.useContext(FormContext);
   if (!context) {
-    throw new Error('useAuth must be used within a FormProvider');
+    throw new Error('useForm must be used within a FormProvider');
   }
 
   const [state, dispatch] = context;
@@ -108,7 +108,7 @@ const sendForm = (form) => ({
 });
 
 export const getForm = (dispatch, id, done = () => {}) => {
-    const path = `${Formio.getProjectUrl()}/form/${id}`;
+    const path = `${Formio.getProjectUrl()}/form${id ? `/${id}` : ''}`;
     const formio = new Formio(path);
 
     dispatch(requestForm(id, path));
@@ -128,7 +128,7 @@ export const saveForm = (dispatch, form, done = () => {}) => {
   dispatch(sendForm(form));
 
   const id = form._id;
-  const path = `${Formio.getProjectUrl()}/form/${id}`;
+  const path = `${Formio.getProjectUrl()}/form${id ? `/${id}` : ''}`;
   const formio = new Formio(path);
 
   formio.saveForm(form)

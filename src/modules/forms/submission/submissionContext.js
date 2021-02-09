@@ -112,7 +112,7 @@ export const resetSubmission = () => ({
 });
 
 export const getSubmission = (dispatch, id, formId, done = () => {}) => {
-  const url = `${Formio.getProjectUrl()}/form/${formId}/submission/${id}`;
+  const url = `${Formio.getProjectUrl()}/form/${formId}/submission${id ? `/${id}` : ''}`;
   const formio = new Formio(url);
 
   dispatch(requestSubmission( id, formId, url));

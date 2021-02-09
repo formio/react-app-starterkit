@@ -1,19 +1,20 @@
 import React from 'react';
 import { Errors } from 'react-formio';
 import { useHistory, useParams } from 'react-router';
+import { Confirm } from '../../../../common/components';
 import { useForm, deleteForm } from '../formContext';
 import { useForms, resetForms } from '../formsContext';
 
 const FormDelete = () => {
   const history = useHistory();
-  const { state: formState, dispatchFormAction } = useForm();
-  const { dispatchFormsAction } = useForms();
+  const { state: formState, dispatch: dispatchFormAction } = useForm();
+  const { dispatch: dispatchFormsAction } = useForms();
   const { formId } = useParams();
 
   const message = `Are you sure you wish to delete the form '${formState.form.title}'?`;
 
   const onYes = () => {
-    deleteForm(dispatchFormAction, 'form', formId, (err) => {
+    deleteForm(dispatchFormAction, formId, (err) => {
       if (!err) {
         dispatchFormsAction(resetForms());
         history.push('/form');
@@ -31,7 +32,7 @@ const FormDelete = () => {
   return (
     <div>
       <Errors errors={[formState.error]} />
-      {/* <Confirm message={message} onYes={onYes} onNo={onNo} /> */}
+      <Confirm message={message} onYes={onYes} onNo={onNo} />
     </div>
   )
 };
