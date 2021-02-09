@@ -1,7 +1,7 @@
 import { Route, Switch } from 'react-router-dom';
 import React from 'react';
 
-const SubmissionRoutes = () => (
+const SubmissionsPage = () => (
   <>
     <Switch>
       {/* <Route exact path="/form/:formId/submission" component={List} />
@@ -10,4 +10,4 @@ const SubmissionRoutes = () => (
   </>
 )
 
-export default SubmissionRoutes;
+export default SubmissionsPage;

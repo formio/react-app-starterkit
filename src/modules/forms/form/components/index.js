@@ -1,4 +1,4 @@
-import FormRoutes from './FormRoutes';
+import FormsPage from './FormsPage';
 import FormPage from './FormPage';
 import FormView from './FormView';
 import FormEdit from './FormEdit';
@@ -7,7 +7,7 @@ import FormCreate from './FormCreate';
 import FormsList from './FormsList';
 
 export {
-  FormRoutes,
+  FormsPage,
   FormPage,
   FormView,
   FormEdit,

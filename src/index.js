@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import './index.scss';
+import 'formiojs/dist/formio.full.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './config';

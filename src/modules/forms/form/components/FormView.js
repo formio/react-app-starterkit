@@ -3,13 +3,21 @@ import { Form, Errors } from 'react-formio';
 import { useHistory, useParams } from 'react-router';
 import { Loading } from '../../../../common/components';
 import { useForm } from '../formContext';
+import { 
+  useSubmission,
+  useSubmissions,
+  saveSubmission,
+  resetSubmissions
+} from '../../submission';
 
 const FormView = (props) => {
   const options = { noAlerts: true, template: 'bootstrap3', iconset: 'fa' };
 
   const history = useHistory();
-  const { state: formState, dispatch: dispatchFormAction } = useForm();
+  const { state: formState } = useForm();
   const { formId } = useParams();
+  const { dispatch: dispatchSubmissionAction } = useSubmission();
+  const { dispatch: dispatchSubmissionsAction } = useSubmissions();
 
   const { 
     form,
@@ -24,12 +32,12 @@ const FormView = (props) => {
   } = props;
 
   const onSubmit = (submission) => {
-    // dispatch(saveSubmission(submission, formId, (err, submission) => {
-    //   if (!err) {
-    //     dispatch(resetSubmissions());
-    //     history.push(`/form/${formId}/submission/${submission._id}`);
-    //   }
-    // }));
+    saveSubmission(dispatchSubmissionAction, submission, formId, (err, submission) => {
+      if (!err) {
+        dispatchSubmissionsAction(resetSubmissions());
+        history.push(`/form/${formId}/submission/${submission._id}`);
+      }
+    });
   };
 
   if (isActive) {

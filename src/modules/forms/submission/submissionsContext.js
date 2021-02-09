@@ -1,49 +1,51 @@
 import React from 'react';
 import { Formio } from 'react-formio';
 
-const FormsContext = React.createContext();
+const SubmissionsContext = React.createContext();
 
 const initialState = {
   error: '',
-  forms: [],
+  formId: '',
   isActive: false,
   pagination: {
     numPages: 0,
     page: 1,
     total: 0,
   },
+  submissions: [],
 };
 
-function formsReducer(state, action) {
+const SubmissionsReducer = (state, action) => {
   switch (action.type) {
-    case 'FORMS_RESET':
+    case 'SUBMISSIONS_RESET':
       return initialState;
-    case 'FORMS_REQUEST':
+    case 'SUBMISSIONS_REQUEST':
       return {
         ...state,
         error: '',
-        forms: [],
+        formId: action.formId,
         isActive: true,
         pagination: {
           ...state.pagination,
           page: action.page,
         },
+        submissions: [],
       };
-    case 'FORMS_SUCCESS': {
-      const total = action.forms.serverCount;
+    case 'SUBMISSIONS_SUCCESS': {
+      const total = action.submissions.serverCount;
 
       return {
         ...state,
-        forms: action.forms,
         isActive: false,
         pagination: {
           ...state.pagination,
-          numPages: Math.ceil(total / action.limit),
+          numPages: Math.ceil(total / state.limit),
           total,
         },
+        submissions: action.submissions,
       };
     }
-    case 'FORMS_FAILURE':
+    case 'SUBMISSIONS_FAILURE':
       return {
         ...state,
         error: action.error,
@@ -52,19 +54,19 @@ function formsReducer(state, action) {
     default:
       return state;
   }
-}
+};
 
-export function FormsProvider(props) {
-  const [state, dispatch] = React.useReducer(formsReducer, initialState);
+export function SubmissionsProvider(props) {
+  const [state, dispatch] = React.useReducer(SubmissionsReducer, initialState);
   const value = React.useMemo(() => [state, dispatch], [state]);
 
-  return <FormsContext.Provider value={value} {...props} />;
+  return <SubmissionsContext.Provider value={value} {...props} />;
 }
 
-export function useForms() {
-  const context = React.useContext(FormsContext);
+export function useSubmissions() {
+  const context = React.useContext(SubmissionsContext);
   if (!context) {
-    throw new Error('useAuth must be used within a FormsProvider');
+    throw new Error('useSubmissions must be used within a SubmissionsProvider');
   }
 
   const [state, dispatch] = context;
@@ -75,29 +77,29 @@ export function useForms() {
   }
 }
 
-export const resetForms = () => ({
-  type: 'FORMS_RESET',
-});
+export const resetSubmissions = (name) => ({
+  type: 'SUBMISSIONS_RESET',
+  });
 
-const requestForms = (page, params) => ({
-  type: 'FORMS_REQUEST',
-  page,
+const requestSubmissions = (page, params, formId) => ({
+  type: 'SUBMISSIONS_REQUEST',
+    page,
   params,
+  formId,
 });
 
-const receiveForms = (forms, limit) => ({
-  type: 'FORMS_SUCCESS',
-  forms,
-  limit,
+const receiveSubmissions = (submissions) => ({
+  type: 'SUBMISSIONS_SUCCESS',
+    submissions,
 });
 
-const failForms = (error) => ({
-  type: 'FORMS_FAILURE',
-  error,
+const failSubmissions = (error) => ({
+  type: 'SUBMISSIONS_FAILURE',
+    error,
 });
 
 const getRequestParams = (limit, query, sort, params, select, page) => {
-  const requestParams = { ...query, ...params };
+  const requestParams = {...query, ...params};
 
   // Ten is the default so if set to 10, don't send.
   if (limit !== 10) {
@@ -131,19 +133,18 @@ const getRequestParams = (limit, query, sort, params, select, page) => {
   return requestParams;
 }
 
-export const indexForms = (dispatch, { limit, query, select, sort }, page = 1, params = {}, done = () => {}) => {
-  dispatch(requestForms(page, params));
-
-  const formio = new Formio(`${Formio.getProjectUrl()}/form`);
+export const getSubmissions = (dispatch, page = 0, { limit, query, select, sort },  params = {}, formId, done = () => {}) => {
+  dispatch(requestSubmissions(page, params, formId));
+  const formio = new Formio(`${Formio.getProjectUrl()}/form/${formId}/submission`);
   const requestParams = getRequestParams(limit, query, sort, params, select, page);
 
-  return formio.loadForms({ params: requestParams })
+  return formio.loadSubmissions({params: requestParams})
     .then((result) => {
-      dispatch(receiveForms(result, limit));
+      dispatch(receiveSubmissions(result));
       done(null, result);
     })
     .catch((error) => {
-      dispatch(failForms(error));
+      dispatch(failSubmissions(error));
       done(error);
     });
 };

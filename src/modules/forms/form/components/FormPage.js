@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { Link, Route, Switch, useParams } from 'react-router-dom';
-import SubmissionRoutes from '../../submission/components/SubmissionRoutes';
+import SubmissionsPage from '../../submission/components/SubmissionsPage';
 import { getForm, useForm } from '../formContext';
 import FormDelete from './FormDelete';
 import FormView from './FormView';
 import FormEdit from './FormEdit';
+import { SubmissionProvider, SubmissionsProvider } from '../../submission';
 
 const FormNavigation = () => {
   const { formId } = useParams();
@@ -48,10 +49,20 @@ const FormNavigation = () => {
     <div>
       <Navbar />
       <Switch>
-        <Route exact path="/form/:formId" component={FormView} />
+        <Route
+          exact
+          path="/form/:formId"
+          render={ (props) => (
+            <SubmissionsProvider>
+              <SubmissionProvider>
+                <FormView {...props} />
+              </SubmissionProvider>
+            </SubmissionsProvider>
+          )}
+        />
         <Route path="/form/:formId/edit" component={FormEdit} />
         <Route path="/form/:formId/delete" component={FormDelete} />
-        <Route path="/form/:formId/submission" component={SubmissionRoutes} />
+        <Route path="/form/:formId/submission" component={SubmissionsPage} />
       </Switch>
     </div>
   );

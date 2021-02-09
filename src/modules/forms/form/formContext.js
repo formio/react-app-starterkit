@@ -58,7 +58,7 @@ const formReducer = function(state, action) {
 
 export function FormProvider(props) {
   const [state, dispatch] = React.useReducer(formReducer, initialState);
-  const value = React.useMemo(() => [state, dispatch], [state]);
+  const value = React.useMemo(() => [state, dispatch], [state, dispatch]);
 
   return <FormContext.Provider value={value} {...props} />;
 }

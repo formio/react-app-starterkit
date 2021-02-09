@@ -1,5 +1,5 @@
-import SubmissionRoutes from './SubmissionRoutes';
+import SubmissionsPage from './SubmissionsPage';
 
 export {
-  SubmissionRoutes,
+  SubmissionsPage,
 };

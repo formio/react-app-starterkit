@@ -48,6 +48,10 @@ const FormsList = () => {
     }
   };
 
+  const onPageSizeChanged = (pageSize) => {
+    setRequestParams({ ...requestParams, limit: pageSize });
+  };
+
   const { isActive } = formsState;
 
   if (isActive) {
@@ -61,9 +65,10 @@ const FormsList = () => {
       <h1>Forms</h1>
       <Errors errors={[formsState.error]} />
       <FormGrid
-        forms={formsState}
+        forms={{ ...formsState, ...requestParams }}
         getForms={getForms}
         onAction={onAction}
+        onPageSizeChanged={onPageSizeChanged}
       />
       <Link className="btn btn-primary" to="/form/create"><i className="fa fa-plus"></i> Create Form</Link>
     </div>

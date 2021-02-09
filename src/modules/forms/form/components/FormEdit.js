@@ -1,6 +1,7 @@
 import React from 'react';
 import { FormEdit as FormEditComponent, Errors } from 'react-formio';
 import { useForm, saveForm } from '../formContext';
+import _ from 'lodash';
 
 const FormEdit = (props) => {
   const { state: formState, dispatch } = useForm();
@@ -16,7 +17,7 @@ const FormEdit = (props) => {
       <h2>Edit {formState.form?.title} Form</h2>
       <hr />
       <Errors errors={[formState.error]} />
-      <FormEditComponent {...props} saveText="Save Form" saveForm={onSaveForm} />
+      <FormEditComponent form={_.cloneDeep(formState.form)} saveText="Save Form" saveForm={onSaveForm} />
     </div>
   )
 };
