@@ -4,6 +4,7 @@ import Loading from './Loading/Loading';
 import Hero from './Hero/Hero';
 import Home from './Home/Home';
 import Confirm from './Confirm/Confirm';
+import Modal from './Modal/Modal';
 
 export {
   Footer,
@@ -12,4 +13,5 @@ export {
   Hero,
   Home,
   Confirm,
+  Modal,
 };

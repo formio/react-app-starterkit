@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback, useState } from 'react';
 import { Link, useHistory, useParams } from 'react-router-dom'
 import { SubmissionGrid, Errors } from 'react-formio';
-import { Loading } from '../../../../common/components';
+import { Loading } from '../../../../common';
 import { useForm } from '../../form';
 import { useSubmissions, indexSubmissions } from '../submissionsContext';
 
@@ -24,7 +24,7 @@ const SubmissionsList = (props) => {
   });
   const { state: submissionsState, dispatch: dispatchSubmissionsAction } = useSubmissions();
   const { state: formState } = useForm();
-  
+
   const onAction = (submission, action) => {
     switch(action) {
       case 'view':
@@ -72,15 +72,17 @@ const SubmissionsList = (props) => {
         getSubmissions={getSubmissions}
         onPageSizeChanged={onPageSizeChanged}
       />
-      <Link className='btn btn-primary' to={createSubmissionPath || `/form/${formId || formState.id}`}>
-        <i className='glyphicon glyphicon-plus fa fa-plus' aria-hidden='true'></i>
-        New {formState.form?.title}
-      </Link>
+      <div className="d-flex justify-content-end mt-2">
+        <Link className='btn btn-primary' to={createSubmissionPath || `/form/${formId || formState.id}`}>
+          <i className='glyphicon glyphicon-plus fa fa-plus' aria-hidden='true'></i>
+          &nbsp;New {formState.form?.title}
+        </Link>
+      </div>
     </div>
   );
 
   if (formState.error && FormError) {
-    return( 
+    return(
       <FormError error={formState.error}>
         <MainContent />
       </FormError>

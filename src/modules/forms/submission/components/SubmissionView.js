@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Errors } from 'react-formio';
-import { Loading } from '../../../../common/components';
+import { Loading } from '../../../../common';
 import { useSubmission, saveSubmission } from '../submissionContext';
 import { useSubmissions, resetSubmissions } from '../submissionsContext';
 import { useForm } from '../../form/formContext';
@@ -9,7 +9,7 @@ import { useHistory, useParams } from 'react-router';
 const SubmissionView = ({ hideComponents, readOnly, formName }) => {
   const { formId } = useParams();
   const history = useHistory();
-  
+
   const { state: formState } = useForm();
   const { state: submissionState, dispatch: dispatchSubmissionAction } = useSubmission();
   const { dispatch: dispatchSubmissionsAction } = useSubmissions();

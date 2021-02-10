@@ -1,4 +1,5 @@
 import React from 'react';
+import reactLogo from '../../assets/reactjs-icon.svg';
 
 const Hero = () => {
   const Title = () => (
@@ -9,17 +10,15 @@ const Hero = () => {
         &gt; application!
       </h2>
       <h3>
-        using
-        <img alt="React" src="https://cdn.worldvectorlogo.com/logos/react.svg" className="hero-image" width="100" />
-        React
+        using <img alt="React" src={reactLogo} className="hero-image"/> React
       </h3>
     </>
   );
 
   return (
-    <div className="jumbotron text-center" style={{'marginTop': '-40px'}}>
-      <Title />
-      
+    <div className="jumbotron text-center" style={{marginTop: '-40px'}}>
+      <Title/>
+
       <div className="row">
         <div className="col-sm-12 col-sm-offset-3 text-center">
           <p className="lead">
@@ -33,11 +32,23 @@ const Hero = () => {
           <p className="lead">Need Help?</p>
 
           <ul className="list-inline">
-            <li>
-              <a className="btn btn-lg btn-success" target="_blank" rel="noopener noreferrer" href="https://github.com/formio/react-formio">Embedding</a>
+            <li className="mt-2">
+              <a
+                className="btn btn-lg btn-success"
+                target="_blank" rel="noopener noreferrer"
+                href="https://github.com/formio/react-formio"
+              >
+                Embedding
+              </a>
             </li>
-            <li>
-              <a className="btn btn-lg btn-success" target="_blank" rel="noopener noreferrer" href="http://help.form.io">Documentation</a>
+            <li className="mt-2">
+              <a
+                className="btn btn-lg btn-success"
+                target="_blank" rel="noopener noreferrer"
+                href="http://help.form.io"
+              >
+                Documentation
+              </a>
             </li>
           </ul>
         </div>

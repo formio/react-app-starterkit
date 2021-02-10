@@ -1,9 +1,9 @@
 import React from 'react';
 import { Form, Errors } from 'react-formio';
 import { useHistory, useParams } from 'react-router';
-import { Loading } from '../../../../common/components';
+import { Loading } from '../../../../common';
 import { useForm } from '../formContext';
-import { 
+import {
   useSubmission,
   useSubmissions,
   saveSubmission,
@@ -25,7 +25,7 @@ const FormView = (props) => {
   const { dispatch: dispatchSubmissionAction } = useSubmission();
   const { dispatch: dispatchSubmissionsAction } = useSubmissions();
 
-  const { 
+  const {
     form,
     error: formError,
     isActive,

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Errors } from 'react-formio';
 import { useHistory, useParams } from 'react-router';
-import { Confirm } from '../../../../common/components';
+import { Confirm } from '../../../../common';
 import { useForm } from '../../form';
 import { useSubmission, deleteSubmission } from '../submissionContext'
 import { useSubmissions, resetSubmissions } from '../submissionsContext';

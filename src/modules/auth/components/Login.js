@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Form, setUser } from 'react-formio';
-import { Loading } from '../../../common/components';
+import { Loading } from '../../../common';
 import { AppConfig, AuthConfig } from '../../../config';
 import { useAuth } from '../authContext';
 
 const Login = (props) => {
   const { dispatch } = useAuth();
   const [isReady, setIsReady] = useState(false);
-  
+
   const loginFormUrl = `${AppConfig.projectUrl}/${AuthConfig.login.form}`;
 
   const onSubmitDone = (submission) => {

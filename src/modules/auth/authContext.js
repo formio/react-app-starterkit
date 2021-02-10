@@ -1,5 +1,5 @@
 import React from 'react';
-import { Formio, auth } from 'react-formio';
+import { auth } from 'react-formio';
 
 const AuthContext = React.createContext();
 

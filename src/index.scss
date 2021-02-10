@@ -31,6 +31,9 @@ $danger:        $red;
 $light:         $gray-100;
 $dark:          $gray-800;
 
+$brand-primary: #127ABF;
+$brand-secondary: #449414;
+
 @import '~bootswatch/dist/cosmo/_variables.scss';
 @import '~bootstrap/scss/bootstrap.scss';
 @import '~bootswatch/dist/cosmo/_bootswatch.scss';
@@ -43,18 +46,14 @@ $fa-font-path: '../fonts';
 }
 
 .text-blue {
-  color: #127ABF;
+  color: $brand-primary;
 }
 
 .text-green {
-  color: #449414;
+  color: $brand-secondary;
 }
 
 .hero-image {
   display: inline;
   height: 2em;
-}
-
-#main {
-  margin-top: 10px;
 }

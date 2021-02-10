@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { logout } from 'react-formio';
-import { useAuth } from '../../../modules/auth';
+import { useAuth } from '../../modules/auth';
 
 const Header = () => {
   const { state: authState, dispatch } = useAuth();

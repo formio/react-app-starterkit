@@ -7,10 +7,10 @@ const Footer = () => {
 
   return (
     <footer className="footer">
-        <div className="container text-center" style={styles}>
-          Built with ♥ by&nbsp;
-          <a href="https://form.io">Form.io</a>
-        </div>
+      <div className="container text-center mt-auto" style={styles}>
+        Built with ♥ by&nbsp;
+        <a href="https://form.io">Form.io</a>
+      </div>
     </footer>
   );
 };

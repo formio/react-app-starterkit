@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { Errors, FormGrid } from 'react-formio';
-import { Loading } from '../../../../common/components';
+import { Loading } from '../../../../common';
 import { useForms, indexForms } from '../formsContext';
 
 const FormsList = () => {
@@ -70,7 +70,9 @@ const FormsList = () => {
         onAction={onAction}
         onPageSizeChanged={onPageSizeChanged}
       />
-      <Link className="btn btn-primary" to="/form/create"><i className="fa fa-plus"></i> Create Form</Link>
+      <div className="d-flex justify-content-end mt-2">
+        <Link className="btn btn-primary" to="/form/create"><i className="fa fa-plus"></i>&nbsp;Create Form</Link>
+      </div>
     </div>
   );
 };
