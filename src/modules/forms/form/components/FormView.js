@@ -13,6 +13,12 @@ import {
 const FormView = (props) => {
   const options = { noAlerts: true, template: 'bootstrap3', iconset: 'fa' };
 
+  const {
+    submission,
+    hideComponents,
+    name,
+  } = props;
+
   const history = useHistory();
   const { state: formState } = useForm();
   const { formId } = useParams();
@@ -26,16 +32,11 @@ const FormView = (props) => {
     url,
   } = formState;
 
-  const {
-    submission,
-    hideComponents,
-  } = props;
-
   const onSubmit = (submission) => {
-    saveSubmission(dispatchSubmissionAction, submission, formId, (err, submission) => {
+    saveSubmission(dispatchSubmissionAction, submission, formId, name, (err, submission) => {
       if (!err) {
         dispatchSubmissionsAction(resetSubmissions());
-        history.push(`/form/${formId}/submission/${submission._id}`);
+        history.push(`/${formId ? `form/${formId}/submission` : `${name}`}/${submission._id}`);
       }
     });
   };

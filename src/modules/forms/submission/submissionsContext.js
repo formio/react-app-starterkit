@@ -6,6 +6,7 @@ const SubmissionsContext = React.createContext();
 const initialState = {
   error: '',
   formId: '',
+  formName: '',
   isActive: false,
   pagination: {
     numPages: 0,
@@ -24,6 +25,7 @@ const SubmissionsReducer = (state, action) => {
         ...state,
         error: '',
         formId: action.formId,
+        formName: action.formName,
         isActive: true,
         pagination: {
           ...state.pagination,
@@ -81,11 +83,12 @@ export const resetSubmissions = () => ({
   type: 'SUBMISSIONS_RESET',
 });
 
-const requestSubmissions = (page, params, formId) => ({
+const requestSubmissions = (page, params, formId, formName) => ({
   type: 'SUBMISSIONS_REQUEST',
   page,
   params,
   formId,
+  formName
 });
 
 const receiveSubmissions = (submissions, limit) => ({
@@ -134,9 +137,10 @@ const getRequestParams = (limit, query, sort, params, select, page) => {
   return requestParams;
 }
 
-export const indexSubmissions = (dispatch, page = 0, { limit, query, select, sort },  params = {}, formId, done = () => {}) => {
-  dispatch(requestSubmissions(page, params, formId));
-  const formio = new Formio(`${Formio.getProjectUrl()}/form/${formId}/submission`);
+export const indexSubmissions = (dispatch, page = 0, { limit, query, select, sort },  params = {}, formId, formName, done = () => {}) => {
+  dispatch(requestSubmissions(page, params, formId), formName);
+  const formPath = `/${formId ? `form/${formId}` : `${formName}`}`;
+  const formio = new Formio(`${Formio.getProjectUrl()}${formPath}/submission`);
   const requestParams = getRequestParams(limit, query, sort, params, select, page);
 
   return formio.loadSubmissions({params: requestParams})

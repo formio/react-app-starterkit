@@ -111,34 +111,39 @@ export const resetSubmission = () => ({
   type: 'SUBMISSION_RESET',
 });
 
-export const getSubmission = (dispatch, id, formId, done = () => {}) => {
-  const url = `${Formio.getProjectUrl()}/form/${formId}/submission${id ? `/${id}` : ''}`;
+export const getSubmission = (dispatch, id, formId, formName, done = () => {}) => {
+  const formPath = `/${formId ? `form/${formId}` : `${formName}`}`;
+  const url = `${Formio.getProjectUrl()}${formPath}/submission${id ? `/${id}` : ''}`;
   const formio = new Formio(url);
 
-  dispatch(requestSubmission( id, formId, url));
+  dispatch(requestSubmission(id, formId, url));
 
   formio.loadSubmission()
     .then((result) => {
-      dispatch(receiveSubmission( result));
+      dispatch(receiveSubmission(result));
       done(null, result);
     })
     .catch((error) => {
-      dispatch(failSubmission( error));
+      dispatch(failSubmission(error));
       done(error);
     });
 };
 
-export const saveSubmission = (dispatch, data, formId, done = () => {}) => {
-  dispatch(sendSubmission( data));
+export const saveSubmission = (dispatch, data, formId, formName, done = () => {}) => {
+  dispatch(sendSubmission(data));
 
   const id = data._id;
+  const projectUrl = Formio.getProjectUrl();
+  const formPath = `/${formId ? `form/${formId}` : `${formName}`}`;
+  const submissionPath = `/submission${id ? `/${id}` : ''}`;
+  const url = `${projectUrl}${formPath}${submissionPath}`;
 
-  const formio = new Formio(`${Formio.getProjectUrl()}/form/${formId}/submission${id ? `/${id}` : ''}`);
+  const formio = new Formio(url);
 
   formio.saveSubmission(data)
     .then((result) => {
-      const url = `${Formio.getProjectUrl()}/form/${formId}/submission/${result._id}`;
-      dispatch(receiveSubmission( result, url));
+      const url = `${projectUrl}${formPath}/submission/${result._id}`;
+      dispatch(receiveSubmission(result, url));
       done(null, result);
     })
     .catch((error) => {
@@ -147,8 +152,9 @@ export const saveSubmission = (dispatch, data, formId, done = () => {}) => {
     });
 };
 
-export const deleteSubmission = (dispatch, id, formId, done = () => {}) => {
-  const formio = new Formio(`${Formio.getProjectUrl()}/form/${formId}/submission/${id}`);
+export const deleteSubmission = (dispatch, id, formId, formName, done = () => {}) => {
+  const formPath = `/${formId ? `form/${formId}` : `${formName}`}`;
+  const formio = new Formio(`${Formio.getProjectUrl()}${formPath}/submission/${id}`);
 
   return formio.deleteSubmission()
     .then(() => {

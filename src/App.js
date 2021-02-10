@@ -2,10 +2,11 @@ import { useEffect } from 'react';
 import { Route } from 'react-router-dom';
 import { initAuth } from 'react-formio';
 import { useAuth, AuthPage } from './modules/auth';
-import { FormsPage } from './modules/forms/form';
+import { FormProvider, FormsPage } from './modules/forms/form';
 import { Footer, Header, Home } from './common/components';
 import { AppConfig } from './config';
 import './App.scss';
+import EventsPage from './modules/events/components/EventsPage';
 
 function App() {
   const { dispatch } = useAuth();
@@ -25,7 +26,7 @@ function App() {
         }
         <Route exact path="/" component={Home} />
         <Route path="/form" component={FormsPage} />
-        {/*<Route path="/event" component={Event} /> */}
+        <Route path="/event" render={(props) => <FormProvider><EventsPage {...props} /></FormProvider>} />
         <Route path="/auth" component={AuthPage} />
       </div>
 

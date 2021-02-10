@@ -6,18 +6,19 @@ import { useSubmissions, resetSubmissions } from '../submissionsContext';
 import { useForm } from '../../form/formContext';
 import { useHistory, useParams } from 'react-router';
 
-const SubmissionView = ({ hideComponents, readOnly }) => {
+const SubmissionView = ({ hideComponents, readOnly, formName }) => {
   const { formId } = useParams();
   const history = useHistory();
+  
   const { state: formState } = useForm();
   const { state: submissionState, dispatch: dispatchSubmissionAction } = useSubmission();
   const { dispatch: dispatchSubmissionsAction } = useSubmissions();
 
   const onSubmit = (submission) => {
-    saveSubmission(dispatchSubmissionAction, submission, formId, (err, submission) => {
+    saveSubmission(dispatchSubmissionAction, submission, formId, formName, (err, submission) => {
       if (!err) {
         dispatchSubmissionsAction(resetSubmissions('submission'));
-        history.push(`/form/${formId}/submission/${submission._id}`);
+        history.push(`/${formId ? `form/${formId}/submission` : `${formName}`}/${submission._id}`);
       }
     });
   }

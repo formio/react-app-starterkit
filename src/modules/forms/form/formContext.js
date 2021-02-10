@@ -107,8 +107,9 @@ const sendForm = (form) => ({
   form,
 });
 
-export const getForm = (dispatch, id, done = () => {}) => {
-    const path = `${Formio.getProjectUrl()}/form${id ? `/${id}` : ''}`;
+export const getForm = (dispatch, id, name, done = () => {}) => {
+    const formPath = `/${id ? `form/${id}` : `${name}`}`;
+    const path = `${Formio.getProjectUrl()}${formPath}`;
     const formio = new Formio(path);
 
     dispatch(requestForm(id, path));
@@ -143,8 +144,9 @@ export const saveForm = (dispatch, form, done = () => {}) => {
     });
 };
 
-export const deleteForm = (dispatch, id, done = () => {}) => {
-  const path = `${Formio.getProjectUrl()}/form/${id}`;
+export const deleteForm = (dispatch, id, name, done = () => {}) => {
+  const formPath = `/form/${id ? `form/${id}` : `${name}`}`;
+  const path = `${Formio.getProjectUrl()}${formPath}`;
   const formio = new Formio(path);
 
   return formio.deleteForm()

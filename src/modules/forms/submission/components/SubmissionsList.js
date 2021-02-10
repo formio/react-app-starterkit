@@ -5,7 +5,15 @@ import { Loading } from '../../../../common/components';
 import { useForm } from '../../form';
 import { useSubmissions, indexSubmissions } from '../submissionsContext';
 
-const SubmissionsList = () => {
+const SubmissionsList = (props) => {
+  const {
+    FormError,
+    formName,
+    getViewPath,
+    getEditPath,
+    getDeletePath,
+    createSubmissionPath,
+  } = props;
   const history = useHistory();
   const { formId } = useParams();
   const [requestParams, setRequestParams] = useState({
@@ -21,21 +29,21 @@ const SubmissionsList = () => {
     switch(action) {
       case 'view':
       case 'row':
-        history.push(`/form/${formId}/submission/${submission._id}`);
+        history.push(getViewPath ? getViewPath(formId, submission) : `/form/${formId}/submission/${submission._id}`);
         break;
       case 'edit':
-        history.push(`/form/${formId}/submission/${submission._id}/edit`);
+        history.push(getEditPath ? getEditPath(formId, submission) : `/form/${formId}/submission/${submission._id}/edit`);
         break;
       case 'delete':
-        history.push(`/form/${formId}/submission/${submission._id}/delete`);
+        history.push(getDeletePath ? getDeletePath(formId, submission) : `/form/${formId}/submission/${submission._id}/delete`);
         break;
       default:
     }
   };
 
   const getSubmissions = useCallback(
-    (page, query) => indexSubmissions(dispatchSubmissionsAction, page, requestParams, query, formId),
-    [dispatchSubmissionsAction, formId, requestParams],
+    (page, query) => indexSubmissions(dispatchSubmissionsAction, page, requestParams, query, formId, formName),
+    [dispatchSubmissionsAction, formId, formName, requestParams],
   );
 
   const onPageSizeChanged = (pageSize) => {
@@ -54,7 +62,7 @@ const SubmissionsList = () => {
     );
   }
 
-  return (
+  const MainContent = () =>  (
     <div className='form-index'>
       <Errors errors={[formState.error, submissionsState.error]} />
       <SubmissionGrid
@@ -64,12 +72,22 @@ const SubmissionsList = () => {
         getSubmissions={getSubmissions}
         onPageSizeChanged={onPageSizeChanged}
       />
-      <Link className='btn btn-primary' to={`/form/${formId}`}>
+      <Link className='btn btn-primary' to={createSubmissionPath || `/form/${formId || formState.id}`}>
         <i className='glyphicon glyphicon-plus fa fa-plus' aria-hidden='true'></i>
         New {formState.form?.title}
       </Link>
     </div>
   );
+
+  if (formState.error && FormError) {
+    return( 
+      <FormError error={formState.error}>
+        <MainContent />
+      </FormError>
+    );
+  }
+
+  return <MainContent />;
 }
 
 export default SubmissionsList;
