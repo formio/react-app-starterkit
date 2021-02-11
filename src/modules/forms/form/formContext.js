@@ -145,7 +145,7 @@ export const saveForm = (dispatch, form, done = () => {}) => {
 };
 
 export const deleteForm = (dispatch, id, name, done = () => {}) => {
-  const formPath = `/form/${id ? `form/${id}` : `${name}`}`;
+  const formPath = `/${id ? `form/${id}` : `${name}`}`;
   const path = `${Formio.getProjectUrl()}${formPath}`;
   const formio = new Formio(path);
 

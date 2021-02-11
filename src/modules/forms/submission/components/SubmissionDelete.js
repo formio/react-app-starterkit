@@ -8,16 +8,16 @@ import { useSubmissions, resetSubmissions } from '../submissionsContext';
 
 const SubmissionDelete = ({ formName }) => {
   const history = useHistory();
-  const { formId, submissionId } = useParams();
+  const { formId, submissionId, eventId } = useParams();
   const { state: submissionState, dispatch: dispatchSubmissionAction } = useSubmission();
   const { dispatch: dispatchSubmissionsAction } = useSubmissions();
   const { state: formState } = useForm();
 
   const onYes = () => {
-    deleteSubmission(dispatchSubmissionAction, submissionId, formId, formName, (err) => {
+    deleteSubmission(dispatchSubmissionAction, submissionId || eventId, formId, formName, (err) => {
       if (!err) {
         dispatchSubmissionsAction(resetSubmissions());
-        history.push(`/${formId ? `/form${formId}/submission` : `${formName}`}`);
+        history.push(`/${formId ? `form/${formId}/submission` : `${formName}`}`);
       }
     });
   };
@@ -29,7 +29,7 @@ const SubmissionDelete = ({ formName }) => {
     }
   };
 
-  const message = `Are you sure you wish to delete the submission '${submissionId}'?`;
+  const message = `Are you sure you wish to delete the submission '${submissionId || eventId}'?`;
 
   return (
     <div>

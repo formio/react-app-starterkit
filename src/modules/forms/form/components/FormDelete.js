@@ -5,7 +5,7 @@ import { Confirm } from '../../../../common';
 import { useForm, deleteForm } from '../formContext';
 import { useForms, resetForms } from '../formsContext';
 
-const FormDelete = () => {
+const FormDelete = ({ name }) => {
   const history = useHistory();
   const { state: formState, dispatch: dispatchFormAction } = useForm();
   const { dispatch: dispatchFormsAction } = useForms();
@@ -14,7 +14,7 @@ const FormDelete = () => {
   const message = `Are you sure you wish to delete the form '${formState.form.title}'?`;
 
   const onYes = () => {
-    deleteForm(dispatchFormAction, formId, (err) => {
+    deleteForm(dispatchFormAction, formId, name, (err) => {
       if (!err) {
         dispatchFormsAction(resetForms());
         history.push('/form');
