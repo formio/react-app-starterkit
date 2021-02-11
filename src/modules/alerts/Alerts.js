@@ -21,7 +21,7 @@ export const Alerts = (props) => {
 
   return (
     <div style={style}>
-      {alerts.map((alert, index) => <Alert {...alert} key={index}/>)}
+      {alerts.map((alert) => <Alert {...alert} key={alert.key}/>)}
     </div>
   )
 };
