@@ -6,7 +6,7 @@ import { useForm } from '../../form';
 import { useSubmission, deleteSubmission } from '../submissionContext'
 import { useSubmissions, resetSubmissions } from '../submissionsContext';
 
-const SubmissionDelete = () => {
+const SubmissionDelete = ({ formName }) => {
   const history = useHistory();
   const { formId, submissionId } = useParams();
   const { state: submissionState, dispatch: dispatchSubmissionAction } = useSubmission();
@@ -14,10 +14,10 @@ const SubmissionDelete = () => {
   const { state: formState } = useForm();
 
   const onYes = () => {
-    deleteSubmission(dispatchSubmissionAction, submissionId, formId, (err) => {
+    deleteSubmission(dispatchSubmissionAction, submissionId, formId, formName, (err) => {
       if (!err) {
         dispatchSubmissionsAction(resetSubmissions());
-        history.push(`/form/${formId}/submission`);
+        history.push(`/${formId ? `/form${formId}/submission` : `${formName}`}`);
       }
     });
   };

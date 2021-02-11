@@ -10,11 +10,11 @@ const Confirm = (props) => {
   } = props;
 
   return (
-    <div>
+    <div className="mt-4">
       <h3>{message}</h3>
-      <div className="btn-toolbar">
+      <div className="btn-toolbar mt-4">
         <span onClick={onYes} className="btn btn-danger">{yesText}</span>
-        <span onClick={onNo} className="btn btn-default">{noText}</span>
+        <span onClick={onNo} className="btn btn-outline-dark">{noText}</span>
       </div>
     </div>
   );

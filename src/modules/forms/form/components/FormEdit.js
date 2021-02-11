@@ -1,14 +1,16 @@
 import React from 'react';
 import { FormEdit as FormEditComponent, Errors } from 'react-formio';
 import { useForm, saveForm } from '../formContext';
+import { useAlerts } from '../../../alerts';
 import _ from 'lodash';
 
 const FormEdit = (props) => {
   const { state: formState, dispatch } = useForm();
+  const { addAlert } = useAlerts();
 
   const onSaveForm = (form) => saveForm(dispatch, form, (err, form) => {
     if (!err) {
-      // TODO: Display a save success message here.
+      addAlert({ type: 'success', content: 'Form succesfully updated' });
     }
   });
 

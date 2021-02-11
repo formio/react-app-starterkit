@@ -37,7 +37,7 @@ const EventsPage = () => {
             path="/event/create"
             render={(props) => (
               <SubmissionProvider>
-                <FormView {...props} name='event' />
+                <FormView {...props} name='event'/>
               </SubmissionProvider>
             )}
           />
@@ -45,7 +45,7 @@ const EventsPage = () => {
             path="/event/:eventId"
             render={(props) => (
               <SubmissionProvider>
-                <EventPage {...props} />
+                <EventPage {...props}/>
               </SubmissionProvider>
             )}
           />
