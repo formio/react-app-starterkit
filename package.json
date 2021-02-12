@@ -1,6 +1,5 @@
 {
-  "name": "formio-react-app-reduxfree",
-  "version": "0.1.0",
+  "name": "react-app-starterkit",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
