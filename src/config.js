@@ -9,7 +9,7 @@ const getQuery = (query) => {
 }
 
 const query = getQuery({});
-const PROJECT_URL = query.projectUrl || 'https://gtbvdrunldplvre.form.io';
+const PROJECT_URL = query.projectUrl || 'https://reactstarter.form.io';
 const API_URL = query.apiUrl || 'https://api.form.io';
 
 export const AppConfig = {
