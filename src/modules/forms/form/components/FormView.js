@@ -53,7 +53,7 @@ const FormView = (props) => {
         form={form}
         submission={submission}
         url={url}
-        options={{options}}
+        options={options}
         hideComponents={hideComponents}
         onSubmit={onSubmit}
       />
