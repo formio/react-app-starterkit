@@ -1,7 +1,7 @@
 Form.io React Starter Application
 ---------------------------------
 This is a starter application that uses React, Bootstrap, Webpack, and Form.io to create a powerful Serverless application.
-This example uses Contexts nad hooks to manage application state. If you prefer Redux approach, take a look at the [redux-example](https://github.com/formio/react-app-starterkit/tree/redux-example).
+This example uses Contexts and hooks to manage application state. If you prefer Redux approach, take a look at the [redux-example](https://github.com/formio/react-app-starterkit/tree/redux-example).
 
 Installation
 ---------
