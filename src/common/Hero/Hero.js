@@ -36,7 +36,7 @@ const Hero = () => {
               <a
                 className="btn btn-lg btn-success"
                 target="_blank" rel="noopener noreferrer"
-                href="https://github.com/formio/react-formio"
+                href="https://github.com/formio/react"
               >
                 Embedding
               </a>
