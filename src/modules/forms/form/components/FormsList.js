@@ -9,7 +9,7 @@ const FormsList = () => {
   const { state: formsState, dispatch: dispatchFormsAction } = useForms();
   const [requestParams, setRequestParams] = useState({
     limit: 10,
-    query: {},
+    query: {type: 'form', tags: 'common'},
     select: '',
     sort: '',
   });
