@@ -22,7 +22,7 @@ const FormView = (props) => {
   const history = useHistory();
   const { state: formState } = useForm();
   const { formId } = useParams();
-  const { dispatch: dispatchSubmissionAction } = useSubmission();
+  const { dispatch: dispatchSubmissionAction, state: submissionState } = useSubmission();
   const { dispatch: dispatchSubmissionsAction } = useSubmissions();
 
   const {
@@ -48,7 +48,7 @@ const FormView = (props) => {
   return (
     <div>
       <h3>New { form.title }</h3>
-      <Errors errors={[formError]} />
+      <Errors errors={[formError, submissionState.error]} />
       <Form
         form={form}
         submission={submission}
