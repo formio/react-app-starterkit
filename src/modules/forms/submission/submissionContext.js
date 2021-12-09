@@ -1,5 +1,5 @@
 import React from 'react';
-import { Formio } from 'react-formio';
+import { Formio } from '@formio/react';
 
 const SubmissionContext = React.createContext();
 
@@ -13,7 +13,7 @@ const initialState = {
   error: '',
 };
 
-const authReducer = (state, action) => {
+const submissionReducer = (state, action) => {
   switch (action.type) {
     case 'SUBMISSION_CLEAR_ERROR':
       return {
@@ -61,7 +61,7 @@ const authReducer = (state, action) => {
 };
 
 export function SubmissionProvider(props) {
-  const [state, dispatch] = React.useReducer(authReducer, initialState);
+  const [state, dispatch] = React.useReducer(submissionReducer, initialState);
   const value = React.useMemo(() => [state, dispatch], [state]);
 
   return <SubmissionContext.Provider value={value} {...props} />;
@@ -130,6 +130,7 @@ export const getSubmission = (dispatch, id, formId, formName, done = () => {}) =
 };
 
 export const saveSubmission = (dispatch, data, formId, formName, done = () => {}) => {
+  console.log(5555)
   dispatch(sendSubmission(data));
 
   const id = data._id;
@@ -147,7 +148,7 @@ export const saveSubmission = (dispatch, data, formId, formName, done = () => {}
       done(null, result);
     })
     .catch((error) => {
-      dispatch(failSubmission( error));
+      dispatch(failSubmission(error));
       done(error);
     });
 };

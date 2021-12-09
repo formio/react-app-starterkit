@@ -1,4 +1,4 @@
-import { Formio } from 'react-formio';
+import { Formio } from '@formio/react';
 
 const getQuery = (query) => {
   window.location.search.substr(1).split('&').forEach(function(item) {

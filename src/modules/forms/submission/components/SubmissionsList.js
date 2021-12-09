@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback, useState } from 'react';
 import { Link, useHistory, useParams } from 'react-router-dom'
-import { SubmissionGrid, Errors } from 'react-formio';
+import { SubmissionGrid, Errors } from '@formio/react';
 import { Loading } from '../../../../common';
 import { useForm } from '../../form';
 import { useSubmissions, indexSubmissions } from '../submissionsContext';

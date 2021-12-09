@@ -1,5 +1,5 @@
 import React from 'react';
-import { Formio } from 'react-formio';
+import { Formio } from '@formio/react';
 
 const FormContext = React.createContext();
 

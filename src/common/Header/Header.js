@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import { logout } from 'react-formio';
+import { logout } from '@formio/react';
 import { useAuth } from '../../modules/auth';
 
 const Header = () => {

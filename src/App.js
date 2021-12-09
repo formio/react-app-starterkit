@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Route } from 'react-router-dom';
-import { initAuth } from 'react-formio';
+import { initAuth } from '@formio/react';
 import { useAuth, AuthPage } from './modules/auth';
 import { FormProvider, FormsPage } from './modules/forms/form';
 import { Footer, Header, Home, Loading, Modal } from './common';

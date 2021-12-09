@@ -1,5 +1,5 @@
 import React from 'react';
-import { Errors } from 'react-formio';
+import { Errors } from '@formio/react';
 import { useHistory, useParams } from 'react-router';
 import { Confirm } from '../../../../common';
 import { useForm, deleteForm } from '../formContext';

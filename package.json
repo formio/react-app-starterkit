@@ -2,22 +2,23 @@
   "name": "react-app-starterkit",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.9",
-    "@testing-library/react": "^11.2.5",
-    "@testing-library/user-event": "^12.6.3",
+    "@formio/react": "^5.2.0-rc.2",
+    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^4.6.0",
     "bootswatch": "^4.6.0",
     "font-awesome": "^4.7.0",
-    "formiojs": "^4.12.6",
-    "lodash": "^4.17.20",
-    "node-sass": "^5.0.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-formio": "^4.3.0",
+    "formiojs": "^4.14.0",
+    "lodash": "^4.17.21",
+    "node-sass": "^7.0.0",
+    "react": "^17.0.2",
+    "react-app-polyfill": "^2.0.0",
+    "react-dom": "^17.0.2",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.2",
-    "web-vitals": "^1.1.0"
+    "react-scripts": "4.0.3",
+    "web-vitals": "^2.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -35,12 +36,14 @@
     "production": [
       ">0.2%",
       "not dead",
-      "not op_mini all"
+      "not op_mini all",
+      "ie >= 9"
     ],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
-      "last 1 safari version"
+      "last 1 safari version",
+      "ie 11"
     ]
   }
 }
