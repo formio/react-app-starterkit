@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Errors } from 'react-formio';
+import { Form, Errors } from '@formio/react';
 import { Loading } from '../../../../common';
 import { useSubmission, saveSubmission } from '../submissionContext';
 import { useSubmissions, resetSubmissions } from '../submissionsContext';

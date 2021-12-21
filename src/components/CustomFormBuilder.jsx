@@ -1,5 +1,5 @@
 import React from 'react';
-import FormBuilder from 'react-formio/lib/components/FormBuilder';
+import FormBuilder from '@formio/react/lib/components/FormBuilder';
 
 class CustomFormBuilderCompnent extends FormBuilder {
   constructor(props) {

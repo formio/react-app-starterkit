@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, setUser } from 'react-formio';
+import { Form, setUser } from '@formio/react';
 import { Loading } from '../../../common';
 import { AppConfig, AuthConfig } from '../../../config';
 import { useAuth } from '../authContext';

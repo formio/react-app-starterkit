@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import { Errors, FormGrid } from 'react-formio';
+import { Errors, FormGrid } from '@formio/react';
 import { Loading } from '../../../../common';
 import { useForms, indexForms } from '../formsContext';
 
@@ -9,7 +9,7 @@ const FormsList = () => {
   const { state: formsState, dispatch: dispatchFormsAction } = useForms();
   const [requestParams, setRequestParams] = useState({
     limit: 10,
-    query: {},
+    query: {type: 'form', tags: 'common'},
     select: '',
     sort: '',
   });

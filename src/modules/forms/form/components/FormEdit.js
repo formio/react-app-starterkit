@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormEdit as FormEditComponent, Errors } from 'react-formio';
+import { FormEdit as FormEditComponent, Errors } from '@formio/react';
 import { useForm, saveForm } from '../formContext';
 import { useAlerts } from '../../../alerts';
 import _ from 'lodash';

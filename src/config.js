@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 
 import { Formio } from 'react-formio';
+=======
+import { Formio } from '@formio/react';
+>>>>>>> d67d374d6e3d5d06fc20b956ae8b1e10c42b30f8
 
 const getQuery = (query) => {
   window.location.search.substr(1).split('&').forEach(function(item) {
