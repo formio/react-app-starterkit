@@ -1,3 +1,4 @@
+
 import { Formio } from 'react-formio';
 
 const getQuery = (query) => {
@@ -9,7 +10,7 @@ const getQuery = (query) => {
 }
 
 const query = getQuery({});
-const PROJECT_URL = query.projectUrl || 'https://reactstarter.form.io';
+var PROJECT_URL = 'https://wnnngozsxpmqbnz.form.io';
 const API_URL = query.apiUrl || 'https://api.form.io';
 
 export const AppConfig = {

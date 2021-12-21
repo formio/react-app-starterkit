@@ -21,6 +21,8 @@ $green:   #449414;
 $teal:    #36b9cc;
 $cyan:    #9954BB;
 $lightblue: lighten($blue, 20%);
+$light-brand: #ecc8c1;
+$dark-brand: #da9189;
 
 $primary:       $blue;
 $secondary:     $orange;
@@ -41,15 +43,17 @@ $fa-font-path: '../fonts';
 @import '~font-awesome/scss/font-awesome';
 @import '~formiojs/dist/formio.full.css';
 
-.logo {
-  height: 1.9em;
+body {
+  width: 75%;
+  margin: 0 auto;
+  padding: 30px 0;
 }
-
-.text-blue {
-  color: $brand-primary;
+.rap-label > label {
+  color: $dark-brand;
 }
-
-.text-green {
-  color: $brand-secondary;
+.rap-submit {
+  background: $light-brand !important;
+  border: none;
+  color: $black !important;
+  font-size: 18px;
 }
-
