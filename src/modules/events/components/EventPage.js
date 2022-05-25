@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link, Route, Switch, useParams } from 'react-router-dom';
+import { Link, Route, Routes, useParams } from 'react-router-dom';
 import { useSubmission, getSubmission, SubmissionView, SubmissionDelete } from '../../forms/submission';
 
 const EventPage = (props) => {
@@ -42,14 +42,14 @@ const EventPage = (props) => {
   return (
     <div>
       <Navbar />
-      <Switch>
-        <Route exact path="/event/:eventId" component={View}/>
+      <Routes>
+        <Route path="/event/:eventId" component={View}/>
         <Route path="/event/:eventId/edit" component={Edit}/>
         <Route
           path="/event/:eventId/delete"
           render={(props) => <SubmissionDelete {...props} formName="event"/>}
         />
-      </Switch>
+      </Routes>
     </div>
   );
 };

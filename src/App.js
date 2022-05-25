@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { initAuth } from '@formio/react';
 import { useAuth, AuthPage } from './modules/auth';
 import { FormProvider, FormsPage } from './modules/forms/form';
@@ -41,10 +41,12 @@ function App() {
                 </div>
                 : null
               }
-            <Route exact path="/" component={Home} />
-            <Route path="/form" component={FormsPage} />
-            <Route path="/event" render={(props) => <FormProvider><EventsPage {...props} /></FormProvider>} />
-            <Route path="/auth" component={AuthPage} />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/form/*" element={<FormsPage />} />
+              <Route path="/event/*" element={ <FormProvider><EventsPage /></FormProvider>} />
+              <Route path="/auth" element={<AuthPage />} />
+            </Routes>
           </div>
         </AlertsProvider>
         <Footer></Footer>

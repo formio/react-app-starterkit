@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Errors } from '@formio/react';
-import { useHistory, useParams } from 'react-router';
+import { useNavigate , useParams } from 'react-router';
 import { Loading } from '../../../../common';
 import { useForm } from '../formContext';
 import {
@@ -19,7 +19,7 @@ const FormView = (props) => {
     name,
   } = props;
 
-  const history = useHistory();
+  const navigate = useNavigate ();
   const { state: formState } = useForm();
   const { formId } = useParams();
   const { dispatch: dispatchSubmissionAction, state: submissionState } = useSubmission();
@@ -36,7 +36,7 @@ const FormView = (props) => {
     saveSubmission(dispatchSubmissionAction, submission, formId, name, (err, submission) => {
       if (!err) {
         dispatchSubmissionsAction(resetSubmissions());
-        history.push(`/${formId ? `form/${formId}/submission` : `${name}`}/${submission._id}`);
+        navigate(`/${formId ? `form/${formId}/submission` : `${name}`}/${submission._id}`);
       }
     });
   };

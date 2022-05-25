@@ -4,11 +4,11 @@ import { Loading } from '../../../../common';
 import { useSubmission, saveSubmission } from '../submissionContext';
 import { useSubmissions, resetSubmissions } from '../submissionsContext';
 import { useForm } from '../../form/formContext';
-import { useHistory, useParams } from 'react-router';
+import { useNavigate , useParams } from 'react-router';
 
 const SubmissionView = ({ hideComponents, readOnly, formName }) => {
   const { formId } = useParams();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const { state: formState } = useForm();
   const { state: submissionState, dispatch: dispatchSubmissionAction } = useSubmission();
@@ -18,7 +18,7 @@ const SubmissionView = ({ hideComponents, readOnly, formName }) => {
     saveSubmission(dispatchSubmissionAction, submission, formId, formName, (err, submission) => {
       if (!err) {
         dispatchSubmissionsAction(resetSubmissions('submission'));
-        history.push(`/${formId ? `form/${formId}/submission` : `${formName}`}/${submission._id}`);
+        navigate(`/${formId ? `submission` : `${formName}`}/${submission._id}`);
       }
     });
   }
