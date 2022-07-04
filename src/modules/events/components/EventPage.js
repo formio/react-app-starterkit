@@ -22,32 +22,32 @@ const EventPage = (props) => {
         </Link>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to={`/event/${eventId}`}>
+        <Link className="nav-link" to={``}>
           <i className="fa fa-eye"></i> View
         </Link>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to={`/event/${eventId}/edit`}>
+        <Link className="nav-link" to={`edit`}>
           <i className="fa fa-edit"></i> Edit
         </Link>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to={`/event/${eventId}/delete`}>
+        <Link className="nav-link" to={`delete`}>
           <i className="fa fa-trash"></i> Delete
         </Link>
       </li>
     </ul>
   );
 
-  return (
+return (
     <div>
       <Navbar />
       <Routes>
-        <Route path="/event/:eventId" component={View}/>
-        <Route path="/event/:eventId/edit" component={Edit}/>
+        <Route path="" element={<View />}/>
+        <Route path="edit" element={<Edit />}/>
         <Route
-          path="/event/:eventId/delete"
-          render={(props) => <SubmissionDelete {...props} formName="event"/>}
+          path="delete"
+          element={(<SubmissionDelete formName={'event'} />)}
         />
       </Routes>
     </div>

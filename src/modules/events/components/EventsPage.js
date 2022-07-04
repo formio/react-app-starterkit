@@ -39,7 +39,7 @@ const EventsPage = () => {
             )}
           />
           <Route
-            path=":eventId"
+            path=":eventId/*"
             element={(
               <SubmissionProvider>
                 <EventPage />
