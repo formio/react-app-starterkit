@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link, Route, Switch, useParams } from 'react-router-dom';
+import { Link, Route, Routes, useParams } from 'react-router-dom';
 import { useSubmission, getSubmission, SubmissionView, SubmissionDelete } from '../../forms/submission';
 
 const EventPage = (props) => {
@@ -22,34 +22,34 @@ const EventPage = (props) => {
         </Link>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to={`/event/${eventId}`}>
+        <Link className="nav-link" to={``}>
           <i className="fa fa-eye"></i> View
         </Link>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to={`/event/${eventId}/edit`}>
+        <Link className="nav-link" to={`edit`}>
           <i className="fa fa-edit"></i> Edit
         </Link>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to={`/event/${eventId}/delete`}>
+        <Link className="nav-link" to={`delete`}>
           <i className="fa fa-trash"></i> Delete
         </Link>
       </li>
     </ul>
   );
 
-  return (
+return (
     <div>
       <Navbar />
-      <Switch>
-        <Route exact path="/event/:eventId" component={View}/>
-        <Route path="/event/:eventId/edit" component={Edit}/>
+      <Routes>
+        <Route path="" element={<View />}/>
+        <Route path="edit" element={<Edit />}/>
         <Route
-          path="/event/:eventId/delete"
-          render={(props) => <SubmissionDelete {...props} formName="event"/>}
+          path="delete"
+          element={(<SubmissionDelete formName={'event'} />)}
         />
-      </Switch>
+      </Routes>
     </div>
   );
 };

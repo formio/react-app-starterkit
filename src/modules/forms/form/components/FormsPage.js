@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { FormsProvider } from '../formsContext';
 import { FormProvider } from '../formContext';
 import FormPage from './FormPage';
@@ -8,18 +8,19 @@ import FormCreate from './FormCreate';
 
 const FormsPage = () => (
   <FormsProvider>
-    <Switch>
-      <Route exact path="/form" component={FormsList}/>
+    <Routes>
+      <Route index element={<FormsList/>}/>
+
       <Route
-        exact
-        path="/form/create"
-        render={ (props) => <FormProvider><FormCreate {...props} /></FormProvider> }
+        path="create"
+        element={ <FormProvider><FormCreate  /></FormProvider> }
       />
+
       <Route
-        path="/form/:formId"
-        render={ (props) => <FormProvider><FormPage {...props} /></FormProvider> }
+        path=":formId/*"
+        element={ <FormProvider><FormPage/></FormProvider> }
       />
-    </Switch>
+    </Routes>
   </FormsProvider>
 )
 

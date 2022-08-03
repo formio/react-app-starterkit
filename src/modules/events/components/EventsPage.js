@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { FormView, getForm, useForm } from '../../forms/form';
 import { FormsProvider } from '../../forms/form/formsContext';
 import { SubmissionProvider, SubmissionsList, SubmissionsProvider } from '../../forms/submission';
@@ -16,13 +16,11 @@ const EventsPage = () => {
   return (
     <FormsProvider>
       <SubmissionsProvider>
-        <Switch>
+        <Routes>
           <Route
-            exact
-            path="/event"
-            render={(props) => (
+            index
+            element={ (
               <SubmissionsList
-                {...props}
                 FormError={EventFormError}
                 formName="event"
                 getViewPath={(formId, submission) => `/event/${submission._id}`}
@@ -33,23 +31,22 @@ const EventsPage = () => {
             )}
           />
           <Route
-            exact
-            path="/event/create"
-            render={(props) => (
+            path="create"
+            element={(
               <SubmissionProvider>
-                <FormView {...props} name='event'/>
+                <FormView name='event'/>
               </SubmissionProvider>
             )}
           />
           <Route
-            path="/event/:eventId"
-            render={(props) => (
+            path=":eventId/*"
+            element={(
               <SubmissionProvider>
-                <EventPage {...props}/>
+                <EventPage />
               </SubmissionProvider>
             )}
           />
-        </Switch>
+        </Routes>
       </SubmissionsProvider>
     </FormsProvider>
   );

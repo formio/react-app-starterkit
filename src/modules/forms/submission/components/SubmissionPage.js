@@ -1,4 +1,4 @@
-import { Link, Route, Switch, useParams } from 'react-router-dom'
+import { Link, Route, Routes, useParams } from 'react-router-dom'
 import React, { useEffect } from 'react'
 import { useSubmission, getSubmission } from '../submissionContext';
 import SubmissionView from './SubmissionView';
@@ -43,21 +43,20 @@ const SubmissionPage = () => {
   return (
     <div>
       <Navbar />
-      <Switch>
+      <Routes>
         <Route
-          exact
-          path="/form/:formId/submission/:submissionId"
-          component={View}
+         index
+          element={<View/>}
         />
         <Route
-          path="/form/:formId/submission/:submissionId/edit"
-          component={Edit}
+          path="edit"
+          element={<Edit/>}
         />
         <Route
-          path="/form/:formId/submission/:submissionId/delete"
-          component={SubmissionDelete}
+          path="delete"
+          element={<SubmissionDelete/>}
         />
-      </Switch>
+      </Routes>
     </div>
   )
 };

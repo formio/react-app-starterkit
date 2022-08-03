@@ -17,7 +17,7 @@ const Header = () => {
             <img className="logo" alt="Form.io" src="https://portal.form.io/images/formio-logo.png" height="25px" />
           </Link>
           <ul className="nav navbar-nav mr-auto">
-            <NavLink exact to="/" role="navigation button" className="nav-link">
+            <NavLink to="/" role="navigation button" className="nav-link">
               <span className="fa fa-home" />
             </NavLink>
             { (authState.is.hasOwnProperty('administrator') && authState.is.administrator) ? (

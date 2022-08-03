@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link, Route, Switch, useParams } from 'react-router-dom';
+import { Link, Route, Routes, useParams } from 'react-router-dom';
 import SubmissionsPage from '../../submission/components/SubmissionsPage';
 import { getForm, useForm } from '../formContext';
 import FormDelete from './FormDelete';
@@ -23,22 +23,22 @@ const FormNavigation = () => {
         </Link>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to={`/form/${formId}`}>
+        <Link className="nav-link" to={``}>
           <i className="fa fa-pencil"></i> Enter Data
         </Link>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to={`/form/${formId}/submission`}>
+        <Link className="nav-link" to={`submission`}>
           <i className="fa fa-list-alt"></i> View Data
         </Link>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to={`/form/${formId}/edit`}>
+        <Link className="nav-link" to={`edit`}>
           <i className="fa fa-edit"></i> Edit Form
         </Link>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to={`/form/${formId}/delete`}>
+        <Link className="nav-link" to={`delete`}>
           <i className="fa fa-trash"></i> Delete Form
         </Link>
       </li>
@@ -48,22 +48,21 @@ const FormNavigation = () => {
   return (
     <div>
       <Navbar />
-      <Switch>
+      <Routes>
         <Route
-          exact
-          path="/form/:formId"
-          render={ (props) => (
+          index
+          element={
             <SubmissionsProvider>
               <SubmissionProvider>
-                <FormView {...props} />
+                <FormView />
               </SubmissionProvider>
             </SubmissionsProvider>
-          )}
+          }
         />
-        <Route path="/form/:formId/edit" component={FormEdit} />
-        <Route path="/form/:formId/delete" component={FormDelete} />
-        <Route path="/form/:formId/submission" component={SubmissionsPage} />
-      </Switch>
+        <Route path="edit" element={<FormEdit/>} />
+        <Route path="delete" element={<FormDelete/>} />
+        <Route path="submission/*" element={<SubmissionsPage/>} />
+      </Routes>
     </div>
   );
 };

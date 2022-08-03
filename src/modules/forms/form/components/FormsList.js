@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useCallback } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useNavigate  } from 'react-router-dom'
 import { Errors, FormGrid } from '@formio/react';
 import { Loading } from '../../../../common';
 import { useForms, indexForms } from '../formsContext';
 
 const FormsList = () => {
-  const history = useHistory();
+  const navigate = useNavigate ();
   const { state: formsState, dispatch: dispatchFormsAction } = useForms();
   const [requestParams, setRequestParams] = useState({
     limit: 10,
@@ -33,16 +33,16 @@ const FormsList = () => {
   const onAction = (form, action) => {
     switch(action) {
       case 'view':
-        history.push(`/form/${form._id}`);
+        navigate(`/form/${form._id}`);
         break;
       case 'submission':
-        history.push(`/form/${form._id}/submission`);
+        navigate(`/form/${form._id}/submission`);
         break;
       case 'edit':
-        history.push(`/form/${form._id}/edit`);
+        navigate(`/form/${form._id}/edit`);
         break;
       case 'delete':
-        history.push(`/form/${form._id}/delete`);
+        navigate(`/form/${form._id}/delete`);
         break;
       default:
     }
