@@ -20,7 +20,7 @@ const Header = () => {
             <NavLink to="/" role="navigation button" className="nav-link">
               <span className="fa fa-home" />
             </NavLink>
-            { (authState.is.hasOwnProperty('administrator') && authState.is.administrator) ? (
+            { authState.authenticated ? (
               <NavLink to="/form" role="navigation link" className="nav-link">
                 <i className="fa fa-wpforms"></i>&nbsp;
                 Forms

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link, Route, Routes, useParams } from 'react-router-dom';
+import { NavLink, Route, Routes, useParams } from 'react-router-dom';
 import SubmissionsPage from '../../submission/components/SubmissionsPage';
 import { getForm, useForm } from '../formContext';
 import FormDelete from './FormDelete';
@@ -18,29 +18,29 @@ const FormNavigation = () => {
   const Navbar = () => (
     <ul className="nav nav-tabs">
       <li className="nav-item">
-        <Link className="nav-link" to="/form">
+        <NavLink className="nav-link" to="/form">
           <i className="fa fa-chevron-left"></i>
-        </Link>
+        </NavLink>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to={``}>
+        <NavLink className="nav-link" to={``}>
           <i className="fa fa-pencil"></i> Enter Data
-        </Link>
+        </NavLink>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to={`submission`}>
+        <NavLink className="nav-link" to={`submission`}>
           <i className="fa fa-list-alt"></i> View Data
-        </Link>
+        </NavLink>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to={`edit`}>
+        <NavLink className="nav-link" to={`edit`}>
           <i className="fa fa-edit"></i> Edit Form
-        </Link>
+        </NavLink>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to={`delete`}>
+        <NavLink className="nav-link" to={`delete`}>
           <i className="fa fa-trash"></i> Delete Form
-        </Link>
+        </NavLink>
       </li>
     </ul>
   );
@@ -51,13 +51,13 @@ const FormNavigation = () => {
       <Routes>
         <Route
           index
-          element={
+          element={(
             <SubmissionsProvider>
               <SubmissionProvider>
                 <FormView />
               </SubmissionProvider>
             </SubmissionsProvider>
-          }
+  )}
         />
         <Route path="edit" element={<FormEdit/>} />
         <Route path="delete" element={<FormDelete/>} />
