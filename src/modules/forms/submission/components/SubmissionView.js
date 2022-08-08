@@ -18,7 +18,7 @@ const SubmissionView = ({ hideComponents, readOnly, formName }) => {
     saveSubmission(dispatchSubmissionAction, submission, formId, formName, (err, submission) => {
       if (!err) {
         dispatchSubmissionsAction(resetSubmissions('submission'));
-        navigate(`/${formId ? `submission` : `${formName}`}/${submission._id}`);
+        navigate(`/${formId ? `form/${formId}/submission` : `${formName}`}/${submission._id}`);
       }
     });
   }

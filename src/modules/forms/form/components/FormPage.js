@@ -18,12 +18,12 @@ const FormNavigation = () => {
   const Navbar = () => (
     <ul className="nav nav-tabs">
       <li className="nav-item">
-        <NavLink className="nav-link" to="/form">
+        <NavLink className="nav-link" end to="/form">
           <i className="fa fa-chevron-left"></i>
         </NavLink>
       </li>
       <li className="nav-item">
-        <NavLink className="nav-link" to={``}>
+        <NavLink className="nav-link"  end to={``}>
           <i className="fa fa-pencil"></i> Enter Data
         </NavLink>
       </li>

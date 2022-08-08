@@ -1,4 +1,4 @@
-import { Link, Route, Routes, useParams } from 'react-router-dom'
+import { NavLink, Route, Routes, useParams } from 'react-router-dom'
 import React, { useEffect } from 'react'
 import { useSubmission, getSubmission } from '../submissionContext';
 import SubmissionView from './SubmissionView';
@@ -18,24 +18,24 @@ const SubmissionPage = () => {
   const Navbar = () => (
     <ul className="nav nav-tabs">
       <li className="nav-item">
-        <Link className="nav-link" to={`/form/${formId}/submission`}>
+        <NavLink className="nav-link" end to={`/form/${formId}/submission`}>
           <i className="fa fa-chevron-left"></i>
-        </Link>
+        </NavLink>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to={`/form/${formId}/submission/${submissionId}`}>
+        <NavLink className="nav-link" end to={`/form/${formId}/submission/${submissionId}`}>
           <i className="fa fa-eye"></i> View
-        </Link>
+        </NavLink>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to={`/form/${formId}/submission/${submissionId}/edit`}>
+        <NavLink className="nav-link" to={`/form/${formId}/submission/${submissionId}/edit`}>
           <i className="fa fa-edit"></i> Edit
-        </Link>
+        </NavLink>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to={`/form/${formId}/submission/${submissionId}/delete`}>
+        <NavLink className="nav-link" to={`/form/${formId}/submission/${submissionId}/delete`}>
           <i className="fa fa-trash"></i> Delete
-        </Link>
+        </NavLink>
       </li>
     </ul>
   );
