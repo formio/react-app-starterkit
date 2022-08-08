@@ -130,7 +130,6 @@ export const getSubmission = (dispatch, id, formId, formName, done = () => {}) =
 };
 
 export const saveSubmission = (dispatch, data, formId, formName, done = () => {}) => {
-  console.log(5555)
   dispatch(sendSubmission(data));
 
   const id = data._id;

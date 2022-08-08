@@ -12,13 +12,15 @@ import { AuthProvider } from './modules/auth';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-<React.StrictMode>
+  // If you have the StrictMode enabled, it will fire two times the useEffect on development mode 
+  //to make sure that you are aware of the possible side-effects that could appear.
+/* <React.StrictMode> */
     <AuthProvider>
       <Router>
         <App />
       </Router>
     </AuthProvider>
-  </React.StrictMode>,
+ /* </React.StrictMode> */
 );
 
 // If you want to start measuring performance in your app, pass a function
