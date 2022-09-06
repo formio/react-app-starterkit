@@ -21,9 +21,3 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-.idea
-coverage
-dist
-build
-node_modules

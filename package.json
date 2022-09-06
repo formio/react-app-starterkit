@@ -1,25 +1,24 @@
 {
-  "name": "react-app-starterkit",
+  "name": "example-app",
+  "version": "0.1.0",
   "private": true,
-  "version": "1.1.0-rc.1",
   "dependencies": {
+    "@formio/contrib": "^1.1.0",
     "@formio/react": "^5.2.4-rc.1",
-    "@testing-library/jest-dom": "^5.16.1",
-    "@testing-library/react": "^12.1.2",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^13.5.0",
-    "bootstrap": "^4.6.0",
-    "bootswatch": "^4.6.0",
-    "font-awesome": "^4.7.0",
-    "formiojs": "^4.14.8",
-    "lodash": "^4.17.21",
+    "boostrap": "^2.0.0",
+    "bootstrap": "^5.2.0",
+    "formiojs": "^4.14.7",
     "react": "^18.1.0",
-    "node-sass": "6.0.0",
-    "react-app-polyfill": "^2.0.0",
+    "react-bootstrap": "^2.4.0",
+    "react-code-blocks": "0.0.9-0",
     "react-dom": "^18.1.0",
-    "react-router": "^6.3.0",
+    "react-json-view": "^1.21.3",
     "react-router-dom": "^6.3.0",
-    "react-scripts": "4.0.3",
-    "web-vitals": "^2.1.2"
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -37,14 +36,12 @@
     "production": [
       ">0.2%",
       "not dead",
-      "not op_mini all",
-      "ie >= 9"
+      "not op_mini all"
     ],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
-      "last 1 safari version",
-      "ie 11"
+      "last 1 safari version"
     ]
   }
 }

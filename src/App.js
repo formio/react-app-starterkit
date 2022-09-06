@@ -1,57 +1,22 @@
-import React, { useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
-import { initAuth } from '@formio/react';
-import { useAuth, AuthPage } from './modules/auth';
-import { FormProvider, FormsPage } from './modules/forms/form';
-import { Footer, Header, Home, Loading, Modal } from './common';
-import { AppConfig } from './config';
-import './App.scss';
-import EventsPage from './modules/events/components/EventsPage';
-import { Alerts, AlertsProvider } from './modules/alerts';
+import './App.css';
+import { Formio} from '@formio/react';
+import FormioContrib from '@formio/contrib';
+import Navigation from './components/Navigation';
+import { Route, Routes } from 'react-router-dom';
+import Home from './components/Home';
+import Components from './components/Components';
+Formio.use(FormioContrib);
 
 function App() {
-  const { dispatch, state: { isActive } } = useAuth();
-
-  useEffect(() => {
-    initAuth()(dispatch);
-  }, [dispatch]);
-
+  console.log(FormioContrib);
   return (
-    <>
-      { isActive ?
-          (
-            <Modal className="alert alert-info">
-              <div className="d-flex flex-column align-items-center">
-                <Loading style={{ marginBottom: ' 10px' }}/>
-                Logging In...
-              </div>
-            </Modal>
-          )
-          : null
-      }
-      <div className="App">
-        <Header/>
-        <AlertsProvider>
-          <Alerts/>
-          <div className="container" id="main">
-            { AppConfig.projectUrl === 'https://reactstarter.form.io' ?
-                <div className="alert alert-warning">
-                  This app is still configured to use the default project.
-                  Be sure to create your own project in form.io and change the PROJECT_URL in src/config.js
-                </div>
-                : null
-              }
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/form/*" element={<FormsPage />} />
-              <Route path="/event/*" element={ <FormProvider><EventsPage /></FormProvider>} />
-              <Route path="/auth" element={<AuthPage />} />
-            </Routes>
-          </div>
-        </AlertsProvider>
-        <Footer></Footer>
-      </div>
-    </>
+    <div className="App">
+      <Navigation/>
+      <Routes>
+        <Route path='/' element={<Home />}></Route>
+        <Route path='/components/:component' element={<Components />}></Route>
+      </Routes>      
+    </div>
   );
 }
 
