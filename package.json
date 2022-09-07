@@ -1,7 +1,8 @@
 {
-  "name": "example-app",
+  "name": "react-starterkit-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://formio.github.io/react-app-starterkit",
   "dependencies": {
     "@formio/contrib": "^1.1.0",
     "@formio/react": "^5.2.4-rc.1",
@@ -24,7 +25,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "npm run build; cd build; git init; git remote add origin git@github.com:formio/react-app-starterkit.git; git checkout -b gh-pages; git add -A; git commit -m 'Update demo application'; git push -f origin gh-pages;"
   },
   "eslintConfig": {
     "extends": [

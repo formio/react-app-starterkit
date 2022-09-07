@@ -1,5 +1,5 @@
 import { Col, Container, Nav, Row, Tab } from "react-bootstrap"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import Builder from "./Builder"
 import CustomBuilder from "./CustomBuilder"
 import PDFForm from "./PDFForm"
@@ -11,34 +11,44 @@ const Components = () => {
   const {component}  = useParams()
   return(
     <Container className="pt-3">
-     <Tab.Container id="left-tabs-example" defaultActiveKey={component}>
+     <Tab.Container id="left-tabs-example" defaultActiveKey={'renderer'}>
       <Row>
         <Col sm={2}>
           <Nav.Item variant="pills" className="flex-column">
             <Nav.Item>
-              <Nav.Link eventKey="renderer" href="/components/renderer">
+              <Link to="component">
+              <Nav.Link eventKey="renderer">
                 Form Renderer
               </Nav.Link>
+              </Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link eventKey="builder" href="/components/builder">
+              <Link to="component">
+              <Nav.Link eventKey="builder">
                 Form Builder
               </Nav.Link>
-            </Nav.Item>
+              </Link>
+              </Nav.Item>
             <Nav.Item>
-              <Nav.Link eventKey="simple" href="/components/simple">
+              <Link to="component">
+              <Nav.Link eventKey="simple">
                 Simple Form
               </Nav.Link>
+              </Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link eventKey="wizard" href="/components/wizard">
+              <Link to="component">
+              <Nav.Link eventKey="wizard">
                 Wizard Form
               </Nav.Link>
+              </Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link eventKey="pdf" href="/components/pdf">
+              <Link to="component">
+              <Nav.Link eventKey="pdf">
                 PDF Form
               </Nav.Link>
+              </Link>
             </Nav.Item>
             {/* <Nav.Item>
               <Nav.Link eventKey="custom" href="/components/custom">
