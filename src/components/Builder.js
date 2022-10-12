@@ -2,7 +2,7 @@ import { Form, FormBuilder } from "@formio/react"
 import { useState } from "react"
 import { Card } from "react-bootstrap"
 import ReactJson from "react-json-view"
-
+import '../styles/Builder.css'
 const Builder = () => {
   const [jsonSchema, setSchema] = useState({components: []})
   return (
