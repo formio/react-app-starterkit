@@ -31,6 +31,16 @@
   color: #61dafb;
 }
 
+.nav-pills .nav-link.active {
+  background-color: #6ab445;
+}
+.nav-link {
+  color: black;
+}
+.nav-link:hover {
+  color: darkgrey;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
