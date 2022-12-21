@@ -11,7 +11,7 @@ const Login = (props) => {
 
   const navigate = useNavigate()
 
-  const loginFormUrl = `${AppConfig.projectUrl}/${AuthConfig.login.form}`;
+  const loginFormUrl = `${AppConfig.projectUrl}/${AuthConfig.login.form}?live=1`;
 
   const onSubmitDone = (submission) => {
     setUser(submission)(dispatch);
