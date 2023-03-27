@@ -32,12 +32,12 @@ const Home = () => {
       <div className="card mb-4">
         <div className="card-body">
           <h5 className="card-title">Example</h5>
-          <p className="card-text language-markup text-center"><CopyBlock text={`<Form src={'https://examples.form.io/example'} onSubmit={onSubmitHandler} />`} theme={atomOneDark} language={'jsx'} codeBlock={true}/></p>
+          <p className="card-text language-markup text-center"><CopyBlock text={`<Form src={'https://utmcclwqkibeivu.form.io/assessmentformtest'} onSubmit={onSubmitHandler} />`} theme={atomOneDark} language={'jsx'} codeBlock={true}/></p>
         </div>
       </div>
       <div className='card p-3'>
         <h5 className='card-title'>Result</h5>
-        <div className='card-body bg-light rounded-3'><Form src={'https://examples.form.io/example'} onSubmit={onSubmitHandler} /></div>
+        <div className='card-body bg-light rounded-3'><Form src={'https://utmcclwqkibeivu.form.io/assessmentformtest'} onSubmit={onSubmitHandler} /></div>
       </div>
     </div>
   </>
