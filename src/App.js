@@ -11,11 +11,17 @@ function App() {
   console.log(FormioContrib);
   return (
     <div className="App">
-      <Navigation/>
-      <Routes basename={'/react-app-starterkit'}>
-        <Route path='/' element={<Home />}></Route>
-        <Route path='components' element={<Components />}></Route>
-      </Routes>      
+      <div class="row">
+        <div class="col-md-3">
+          <Navigation/>
+        </div>
+        <div class="col-md-9">
+          <Routes basename={'/react-app-starterkit'}>
+            <Route path='/' element={<Home />}></Route>
+            <Route path='components' element={<Components />}></Route>
+          </Routes>
+        </div>
+      </div>
     </div>
   );
 }

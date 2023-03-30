@@ -1,41 +1,264 @@
 @import '~bootstrap/dist/css/bootstrap.css';
 @import '~formiojs/dist/formio.full.min.css';
-.App {
-  /* text-align: center; */
-  font-size: 1rem;
+
+/* Navigation Menu */
+
+.navigationMenu {background: #06262D; color: #fff; padding: 25px; width: 100%; height: 100%; margin: 0; min-height: 100vh;}
+.navigationMenu ul {margin: 0; padding: 0;}
+.navigationMenu li {display: flex; justify-content: space-between; align-items: center; margin: 0; padding: 0;}
+.navigationMenu a {color: #fff; font-size: 14px; text-decoration: none; display: inline-block; padding: 10px 0px 10px 10px; width: 85%; }
+.navigationMenu span {font-size: 12px; color: #919191;}
+.navigationMenu span.status { width: 10px; display:inline-block; height: 10px; border-radius: 50%;}
+.navigationMenu span.status.done {background-color: #CBDCD7;width: 20px; height: 20px; text-align: center; font-weight: 800; font-size: 14px;}
+.navigationMenu span.status:after {content: '\25CF'; color: #767676; margin-left:4px;}
+.navigationMenu span.status.done:after {content: '\2713'; color: #036346; margin-left: 0;}
+.clientInfo {padding: 5px;}
+.clientInfo h2 {font-weight: 800; font-size: 28px;}
+.clientInfo p {font-weight: 500; font-size: 18px;}
+.action-panel {position: fixed; bottom: 0; right: 0; width: 75%; text-align: right; z-index: 100; background: #fff; padding: 10px 10px 0 0; border-top: 1px solid #ededed;}
+.action-panel .bg-light {background-color: #fff !important;}
+.action-panel .card-body {padding: 0; margin: 0 !important;}
+.action-panel div div {display:flex; justify-content: right;}
+.action-panel div div div button { white-space: nowrap;}
+.action-panel .btn-info {background-color: white !important; color: #145241;}
+
+/* Structure */
+.form-io{ 
+  width: 75%;
+  padding-top: 40px;
+  position: absolute;
+  height: calc(100% - 30px);
+  overflow-y: auto;
+  padding-bottom: 60px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+
+/* General UI */
+.col-form-label {font-size: 14px;}
+.card-title, .formio-form .card-header, .bg-default {background-color: transparent !important; font-weight: 800; text-transform: capitalize;}
+input, select {height: 50px;}
+.action-panel .card-body{border: none;}
+
+
+/* Radios */
+.form-radio .radio { border: 1px solid #036346; border-radius: 32px; padding: 2px 10px; margin-right: 10px; }
+.form-radio .radio span {font-size: 14px; color: #036346;}
+.form-radio .radio input {border-color: #036346;}
+
+
+/* Buttons */
+.btn {color: #145241; background-color: #E7EEEC; border: none; font-size: 14px; border-radius:  32px; padding: 9px 16px;}
+.btn-primary {color: #fff !important; background-color: #036346 !important; }
+.btn-danger {background-color: #ededed;}
+.btn-secondary {position: absolute; top: 0; right: 15px;}
+
+
+.formio-component-content {font-size: 14px;}
+.formio-component {margin-bottom: 10px;}
+.formio-component.formio-hidden {margin-bottom: 0px;}
+.input-group-append {margin-left: -45px !important; z-index: 100; margin-top: 4px;}
+.form-control.input {border-radius: 7px !important; background-color: #F5F5F5;}
+
+/*calendar icon*/
+.input-group-text {border: none; border-radius: 32px; color:#145241; background-color: #CBDCD7; margin-top: 5px; margin-right: 5px;}
+
+/* checkboxes */
+.form-check-input:checked{
+  background-color: #036346;
+}
+.form-radio .form-check-input:checked {
+  display: none;
+}
+.form-radio .radio-selected label:before{
+  content: '\2713';
+  color: #fff;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* custom checkboxes as pills */
+.pills .form-check-label span {font-size: 16px;} 
+
+.pills .radio-selected .form-check-label, .radio-selected{
+  background-color: #036346;
+  border-radius: 16px;
+}
+.pills .form-check-label input{
+  display: none;
+}
+.pills .radio-selected .form-check-label span, .form-radio .radio-selected span{
+  color: #fff;
+}
+.pills .form-check-label {
+  background-color: #E7EEEC;
+  padding: 14px 24px;
+  border-radius: 16px;
+  cursor: pointer;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+/* select box */
+.choices__list {
+ 
+}
+.form-control.dropdown {padding: 10px 10px;}
+.formio-component-multiple .form-control.dropdown { padding: 5px 10px 0 10px;}
+.choices__input, .dropdown, textarea.form-control, .form-control {background-color: #F5F5F5;}
+.choices__list--multiple .choices__item {
+  background-color: #036346;
+  border-radius: 14px;
+  padding: 10px 20px;
+  font-size: 14px;
 }
 
-.App-link {
-  color: #61dafb;
+.choices[data-type*=select-multiple] .choices__button {
+  border-left: none;
+  opacity: 1;
+  background-size: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.choices__list--dropdown .choices__item{
+  color: #036346;
+  background-color: #f9f9f9;
+  border: 1px solid #F2F2F2;
+  margin: 5px;
 }
+
+/*Edit grid - for adding of multiple items*/
+.formio-component-editgrid {
+  text-align: center;
+}
+.formio-component-editgrid ul{
+  text-align: left;
+}
+.formio-component-editgrid button.btn-primary {
+  background-color: #fff !important;
+  color:#036346 !important;
+}
+.formio-component-editgrid .editgrid-actions .btn-primary {
+  background-color: #036346 !important;
+  color: #fff !important;
+}
+
+
+/* Custom component for multiline select */
+ 
+.multiline-select .choices__item {
+  padding: 15px;
+  margin: 5px;
+  
+}
+.multiline-select.formio-modified .choices__item {
+  font-weight: 800;
+  color: #036346;
+  
+  border-radius: 8px;
+}
+.multiline-select.has-error .choices__item  {
+  color: #212529;
+  font-weight: 500;
+}
+.multiline-select .formio-modified .choices__list--single .choices__item {
+  background-color: #E7EEEC
+}
+
+.emultiline-selectcl .choices__list--single .choices__item {
+  margin: 0;
+}
+.multiline-select .choices__list--dropdown .choices__list {
+  margin: 10px;
+  font-weight: 800;
+}
+.multiline-select .choices__item .icon:after {
+  border: 1px solid #036346;
+  border-radius: 32px;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin-right: 5px;
+  content: '';
+  margin-bottom: -5px;
+}
+.multiline-select.formio-modified .choices__list--single .icon:after, 
+.multiline-select.formio-modified .choices__list--single .description:after {
+  display: none;
+  border: none;
+}
+.multiline-select.formio-modified .choices__list--single .choices__item {
+  font-weight: 500;
+}
+.multiline-select .choices__item .description:after {
+  display: block;
+  font-weight: 500;
+}
+.multiline-select .form-control:focus {
+  background-color: #E7EEEC;
+}
+
+.multiline-select .choices__item .label {
+  height: 20px;
+  line-height: 20px;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+.multiline-select .dropdown {padding: 0; min-height: 50px;}
+
+.epcl .choices__item:nth-child(1) .description:after {
+  content: 'Clients who are dependent on continuous care (i.e., 24-hour care) to remain safe in their residence';
+}
+.epcl .choices__item:nth-child(2) .description:after {
+  content: 'Clients who need caregiver visits within 48 hours for optimal safety in their residence';
+}
+.epcl .choices__item:nth-child(3) .description:after {
+  content: 'Clients who are anticipated to remain safe without care';
+}
+
+
+.supervisionstatus .choices__item:nth-child(2) .description:after {
+  content: 'Assistance needed but can be left alone for short periods of time';
+}
+.supervisionstatus .choices__item:nth-child(3) .description:after {
+  content: 'Client cannot be left alone - Family or caregiver requires to be present 24/7';
+}
+
+
+
+
+
+/* Panels */
+.border, .card-header {border: none !important;}
+.formio-component-panel {
+  border-bottom: 1px solid #EDEDED;
+  margin-bottom: 40px;
+  padding-bottom: 30px;
+}
+
+
+
+/* archive 
+.add-description .form-radio .radio {border-color: #F2F2F2; background: #F9F9F9; margin-bottom: 10px; border-radius: 8px; padding: 10px 20px;}
+.add-description .radio span {font-weight: 800;}
+.add-description .form-radio .radio label {margin-left: 10px;}
+.add-description .radio span:after {
+  display: block;
+  font-weight: 500;
+}
+.add-description .form-radio div:nth-child(1) span:after {
+  content: 'Clients who are dependent on continuous care (i.e., 24-hour care) to remain safe in their residence';
+}
+.add-description .form-radio div:nth-child(2) span:after {
+  content: 'Clients who need caregiver visits within 48 hours for optimal safety in their residence';
+}
+.add-description .form-radio div:nth-child(3) span:after {
+  content: 'Clients who are anticipated to remain safe without care';
+}
+
+.add-description .form-check-input:checked{
+  display: block;
+}
+.add-description .radio-selected label:before{
+  content: '';
+}
+
+
+
+*/
