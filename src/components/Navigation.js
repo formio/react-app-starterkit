@@ -1,84 +1,102 @@
-import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap"
-import Image from 'react-bootstrap/Image'
-import { Link } from "react-router-dom";
-import logo from '../Light-Background.png';
-import { useRef, useEffect, useState } from 'react';
+import { useState, useMemo } from "react";
 
 function Navigation() {
+    const [items, setItems] = useState([]);
+    const [starred, setStarred] = useState([]);
+    const [doneItems, setDoneItems] = useState([]);
+    const [errors, setErrors] = useState([]);
+
+    useMemo(() => {
+        const interval = setInterval(() => {
+            const elements = document.getElementsByClassName("card-title");
+            setItems([...elements]);
+            const numbers = [];
+            const doneness = [];
+
+            const errors = [];
+            items.forEach((item) => {
+                const stars =
+                    item.parentElement.parentElement.getElementsByClassName(
+                        "required"
+                    );
+
+                const done = item.parentElement.parentElement.querySelectorAll(
+                    ".required.formio-modified"
+                );
+                const error = item.parentElement.parentElement.querySelectorAll(
+                    ".required.formio-modified.has-error"
+                );
+                errors.push(error.length);
+                doneness.push(done.length);
+                const number = stars.length;
+                numbers.push(number);
+            });
+            setDoneItems([...doneness]);
+            setErrors([...errors]);
+            setStarred([...numbers]);
+        }, 1000);
+        return () => clearInterval(interval);
+    }, [items]);
 
     return (
-          <div class="navigationMenu">
-             
-            <div class="clientInfo">
-              <h2>Kelly Baker</h2>
-              <p>Digital assessment</p>
+        <>
+            <div className="navigationMenu">
+                <div className="clientInfo">
+                    <h2>Kelly Baker</h2>
+                    <p>Digital assessment</p>
+                </div>
+                <ul style={{ listStyleType: "none" }}>
+                    {items &&
+                        items.length > 0 &&
+                        items.map((item, index) => (
+                            <li
+                                style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                }}
+                            >
+                                <span
+                                    className={
+                                        (doneItems[index] || 0) -
+                                            (errors[index] || 0) ===
+                                            starred[index] && starred[index] > 0
+                                            ? "status done"
+                                            : "status"
+                                    }
+                                ></span>
+                                <a
+                                    href="/#"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        item.scrollIntoView(true, {
+                                            behavior: "smooth",
+                                        });
+                                    }}
+                                >
+                                    {item.textContent.trim()}
+                                </a>
+                                <span className="progression">
+                                    {starred.length >= index &&
+                                    starred[index] > 0 ? (
+                                        <div
+                                            style={{
+                                                width: "4rem",
+                                                textAlign: "right",
+                                            }}
+                                        >{`${
+                                            (doneItems[index] || 0) -
+                                            (errors[index] || 0)
+                                        }/${starred[index]}`}</div>
+                                    ) : (
+                                        <div style={{ width: "4rem" }}></div>
+                                    )}
+                                </span>
+                            </li>
+                        ))}
+                </ul>
             </div>
-            <ul>
-              <li>
-                <span class="status"></span>
-                <a href="#">Assessment information</a>
-                <span class="progression">0/9</span>
-              </li>
-              <li>
-              <span class="status done"></span>
-                <a href="#">Background information</a>
-                <span class="progression">0/47</span>
-              </li>
-              <li>
-              <span class="status"></span>
-                <a href="#">Care Goals</a>
-                <span class="progression">0/6</span>
-              </li>
-              <li>
-              <span class="status"></span>
-                <a href="#">Daily Routine</a>
-                <span class="progression">0/6</span>
-              </li>
-              <li>
-              <span class="status"></span>
-                <a href="#">Health</a>
-                <span class="progression">0/16</span>
-              </li>
-              <li>
-              <span class="status"></span>
-                <a href="#">Suportive Tasks</a>
-                <span class="progression">0/18</span>
-              </li>
-              <li>
-              <span class="status"></span>
-                <a href="#">Safety / Care Risks</a>
-                <span class="progression">0/2</span>
-              </li>
-              <li>
-              <span class="status"></span>
-                <a href="#">Caregiver Requirements</a>
-                <span class="progression">0/7</span>
-              </li>
-              <li>
-              <span class="status"></span>
-                <a href="#">Schedule</a>
-                <span class="progression">0/7</span>
-              </li>
-              <li>
-              <span class="status"></span>
-                <a href="#">Post-Intake / Assessment Care Management Notes</a>
-                <span class="progression">0/1</span>
-              </li>
-              <li>
-              <span class="status"></span>
-                <a href="#">OSHA Hazard Assessment</a>
-                <span class="progression">0/5</span>
-              </li>
-              <li>
-              <span class="status"></span>
-                <a href="#">Billing Rates</a>
-                <span class="progression">0/3</span>
-              </li>
-            </ul>
-          </div>
-      
-  
-  );
+        </>
+    );
 }
 
 export default Navigation;
