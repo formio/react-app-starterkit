@@ -1,10 +1,10 @@
-import { Form, FormBuilder } from "@formio/react"
+import { FormBuilder } from "@formio/react"
 import { useState } from "react"
 import { Col, Row } from "react-bootstrap"
 import { atomOneDark, CopyBlock } from "react-code-blocks"
 
 const CustomBuilder = () => {
-  const [options, setOptions] = useState({
+  const [options] = useState({
     language: 'en',
     i18n: {
       jp: {

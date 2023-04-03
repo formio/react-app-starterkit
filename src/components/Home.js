@@ -1,28 +1,22 @@
-import { Form } from "@formio/react"
-import { useState } from "react";
+import { Form } from "@formio/react";
 import { atomOneDark, CopyBlock} from "react-code-blocks";
 import logo from '../Light-Background.png';
 
 const Home = () => {
-  const [submitted, setSubmitted] = useState(false);
-  const [data, setData] = useState(null);
-
-  
   const onSubmitHandler = (submission) => {
-    setSubmitted(true);
-    setData(submission.data);
     console.log(submission);
   }
+
   return(
   <>
     <div className="container p-5">
       <div className="bg-light rounded-3 p-5 mb-4">
       <h2>JavaScript Powered Forms for
         <a href="https://reactjs.org" style={{ marginBottom: '10px', padding: '3rem 2rem' }}>
-          <img src="https://raw.githubusercontent.com/reactjs/reactjs.org/main/src/icons/logo.svg" style={{height: '4rem'}}/></a> by <a href="https://form.io" target="_blank"><img alt="Form.io" src={logo} style={{height: '3rem', display: 'inline'}}/>
+          <img src="https://raw.githubusercontent.com/reactjs/reactjs.org/main/src/icons/logo.svg" style={{height: '4rem'}} alt="" /></a> by <a href="https://form.io" target="_blank" rel="noreferrer"><img alt="Form.io" src={logo} style={{height: '3rem', display: 'inline'}}/>
         </a>
       </h2>
-      <p>This library provides JavaScript powered forms for <a target="_blank" href="https://reactjs.org">React</a>. This allows you to render the JSON schema forms produced by Form.io and render those within your application using React, as well as provides an interface SDK to communicate to the Form.io API's. The benefits of this library include.</p>
+      <p>This library provides JavaScript powered forms for <a target="_blank" href="https://reactjs.org" rel="noreferrer">React</a>. This allows you to render the JSON schema forms produced by Form.io and render those within your application using React, as well as provides an interface SDK to communicate to the Form.io API's. The benefits of this library include.</p>
       <ul>
         <li>Renders a JSON schema as a webform and hooks up that form to the Form.io API's</li>
         <li>Nested components, layouts, Date/Time, Select, Input Masks, and many more included features</li>

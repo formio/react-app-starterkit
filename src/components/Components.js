@@ -1,5 +1,5 @@
 import { Col, Container, Nav, Row, Tab } from "react-bootstrap"
-import { Link, useParams } from "react-router-dom"
+import { Link } from "react-router-dom"
 import Builder from "./Builder"
 import CustomBuilder from "./CustomBuilder"
 import PDFForm from "./PDFForm"
@@ -8,7 +8,6 @@ import SimpleForm from "./SimpleForm"
 import WizardForm from "./WizardForm"
 
 const Components = () => {
-  const {component}  = useParams()
   return(
     <Container className="pt-3">
      <Tab.Container id="left-tabs-example" defaultActiveKey={'renderer'}>
@@ -60,26 +59,26 @@ const Components = () => {
         <Col sm={10} style={{borderLeft: '1px solid #eaeaea', padding: '10px 20px'}}>
           <Tab.Content>
             <Tab.Pane eventKey="renderer">
-              <Renderer /> 
+              <Renderer />
             </Tab.Pane>
             <Tab.Pane eventKey="builder">
-             <Builder /> 
+             <Builder />
             </Tab.Pane>
             <Tab.Pane eventKey="simple">
-             <SimpleForm /> 
+             <SimpleForm />
             </Tab.Pane>
             <Tab.Pane eventKey="wizard">
-             <WizardForm /> 
+             <WizardForm />
             </Tab.Pane>
             <Tab.Pane eventKey="pdf">
-             <PDFForm /> 
+             <PDFForm />
             </Tab.Pane>
             <Tab.Pane eventKey="custom">
-             <CustomBuilder /> 
+             <CustomBuilder />
             </Tab.Pane>
           </Tab.Content>
         </Col>
-   
+
       </Row>
     </Tab.Container>
   </Container>
