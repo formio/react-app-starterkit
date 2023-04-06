@@ -1,9 +1,8 @@
 import { Form } from "@formio/react"
 import { Card, Col, Row } from "react-bootstrap"
-import { atomOneDark, CopyBlock, dracula } from "react-code-blocks"
+import { atomOneDark, CopyBlock } from "react-code-blocks"
 
 const Renderer = () => {
-  
   return(
     <Row>
       <Col sm={6}>

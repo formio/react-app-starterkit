@@ -4,10 +4,14 @@ import { Card } from "react-bootstrap"
 import ReactJson from "react-json-view"
 import '../styles/Builder.css'
 const Builder = () => {
-  const [jsonSchema, setSchema] = useState({components: []})
+  const [jsonSchema, setSchema] = useState({components: []});
+  const onFormChange = (schema) => {
+    console.log({ schema, jsonSchema });
+    setSchema({...schema, components: [...schema.components]});
+  };
   return (
     <>
-      <FormBuilder form={jsonSchema} onChange={(schema) => setSchema(schema)} />
+      <FormBuilder form={jsonSchema} onChange={onFormChange} />
       <Card title="Form JSON Schema" className="my-4">
       <Card.Body>
         <Card.Title className="text-center">Form JSON Schema</Card.Title>
