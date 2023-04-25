@@ -1,5 +1,7 @@
-#group-container-basic, #group-container-advanced,
-#group-container-layout, #group-container-premium,
+#group-container-basic,
+#group-container-advanced,
+#group-container-layout,
+#group-container-premium,
 #group-container-data {
   display: grid;
   gap: 0.1rem;
