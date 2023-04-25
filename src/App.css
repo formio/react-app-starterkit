@@ -8,9 +8,19 @@
 
 .formio-brand {
   font-size: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.formio-brand > * {
+  margin-right: 5px;
 }
 
 .navbar-brand a {
   color: inherit;
   text-decoration: none;
+}
+
+.react-logo {
+  color: #0a7ea3;
 }

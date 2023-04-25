@@ -5,13 +5,13 @@
   "homepage": "https://formio.github.io/react-app-starterkit",
   "dependencies": {
     "@formio/contrib": "^1.1.0",
-    "@formio/react": "^5.2.4-rc.1",
+    "@formio/react": "^5.2.4-rc.3",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^13.5.0",
     "boostrap": "^2.0.0",
     "bootstrap": "^5.2.0",
-    "formiojs": "^4.14.7",
+    "formiojs": "^4.14.12",
     "react": "^18.1.0",
     "react-bootstrap": "^2.4.0",
     "react-code-blocks": "0.0.9-0",
@@ -26,7 +26,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "npm run build; cd build; git init; git remote add origin git@github.com:formio/react-app-starterkit.git; git checkout -b gh-pages; git add -A; git commit -m 'Update demo application'; git push -f origin gh-pages;"
+    "deploy": "npm run build; cd build; git init; git remote add origin git@github.com:formio/react-app-starterkit.git; git checkout -b gh-pages; git add -A; git commit -m 'Update demo application'; git push -f origin gh-pages;",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -45,5 +46,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.1",
+    "prettier": "^2.8.8"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
   }
 }

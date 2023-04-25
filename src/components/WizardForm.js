@@ -1,21 +1,29 @@
-import { Form } from "@formio/react"
-import { Col, Row } from "react-bootstrap"
-import { atomOneDark, CopyBlock } from "react-code-blocks"
+import { Form } from "@formio/react";
+import { Col, Row } from "react-bootstrap";
+import { atomOneDark, CopyBlock } from "react-code-blocks";
 
 const WizardForm = () => {
-  return(
+  return (
     <>
       <Row>
         <Col>
           <h2>Wizard Forms</h2>
-          <p>Form.io provides a way to build multi-page forms and easily embed them within your application using the following code.</p>
-          <CopyBlock text={`<Form src={'https://examples.form.io/example'} />`} theme={atomOneDark} language="jsx" codeBlock={true}/>
+          <p>
+            Form.io provides a way to build multi-page forms and easily embed
+            them within your application using the following code.
+          </p>
+          <CopyBlock
+            text={`<Form src={'https://examples.form.io/wizard'} />`}
+            theme={atomOneDark}
+            language="jsx"
+            codeBlock={true}
+          />
           <div className="py-3">
-            <Form src="https://examples.form.io/wizard"/>
+            <Form src="https://examples.form.io/wizard" />
           </div>
         </Col>
       </Row>
     </>
-  )
-}
-export default WizardForm
+  );
+};
+export default WizardForm;
