@@ -26,13 +26,14 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "npm run build; cd build; git init; git remote add origin git@github.com:formio/react-app-starterkit.git; git checkout -b gh-pages; git add -A; git commit -m 'Update demo application'; git push -f origin gh-pages;",
+    "deploy": "yarn build; cd build; git init; git remote add origin git@github.com:formio/react-app-starterkit.git; git checkout -b gh-pages; git add -A; git commit -m 'Update demo application'; git push -f origin gh-pages;",
     "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
+      "react-app/jest",
+      "prettier"
     ]
   },
   "browserslist": {
@@ -48,6 +49,7 @@
     ]
   },
   "devDependencies": {
+    "eslint-config-prettier": "^8.8.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.1",
     "prettier": "^2.8.8"
