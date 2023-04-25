@@ -1,6 +1,6 @@
 import { Container } from "react-bootstrap";
 import { Form } from "@formio/react";
-import { atomOneDark, CopyBlock } from "react-code-blocks";
+import { atomOneLight, CopyBlock } from "react-code-blocks";
 import logo from "../Light-Background.png";
 
 const Home = () => {
@@ -77,12 +77,13 @@ const Home = () => {
         </div>
         <div className="card mb-4">
           <div className="card-body">
-            <h5 className="card-title">Example</h5>
+            <h5 className="card-title">Code</h5>
             <CopyBlock
               text={`<Form src={'https://examples.form.io/example'} onSubmit={onSubmitHandler} />`}
-              theme={atomOneDark}
+              theme={atomOneLight}
               language={"jsx"}
               codeBlock={true}
+              showLineNumbers={false}
             />
           </div>
         </div>

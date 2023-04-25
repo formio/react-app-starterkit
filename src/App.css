@@ -24,3 +24,8 @@
 .react-logo {
   color: #0a7ea3;
 }
+
+div.spacer {
+  margin: 0.5rem 0;
+  line-height: 0;
+}

@@ -1,7 +1,7 @@
 import { FormBuilder } from "@formio/react";
 import { useState } from "react";
 import { Col, Row } from "react-bootstrap";
-import { atomOneDark, CopyBlock } from "react-code-blocks";
+import { atomOneLight, CopyBlock } from "react-code-blocks";
 
 const CustomBuilder = () => {
   const [options] = useState({
@@ -31,9 +31,10 @@ const CustomBuilder = () => {
           <CopyBlock
             text={`<FormBuilder form={jsonSchema} onChange={(schema) => setSchema(schema)} options={options} />
 `}
-            theme={atomOneDark}
+            theme={atomOneLight}
             language="jsx"
             codeBlock={true}
+            showLineNumbers={false}
           />
           <p>
             One of the features of builder that user can change different
@@ -54,7 +55,7 @@ const [options,setOptions] = useState({
   }
 })
 `}
-            theme={atomOneDark}
+            theme={atomOneLight}
             language="jsx"
             codeBlock={true}
           />
