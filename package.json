@@ -2,7 +2,7 @@
   "name": "react-starterkit-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://formio.github.io/react-app-starterkit",
+  "homepage": "/react-app-starterkit/#",
   "dependencies": {
     "@formio/contrib": "^1.1.0",
     "@formio/react": "^5.2.4-rc.3",
