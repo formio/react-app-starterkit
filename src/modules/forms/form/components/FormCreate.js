@@ -1,18 +1,20 @@
 import React from 'react';
 import { FormEdit, Errors } from '@formio/react';
-import { useNavigate  } from 'react-router';
+import { useNavigate } from 'react-router';
 import { useForm, saveForm } from '../formContext';
+import { useAlerts } from '../../../alerts';
 
 const FormCreate = () => {
   const navigate = useNavigate ();
   const { state: formState, dispatch: dispatchFormAction } = useForm();
+  const { addAlert } = useAlerts();
 
   const onSaveForm = (form) => saveForm(dispatchFormAction, form, (err, form) => {
-      if (!err) {
-        navigate(`/form/${form._id}`,{replace:true});
-        // TODO: Show success alert
-      }
-    });
+    if (!err) {
+      addAlert({ type: 'success', content: 'Form succesfully creaed' });
+      navigate(`/form/${form._id}`,{replace:true});
+    }
+  });
 
   const form = { display: 'form' };
   

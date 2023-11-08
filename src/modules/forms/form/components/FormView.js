@@ -48,6 +48,7 @@ const FormView = (props) => {
   return (
     <div>
       <h3>New { form.title }</h3>
+      <hr />
       <Errors errors={[formError, submissionState.error]} />
       <Form
         form={form}

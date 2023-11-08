@@ -5,7 +5,6 @@ import { SubmissionsProvider } from '../submissionsContext';
 import SubmissionPage from './SubmissionPage';
 import { SubmissionProvider } from '../submissionContext';
 
-console.log("Do NOT FORRGET")
 const SubmissionsPage = () => (
   <SubmissionsProvider>
     <Routes>

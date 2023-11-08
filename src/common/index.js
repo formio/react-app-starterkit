@@ -5,6 +5,7 @@ import Hero from './Hero/Hero';
 import Home from './Home/Home';
 import Confirm from './Confirm/Confirm';
 import Modal from './Modal/Modal';
+import Settings from './Settings/Settings';
 
 export {
   Footer,
@@ -14,4 +15,5 @@ export {
   Home,
   Confirm,
   Modal,
+  Settings,
 };

@@ -30,6 +30,44 @@ const FormsList = () => {
     getForms(1);
   }, [getForms]);
 
+  const operations = [
+    {
+      action: 'view',
+      buttonType: 'success rounded',
+      icon: 'pencil',
+      permissionsResolver() {
+        return true;
+      },
+      title: 'Enter Data',
+    },
+    {
+      action: 'submission',
+      buttonType: 'outline-dark rounded  ml-2',
+      icon: 'list-alt',
+      permissionsResolver() {
+        return true;
+      },
+      title: 'View Data',
+    },
+    {
+      action: 'edit',
+      buttonType: 'outline-dark rounded ml-2',
+      icon: 'edit',
+      permissionsResolver() {
+        return true;
+      },
+      title: 'Edit Form',
+    },
+    {
+      action: 'delete',
+      buttonType: 'outline-dark rounded ml-2',
+      icon: 'trash',
+      permissionsResolver() {
+        return true;
+      },
+    },
+  ]
+
   const onAction = (form, action) => {
     switch(action) {
       case 'view':
@@ -69,9 +107,10 @@ const FormsList = () => {
         getForms={getForms}
         onAction={onAction}
         onPageSizeChanged={onPageSizeChanged}
+        operations={operations}
       />
       <div className="d-flex justify-content-end mt-2">
-        <Link className="btn btn-primary" to="/form/create"><i className="fa fa-plus"></i>&nbsp;Create Form</Link>
+        <Link className="btn btn-success rounded" to="/form/create"><i className="fa fa-plus"></i>&nbsp;Create Form</Link>
       </div>
     </div>
   );
