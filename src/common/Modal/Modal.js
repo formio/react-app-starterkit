@@ -1,5 +1,4 @@
 import React from 'react';
-import { Loading } from '../index';
 
 const Modal = ({ width, height, className, children }) => {
   const contentStyle = {

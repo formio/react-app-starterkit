@@ -12,7 +12,7 @@ const Settings = () => {
         apiUrl: JSON.parse(localStorage.getItem('formioAppConfig'))?.apiUrl || ''
     };
 
-    const [config, setConfig] = useState({data: configFromLocalStorage});
+    const [config] = useState({data: configFromLocalStorage});
 
     const settingsForm = {
         name: 'settings',

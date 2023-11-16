@@ -129,9 +129,6 @@ export const saveForm = (dispatch, form, done = () => {}) => {
   dispatch(sendForm(form));
 
   const id = form._id;
-  if (!id && !form.tags) {
-    form.tags = ['common'];
-  }
   const path = `${Formio.getProjectUrl()}/form${id ? `/${id}` : ''}`;
   const formio = new Formio(path);
 
