@@ -11,7 +11,7 @@ const FormsList = () => {
     limit: 10,
     query: {type: 'form', tags: 'common'},
     select: '',
-    sort: '',
+    sort: '-modified',
   });
 
   const getForms = useCallback(
