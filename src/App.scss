@@ -7,3 +7,25 @@
 footer {
   margin-top: auto;
 }
+
+.page-item.active .page-link {
+  background-color: #6ab445;
+  border-color: #6ab445;
+}
+
+.page-link, .page-link:hover {
+  color:#6ab445
+}
+
+a, a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+.card:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.nav-link.active {
+  border-radius: 0.25rem;
+}

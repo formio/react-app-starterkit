@@ -41,6 +41,35 @@ const SubmissionsList = (props) => {
     }
   };
 
+  const operations = [
+    {
+      action: 'view',
+      buttonType: 'success rounded',
+      icon: 'list-alt',
+      permissionsResolver() {
+        return true;
+      },
+      title: 'View',
+    },
+    {
+      action: 'edit',
+      buttonType: 'outline-dark rounded ml-2',
+      icon: 'edit',
+      permissionsResolver() {
+        return true;
+      },
+      title: 'Edit',
+    },
+    {
+      action: 'delete',
+      buttonType: 'outline-dark rounded ml-2',
+      icon: 'trash',
+      permissionsResolver() {
+        return true;
+      },
+    },
+  ]
+
   const getSubmissions = useCallback(
     (page, query) => indexSubmissions(dispatchSubmissionsAction, page, requestParams, query, formId, formName),
     [dispatchSubmissionsAction, formId, formName, requestParams],
@@ -65,15 +94,17 @@ const SubmissionsList = (props) => {
   const MainContent = () =>  (
     <div className='form-index'>
       <Errors errors={[formState.error, submissionsState.error]} />
+      <h3 className='mb-3'>{  formState.form?.title } › Submissions</h3>
       <SubmissionGrid
         submissions={{ ...submissionsState, ...requestParams }}
         form={formState.form}
         onAction={onAction}
         getSubmissions={getSubmissions}
         onPageSizeChanged={onPageSizeChanged}
+        operations={operations}
       />
       <div className="d-flex justify-content-end mt-2">
-        <Link className='btn btn-primary' to={createSubmissionPath || `/form/${formId || formState.id}`}>
+        <Link className='btn btn-success rounded' to={createSubmissionPath || `/form/${formId || formState.id}`}>
           <i className='glyphicon glyphicon-plus fa fa-plus' aria-hidden='true'></i>
           &nbsp;New {formState.form?.title}
         </Link>

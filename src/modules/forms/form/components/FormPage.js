@@ -16,7 +16,7 @@ const FormNavigation = () => {
   }, [dispatch, formId]);
 
   const Navbar = () => (
-    <ul className="nav nav-tabs">
+    <ul className="nav nav-tabs mb-3">
       <li className="nav-item">
         <NavLink className="nav-link" end to="/form">
           <i className="fa fa-chevron-left"></i>

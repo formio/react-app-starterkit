@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { initAuth } from '@formio/react';
 import { useAuth, AuthPage } from './modules/auth';
 import { FormProvider, FormsPage } from './modules/forms/form';
-import { Footer, Header, Home, Loading, Modal } from './common';
+import { Footer, Header, Home, Loading, Modal, Settings } from './common';
 import { AppConfig } from './config';
 import './App.scss';
 import EventsPage from './modules/events/components/EventsPage';
@@ -46,6 +46,7 @@ function App() {
               <Route path="/form/*" element={<FormsPage />} />
               <Route path="/event/*" element={ <FormProvider><EventsPage /></FormProvider>} />
               <Route path="/auth" element={<AuthPage />} />
+              <Route path="/settings" element={<Settings />} />
             </Routes>
           </div>
         </AlertsProvider>

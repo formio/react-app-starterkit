@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link, Route, Routes, useParams } from 'react-router-dom';
+import { NavLink, Route, Routes, useParams } from 'react-router-dom';
 import { useSubmission, getSubmission, SubmissionView, SubmissionDelete } from '../../forms/submission';
 
 const EventPage = (props) => {
@@ -17,24 +17,24 @@ const EventPage = (props) => {
   const Navbar = () => (
     <ul className="nav nav-tabs">
       <li className="nav-item">
-        <Link className="nav-link" to={`/event`}>
+        <NavLink className="nav-link" end to={`/event`}>
           <i className="fa fa-chevron-left"></i>
-        </Link>
+        </NavLink>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to={``}>
+        <NavLink className="nav-link" end to={``}>
           <i className="fa fa-eye"></i> View
-        </Link>
+        </NavLink>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to={`edit`}>
+        <NavLink className="nav-link" to={`edit`}>
           <i className="fa fa-edit"></i> Edit
-        </Link>
+        </NavLink>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to={`delete`}>
+        <NavLink className="nav-link" to={`delete`}>
           <i className="fa fa-trash"></i> Delete
-        </Link>
+        </NavLink>
       </li>
     </ul>
   );

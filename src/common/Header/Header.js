@@ -1,28 +1,33 @@
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { logout } from '@formio/react';
 import { useAuth } from '../../modules/auth';
 
 const Header = () => {
+  const navigate = useNavigate();
   const { state: authState, dispatch } = useAuth();
 
   const onLogout = () => {
     logout()(dispatch);
+    navigate("/auth")
   };
 
   return (
-     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+     <nav className="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
         <div className="container">
           <Link className="navbar-brand" to="/">
-            <img className="logo" alt="Form.io" src="https://portal.form.io/images/formio-logo.png" height="25px" />
+            <img className="logo" alt="Form.io" src="https://portal.form.io/template/images/formio-logo-bg.svg" height="25px" />
           </Link>
           <ul className="nav navbar-nav mr-auto">
-            <NavLink to="/" role="navigation button" className="nav-link">
-              <span className="fa fa-home" />
-            </NavLink>
             { authState.authenticated ? (
-              <NavLink to="/form" role="navigation link" className="nav-link">
-                <i className="fa fa-wpforms"></i>&nbsp;
+              <NavLink to="/form/create" role="navigation link" className="nav-link">
+                <i className="fa fa-plus"></i>&nbsp;
+                Create Form
+              </NavLink>
+            ) : null }
+            { authState.authenticated ? (
+              <NavLink end to="/form" role="navigation link" className="nav-link">
+                <i className="fa fa-list"></i>&nbsp;
                 Forms
               </NavLink>
             ) : null }
@@ -42,9 +47,14 @@ const Header = () => {
                 </span>
               </li>
             ) : (
-              <NavLink to="/auth" role="navigation link" className="nav-link">
-                Login | Register
-              </NavLink>
+              <div className="d-flex">
+                <NavLink to="/auth" role="navigation link" className="nav-link">
+                  Login | Register
+                </NavLink>
+                <NavLink to="/settings" role="navigation link" className="nav-link">
+                  <i className="fa fa-cog"></i>
+                </NavLink>
+              </div>
             )}
           </ul>
         </div>

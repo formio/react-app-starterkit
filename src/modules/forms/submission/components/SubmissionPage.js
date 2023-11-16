@@ -3,10 +3,12 @@ import React, { useEffect } from 'react'
 import { useSubmission, getSubmission } from '../submissionContext';
 import SubmissionView from './SubmissionView';
 import SubmissionDelete from './SubmissionDelete';
+import { useForm } from '../../form/formContext';
 
 const SubmissionPage = () => {
   const { formId, submissionId } = useParams();
   const { dispatch } = useSubmission();
+  const { state: formState } = useForm();
 
   useEffect(() => {
     getSubmission(dispatch, submissionId, formId);
@@ -16,7 +18,7 @@ const SubmissionPage = () => {
   const Edit = () => <SubmissionView readOnly={false} />; 
 
   const Navbar = () => (
-    <ul className="nav nav-tabs">
+    <ul className="nav nav-tabs mb-3 mt-3">
       <li className="nav-item">
         <NavLink className="nav-link" end to={`/form/${formId}/submission`}>
           <i className="fa fa-chevron-left"></i>
@@ -42,6 +44,7 @@ const SubmissionPage = () => {
 
   return (
     <div>
+      <h3>{ formState.form?.title } › Submission</h3>
       <Navbar />
       <Routes>
         <Route

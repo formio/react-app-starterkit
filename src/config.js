@@ -8,9 +8,12 @@ const getQuery = (query) => {
   return query;
 }
 
+const configFromLocalStorage = localStorage.getItem('formioAppConfig') || null;
+
 const query = getQuery({});
-const PROJECT_URL = query.projectUrl || 'https://reactstarter.form.io';
-const API_URL = query.apiUrl || 'https://api.form.io';
+const PROJECT_URL = query.projectUrl || JSON.parse(configFromLocalStorage)?.projectUrl || 'https://reactstarter.form.io';
+const API_URL = query.apiUrl || JSON.parse(configFromLocalStorage)?.apiUrl || 'https://api.form.io';
+
 
 export const AppConfig = {
   projectUrl: PROJECT_URL,
