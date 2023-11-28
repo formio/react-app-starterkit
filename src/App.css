@@ -1,5 +1,5 @@
 @import "~bootstrap/dist/css/bootstrap.css";
-@import "~formiojs/dist/formio.full.min.css";
+@import "~@formio/js/dist/formio.full.min.css";
 
 .nav-link a {
   color: inherit;
