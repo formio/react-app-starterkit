@@ -47,6 +47,12 @@
       "last 1 safari version"
     ]
   },
+  "overrides": {
+    "react-json-view": {
+      "react": "$react",
+      "react-dom": "$react-dom"
+    }
+  },
   "devDependencies": {
     "eslint-config-prettier": "^8.8.0",
     "husky": "^8.0.3",
