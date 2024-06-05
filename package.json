@@ -11,7 +11,7 @@
     },
     "dependencies": {
         "@formio/js": "5.0.0-dev.5621.91bd945",
-        "@formio/react": "file:./formio-react.tgz",
+        "@formio/react": "6.0.0-dev.568.ced0fbd",
         "@microlink/react-json-view": "^1.23.0",
         "bootstrap": "^5.3.3",
         "react": "^18.2.0",

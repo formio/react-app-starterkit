@@ -457,9 +457,10 @@
     uuid "^9.0.0"
     vanilla-picker "^2.12.3"
 
-"@formio/react@file:./formio-react.tgz":
-  version "6.0.0-dev.568.b453701"
-  resolved "file:./formio-react.tgz#e695324d80776b7d540298d1d85481b41593fec9"
+"@formio/react@6.0.0-dev.568.ced0fbd":
+  version "6.0.0-dev.568.ced0fbd"
+  resolved "https://registry.yarnpkg.com/@formio/react/-/react-6.0.0-dev.568.ced0fbd.tgz#159f780aebf78dae0184e0765886e3b07b9c1239"
+  integrity sha512-y4Y3J54+X1IeimVxc+B+bIVeXOJ5tMINeOoG1Sp1L4ZSwboocuMKP6VDhqqYFHVS7Tjcov/6l6RTcgjxUjMKcw==
   dependencies:
     core-js "^3.35.1"
     lodash "^4.17.21"
