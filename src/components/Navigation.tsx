@@ -1,7 +1,7 @@
 import { Container, Nav, Navbar } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
 import { Link } from "react-router-dom";
-import logo from "../Light-Background.png";
+import logo from "../assets/Light-Background.png";
 
 function Navigation() {
   return (
