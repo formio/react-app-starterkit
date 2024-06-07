@@ -1,5 +1,6 @@
 import { Form } from "@formio/react";
 import { Col, Row } from "react-bootstrap";
+import { CopyBlock, atomOneLight } from "react-code-blocks";
 
 const WizardForm = () => {
     return (
@@ -12,13 +13,13 @@ const WizardForm = () => {
                         easily embed them within your application using the
                         following code.
                     </p>
-                    {/* <CopyBlock
+                    <CopyBlock
                         text={`<Form src={'https://examples.form.io/wizard'} />`}
                         theme={atomOneLight}
                         language="jsx"
                         codeBlock={true}
                         showLineNumbers={false}
-                    /> */}
+                    />
                     <div className="py-3">
                         <Form src="https://examples.form.io/wizard" />
                     </div>

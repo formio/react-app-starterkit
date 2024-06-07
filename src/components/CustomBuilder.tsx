@@ -1,6 +1,7 @@
 import { FormBuilder } from "@formio/react";
 import { useState } from "react";
 import { Col, Row } from "react-bootstrap";
+import { CopyBlock, atomOneLight } from "react-code-blocks";
 
 const CustomBuilder = () => {
     const [options] = useState({
@@ -27,20 +28,20 @@ const CustomBuilder = () => {
                         form builder within your application, which generates a
                         JSON schema of the form created.
                     </p>
-                    {/* <CopyBlock
+                    <CopyBlock
                         text={`<FormBuilder form={jsonSchema} onChange={(schema) => setSchema(schema)} options={options} />
 `}
                         theme={atomOneLight}
                         language="jsx"
                         codeBlock={true}
                         showLineNumbers={false}
-                    /> */}
+                    />
                     <p>
                         One of the features of builder that user can change
                         different options. For example language. Options can be
                         provided via <code>[options]</code> property.
                     </p>
-                    {/* <CopyBlock
+                    <CopyBlock
                         text={`
 const [options,setOptions] = useState({
   language: 'en',
@@ -57,7 +58,7 @@ const [options,setOptions] = useState({
                         theme={atomOneLight}
                         language="jsx"
                         codeBlock={true}
-                    /> */}
+                    />
                     <div className="py-3">
                         <button onClick={() => handler("en")}>English</button>
                         <button onClick={() => handler("jp")}>Japanese</button>

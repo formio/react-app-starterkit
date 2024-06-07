@@ -102,13 +102,13 @@ const Home = () => {
                 <div className="card mb-4">
                     <div className="card-body">
                         <h5 className="card-title">Code</h5>
-                        {/* <CopyBlock
+                        <CopyBlock
                             text={`<Form src={'https://examples.form.io/example'} onSubmit={onSubmitHandler} />`}
                             theme={atomOneLight}
                             language={"jsx"}
                             codeBlock={true}
                             showLineNumbers={false}
-                        /> */}
+                        />
                     </div>
                 </div>
                 <div className="card p-3">

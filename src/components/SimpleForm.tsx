@@ -13,13 +13,13 @@ const SimpleForm = () => {
                         React. Forms can be embedded as easy as the following
                         code.
                     </p>
-                    {/* <CopyBlock
+                    <CopyBlock
                         text={`<Form src={'https://examples.form.io/example'} />`}
                         theme={atomOneLight}
                         language="jsx"
                         codeBlock={true}
                         showLineNumbers={false}
-                    /> */}
+                    />
                     <div className="py-3">
                         <Form src="https://examples.form.io/example" />
                     </div>
