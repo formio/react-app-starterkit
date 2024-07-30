@@ -1,4 +1,68 @@
 {
+  "name": "react-starterkit-app",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "/react-app-starterkit/#",
+  "dependencies": {
+    "@formio/contrib": "^2.0.0",
+    "@formio/js": "^5.0.0-rc.33",
+    "@formio/react": "^5.3.0-rc.2",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.2.0",
+    "@testing-library/user-event": "^13.5.0",
+    "bootstrap": "^5.2.0",
+    "react": "^18.1.0",
+    "react-bootstrap": "^2.4.0",
+    "react-code-blocks": "0.0.9-0",
+    "react-dom": "^18.1.0",
+    "react-json-view": "^1.21.3",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "deploy": "yarn build; cd build; git init; git remote add origin git@github.com:formio/react-app-starterkit.git; git checkout -b gh-pages; git add -A; git commit -m 'Update demo application'; git push -f origin gh-pages;",
+    "prepare": "husky install"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest",
+      "prettier"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "overrides": {
+    "react-json-view": {
+      "react": "$react",
+      "react-dom": "$react-dom"
+    }
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^8.8.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.1",
+    "prettier": "^2.8.8"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  }
+=======
     "name": "react-app-starterkit",
     "private": true,
     "version": "0.0.0",
