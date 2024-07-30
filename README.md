@@ -1,48 +1,30 @@
-# Form.io React Starter Application
+# React + TypeScript + Vite
 
----
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-This is a starter application that uses React, Bootstrap, Webpack, and Form.io to create a powerful Serverless application.
-This example uses Contexts and hooks to manage application state.
+Currently, two official plugins are available:
 
-## Installation
+-   [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+-   [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-- Download this application within your local machine and then type the following.
+## Expanding the ESLint configuration
 
-```
-npm install
-```
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-### Running
+-   Configure the top-level `parserOptions` property like this:
 
----
-
-You can develop within this application by typing the following
-
-```
-npm start
-```
-
-This will launch the application locally @ https://localhost:3000. Now, whenever you make changes, those will be directly reflected within the launched application.
-
-### Building
-
----
-
-Once you have your application developed, it is now time to build the application for deployment. This can be done by typing the following.
-
-```
-npm run build
+```js
+export default {
+    // other rules...
+    parserOptions: {
+        ecmaVersion: "latest",
+        sourceType: "module",
+        project: ["./tsconfig.json", "./tsconfig.node.json"],
+        tsconfigRootDir: __dirname,
+    },
+};
 ```
 
-This will generate the **build** folder which you can then use to install within any webserver, Github Page, an Amazon S3 bucket, etc.
-
-### Commands
-
----
-
-To see all available commands type the following
-
-```
-npm run
-```
+-   Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
+-   Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
+-   Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
