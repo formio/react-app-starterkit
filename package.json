@@ -1,5 +1,5 @@
 {
-    "name": "react-app-starterkit",
+    "name": "@formio/react-app-starterkit",
     "private": true,
     "version": "0.0.0",
     "type": "module",
