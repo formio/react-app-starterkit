@@ -10,10 +10,10 @@
         "preview": "vite preview"
     },
     "dependencies": {
-        "@formio/js": "5.0.0-dev.5621.91bd945",
-        "@formio/react": "6.0.0-dev.568.ced0fbd",
+        "@formio/js": "formio/formio.js#main",
+        "@formio/react": "formio/react#main",
         "@microlink/react-json-view": "^1.23.0",
-        "bootstrap": "^5.3.3",
+        "bootstrap": "^5.3.8",
         "react": "^18.2.0",
         "react-bootstrap": "^2.10.2",
         "react-code-blocks": "^0.1.6",
